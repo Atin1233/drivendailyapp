@@ -308,7 +308,7 @@
       <!-- Animated Tagline -->
       <div class="slide-in-left mb-6">
         <div class="text-xl md:text-3xl font-bold text-white/90 mb-3">
-          🚀 Transform Your Life, One Day at a Time
+          Transform Your Life, One Day at a Time
         </div>
       </div>
 
