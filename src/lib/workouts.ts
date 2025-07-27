@@ -1,0 +1,926 @@
+export type WorkoutCategory = "strength" | "cardio" | "flexibility" | "hiit" | "yoga"
+export type WorkoutDifficulty = "beginner" | "intermediate" | "advanced"
+export type WorkoutSplit =
+  | "full-body"
+  | "push-pull-legs"
+  | "upper-lower"
+  | "bro-split"
+  | "arnold-split"
+  | "strength-focused"
+  | "powerlifting"
+  | "bodybuilding"
+  | "functional"
+  | "cardio-focused"
+
+export interface Workout {
+  id: string
+  title: string
+  description: string
+  category: WorkoutCategory
+  difficulty: WorkoutDifficulty
+  split: WorkoutSplit
+  duration: number // in minutes
+  exercises: Exercise[]
+  author: "Joel Rivas" | "Atin Jain"
+  tags: string[]
+  image?: string
+}
+
+export interface Exercise {
+  name: string
+  sets: number
+  reps: string
+  rest: string
+  notes?: string
+}
+
+export const workouts: Workout[] = [
+  // Full Body Workouts
+  {
+    id: "full-body-beginner",
+    title: "Full Body Beginner",
+    description:
+      "A complete full-body workout perfect for beginners, focusing on fundamental movements and proper form.",
+    category: "strength",
+    difficulty: "beginner",
+    split: "full-body",
+    duration: 45,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Bodyweight Squats", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Push-ups (Knee or Wall)", sets: 3, reps: "8-12", rest: "60s" },
+      { name: "Dumbbell Rows", sets: 3, reps: "10-12 each arm", rest: "60s" },
+      { name: "Plank", sets: 3, reps: "30-45 seconds", rest: "60s" },
+      { name: "Glute Bridges", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Bird Dogs", sets: 3, reps: "10 each side", rest: "60s" },
+    ],
+    tags: ["full-body", "beginner-friendly", "no-equipment"],
+  },
+  {
+    id: "full-body-advanced",
+    title: "Full Body Advanced",
+    description:
+      "High-intensity full-body workout for advanced lifters focusing on compound movements and strength building.",
+    category: "strength",
+    difficulty: "advanced",
+    split: "full-body",
+    duration: 90,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Deadlifts", sets: 5, reps: "5", rest: "180s" },
+      { name: "Bench Press", sets: 4, reps: "6-8", rest: "150s" },
+      { name: "Weighted Pull-ups", sets: 4, reps: "6-8", rest: "150s" },
+      { name: "Overhead Press", sets: 4, reps: "6-8", rest: "120s" },
+      { name: "Front Squats", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Barbell Rows", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Weighted Dips", sets: 3, reps: "8-10", rest: "90s" },
+      { name: "Hanging Leg Raises", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["full-body", "advanced", "compound-movements", "strength"],
+  },
+  {
+    id: "full-body-functional",
+    title: "Full Body Functional",
+    description:
+      "Functional movement patterns that translate to real-world strength and mobility.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "full-body",
+    duration: 60,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Turkish Get-ups", sets: 3, reps: "5 each side", rest: "90s" },
+      { name: "Kettlebell Swings", sets: 4, reps: "15-20", rest: "90s" },
+      { name: "Renegade Rows", sets: 3, reps: "10 each arm", rest: "90s" },
+      { name: "Single-leg Deadlifts", sets: 3, reps: "8 each leg", rest: "90s" },
+      { name: "Bear Crawls", sets: 3, reps: "20 yards", rest: "60s" },
+      { name: "Pallof Press", sets: 3, reps: "10 each side", rest: "60s" },
+    ],
+    tags: ["full-body", "functional", "mobility", "real-world-strength"],
+  },
+  {
+    id: "full-body-intermediate",
+    title: "Full Body Intermediate",
+    description:
+      "Intermediate full-body workout with moderate intensity and compound movements.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "full-body",
+    duration: 60,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Squats", sets: 4, reps: "8-10", rest: "90s" },
+      { name: "Deadlifts", sets: 3, reps: "6-8", rest: "120s" },
+      { name: "Bench Press", sets: 4, reps: "8-10", rest: "90s" },
+      { name: "Pull-ups", sets: 3, reps: "6-10", rest: "90s" },
+      { name: "Overhead Press", sets: 3, reps: "8-10", rest: "90s" },
+      { name: "Plank", sets: 3, reps: "45-60 seconds", rest: "60s" },
+    ],
+    tags: ["full-body", "intermediate", "compound-movements"],
+  },
+
+  // Push-Pull-Legs Split
+  {
+    id: "push-day",
+    title: "Push Day",
+    description:
+      "Focus on chest, shoulders, and triceps with this comprehensive push workout.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "push-pull-legs",
+    duration: 75,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Bench Press", sets: 4, reps: "6-8", rest: "150s" },
+      { name: "Overhead Press", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Incline Dumbbell Press", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Lateral Raises", sets: 3, reps: "12-15", rest: "90s" },
+      { name: "Dips", sets: 3, reps: "8-12", rest: "90s" },
+      { name: "Tricep Extensions", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["push", "chest", "shoulders", "triceps"],
+  },
+  {
+    id: "pull-day",
+    title: "Pull Day",
+    description:
+      "Target back and biceps with this effective pull workout focusing on rowing and pulling movements.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "push-pull-legs",
+    duration: 75,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Deadlifts", sets: 4, reps: "5", rest: "180s" },
+      { name: "Pull-ups", sets: 4, reps: "6-10", rest: "150s" },
+      { name: "Barbell Rows", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Lat Pulldowns", sets: 3, reps: "10-12", rest: "90s" },
+      { name: "Face Pulls", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Bicep Curls", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["pull", "back", "biceps", "deadlifts"],
+  },
+  {
+    id: "legs-day",
+    title: "Legs Day",
+    description:
+      "Build strong, powerful legs with this comprehensive lower body workout.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "push-pull-legs",
+    duration: 75,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Squats", sets: 4, reps: "6-8", rest: "180s" },
+      { name: "Romanian Deadlifts", sets: 3, reps: "8-10", rest: "150s" },
+      { name: "Leg Press", sets: 3, reps: "10-12", rest: "120s" },
+      { name: "Walking Lunges", sets: 3, reps: "20 steps", rest: "120s" },
+      { name: "Calf Raises", sets: 4, reps: "15-20", rest: "60s" },
+      { name: "Glute Bridges", sets: 3, reps: "15", rest: "60s" },
+    ],
+    tags: ["legs", "squats", "deadlifts", "lower-body"],
+  },
+
+  // Upper-Lower Split
+  {
+    id: "upper-body",
+    title: "Upper Body",
+    description:
+      "Comprehensive upper body workout targeting chest, back, shoulders, and arms.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "upper-lower",
+    duration: 80,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Bench Press", sets: 4, reps: "6-8", rest: "150s" },
+      { name: "Pull-ups", sets: 4, reps: "6-10", rest: "150s" },
+      { name: "Overhead Press", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Barbell Rows", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Dips", sets: 3, reps: "8-12", rest: "90s" },
+      { name: "Bicep Curls", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Tricep Extensions", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["upper-body", "chest", "back", "shoulders", "arms"],
+  },
+  {
+    id: "lower-body",
+    title: "Lower Body",
+    description:
+      "Focused lower body workout for building strong legs and glutes.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "upper-lower",
+    duration: 80,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Squats", sets: 4, reps: "6-8", rest: "180s" },
+      { name: "Deadlifts", sets: 3, reps: "5", rest: "180s" },
+      { name: "Leg Press", sets: 3, reps: "10-12", rest: "120s" },
+      { name: "Romanian Deadlifts", sets: 3, reps: "8-10", rest: "120s" },
+      { name: "Walking Lunges", sets: 3, reps: "20 steps", rest: "120s" },
+      { name: "Calf Raises", sets: 4, reps: "15-20", rest: "60s" },
+    ],
+    tags: ["lower-body", "legs", "glutes", "strength"],
+  },
+
+  // Bro Split
+  {
+    id: "chest-day",
+    title: "Chest Day",
+    description:
+      "Dedicated chest workout focusing on all areas of the pectoral muscles.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "bro-split",
+    duration: 60,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Bench Press", sets: 4, reps: "8-10", rest: "120s" },
+      { name: "Incline Dumbbell Press", sets: 3, reps: "10-12", rest: "90s" },
+      { name: "Decline Bench Press", sets: 3, reps: "8-10", rest: "90s" },
+      { name: "Dumbbell Flyes", sets: 3, reps: "10-12", rest: "90s" },
+      { name: "Dips", sets: 3, reps: "8-12", rest: "90s" },
+      { name: "Push-ups", sets: 3, reps: "15-20", rest: "60s" },
+    ],
+    tags: ["chest", "push", "bench-press", "dumbbells"],
+  },
+  {
+    id: "back-day",
+    title: "Back Day",
+    description:
+      "Comprehensive back workout targeting width, thickness, and strength.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "bro-split",
+    duration: 65,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Deadlifts", sets: 4, reps: "6-8", rest: "120s" },
+      { name: "Pull-ups", sets: 4, reps: "6-10", rest: "120s" },
+      { name: "Barbell Rows", sets: 4, reps: "8-10", rest: "90s" },
+      { name: "Lat Pulldowns", sets: 3, reps: "10-12", rest: "90s" },
+      { name: "Face Pulls", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Hyperextensions", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["back", "pull", "deadlifts", "pull-ups"],
+  },
+  {
+    id: "shoulders-day",
+    title: "Shoulders Day",
+    description:
+      "Focused shoulder workout for building strong, defined deltoids.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "bro-split",
+    duration: 55,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Overhead Press", sets: 4, reps: "8-10", rest: "120s" },
+      { name: "Lateral Raises", sets: 4, reps: "12-15", rest: "90s" },
+      { name: "Rear Delt Flyes", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Upright Rows", sets: 3, reps: "10-12", rest: "90s" },
+      { name: "Front Raises", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Shrugs", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["shoulders", "deltoids", "overhead-press", "isolation"],
+  },
+
+  // Strength Training
+  {
+    id: "strength-5x5",
+    title: "5x5 Strength Program",
+    description:
+      "Classic 5x5 strength program focusing on compound movements and progressive overload.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "strength-focused",
+    duration: 60,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Squats", sets: 5, reps: "5", rest: "180s" },
+      { name: "Bench Press", sets: 5, reps: "5", rest: "180s" },
+      { name: "Barbell Rows", sets: 5, reps: "5", rest: "180s" },
+      { name: "Overhead Press", sets: 5, reps: "5", rest: "180s" },
+      { name: "Deadlifts", sets: 1, reps: "5", rest: "180s" },
+    ],
+    tags: ["strength", "5x5", "compound-movements", "progressive-overload"],
+  },
+
+  // Cardio Workouts
+  {
+    id: "hiit-cardio",
+    title: "HIIT Cardio",
+    description:
+      "High-intensity interval training for maximum calorie burn and cardiovascular fitness.",
+    category: "hiit",
+    difficulty: "advanced",
+    split: "cardio-focused",
+    duration: 30,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Burpees", sets: 8, reps: "30s work, 30s rest", rest: "30s" },
+      { name: "Mountain Climbers", sets: 8, reps: "30s work, 30s rest", rest: "30s" },
+      { name: "Jump Squats", sets: 8, reps: "30s work, 30s rest", rest: "30s" },
+      { name: "High Knees", sets: 8, reps: "30s work, 30s rest", rest: "30s" },
+      { name: "Push-ups", sets: 8, reps: "30s work, 30s rest", rest: "30s" },
+      { name: "Plank Jacks", sets: 8, reps: "30s work, 30s rest", rest: "30s" },
+    ],
+    tags: ["hiit", "cardio", "high-intensity", "fat-burning"],
+  },
+  {
+    id: "steady-cardio",
+    title: "Steady State Cardio",
+    description:
+      "Moderate-intensity cardio session to build endurance and improve cardiovascular health.",
+    category: "cardio",
+    difficulty: "beginner",
+    split: "cardio-focused",
+    duration: 45,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Warm-up", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Jogging/Running", sets: 1, reps: "30 minutes", rest: "none" },
+      { name: "Cool-down", sets: 1, reps: "10 minutes", rest: "none" },
+    ],
+    tags: ["cardio", "endurance", "steady-state", "cardiovascular"],
+  },
+
+  // Flexibility & Yoga
+  {
+    id: "yoga-flow",
+    title: "Yoga Flow",
+    description:
+      "Gentle yoga flow for flexibility, mobility, and stress relief.",
+    category: "yoga",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 45,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Sun Salutation A", sets: 3, reps: "5 rounds", rest: "30s" },
+      { name: "Warrior I", sets: 2, reps: "30s each side", rest: "30s" },
+      { name: "Warrior II", sets: 2, reps: "30s each side", rest: "30s" },
+      { name: "Tree Pose", sets: 2, reps: "30s each side", rest: "30s" },
+      { name: "Child's Pose", sets: 1, reps: "2 minutes", rest: "none" },
+      { name: "Savasana", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["yoga", "flexibility", "mobility", "stress-relief"],
+  },
+  {
+    id: "mobility-stretch",
+    title: "Mobility & Stretch",
+    description:
+      "Comprehensive stretching routine to improve mobility and reduce muscle tension.",
+    category: "flexibility",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 30,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Hamstring Stretch", sets: 2, reps: "30s each leg", rest: "30s" },
+      { name: "Hip Flexor Stretch", sets: 2, reps: "30s each side", rest: "30s" },
+      { name: "Chest Stretch", sets: 2, reps: "30s", rest: "30s" },
+      { name: "Shoulder Stretch", sets: 2, reps: "30s each arm", rest: "30s" },
+      { name: "Cat-Cow Stretch", sets: 1, reps: "10 rounds", rest: "none" },
+      { name: "Child's Pose", sets: 1, reps: "2 minutes", rest: "none" },
+    ],
+    tags: ["mobility", "stretching", "recovery", "flexibility"],
+  },
+
+  // Additional Strength Training Workouts
+  {
+    id: "powerlifting-basics",
+    title: "Powerlifting Basics",
+    description:
+      "Foundation powerlifting program focusing on the big three lifts: squat, bench, and deadlift.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "powerlifting",
+    duration: 90,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Squats", sets: 5, reps: "3", rest: "240s" },
+      { name: "Bench Press", sets: 5, reps: "3", rest: "240s" },
+      { name: "Deadlifts", sets: 3, reps: "3", rest: "300s" },
+      { name: "Accessory Work", sets: 3, reps: "8-10", rest: "120s" },
+    ],
+    tags: ["powerlifting", "big-three", "strength", "compound-lifts"],
+  },
+  {
+    id: "bodybuilding-upper",
+    title: "Bodybuilding Upper",
+    description:
+      "Classic bodybuilding upper body workout focusing on muscle hypertrophy and definition.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "bodybuilding",
+    duration: 75,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Incline Bench Press", sets: 4, reps: "8-12", rest: "120s" },
+      { name: "Lat Pulldowns", sets: 4, reps: "10-12", rest: "90s" },
+      { name: "Dumbbell Shoulder Press", sets: 3, reps: "10-12", rest: "90s" },
+      { name: "Cable Rows", sets: 3, reps: "12-15", rest: "90s" },
+      { name: "Lateral Raises", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Bicep Curls", sets: 3, reps: "12-15", rest: "60s" },
+      { name: "Tricep Pushdowns", sets: 3, reps: "12-15", rest: "60s" },
+    ],
+    tags: ["bodybuilding", "hypertrophy", "upper-body", "muscle-building"],
+  },
+  {
+    id: "arnold-split-chest-back",
+    title: "Arnold Split: Chest & Back",
+    description:
+      "Arnold Schwarzenegger's legendary chest and back superset workout for maximum muscle growth.",
+    category: "strength",
+    difficulty: "advanced",
+    split: "arnold-split",
+    duration: 90,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Bench Press + Pull-ups", sets: 5, reps: "6-8 + 8-12", rest: "120s" },
+      { name: "Incline Press + Barbell Rows", sets: 4, reps: "8-10 + 8-10", rest: "120s" },
+      { name: "Dumbbell Flyes + Lat Pulldowns", sets: 3, reps: "10-12 + 10-12", rest: "90s" },
+      { name: "Dips + Face Pulls", sets: 3, reps: "8-12 + 12-15", rest: "90s" },
+      { name: "Push-ups + Hyperextensions", sets: 3, reps: "15-20 + 12-15", rest: "60s" },
+    ],
+    tags: ["arnold-split", "supersets", "chest-back", "advanced", "muscle-growth"],
+  },
+  {
+    id: "arnold-split-shoulders-arms",
+    title: "Arnold Split: Shoulders & Arms",
+    description:
+      "Arnold's shoulder and arm superset workout for building massive deltoids and arms.",
+    category: "strength",
+    difficulty: "advanced",
+    split: "arnold-split",
+    duration: 75,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Overhead Press + Bicep Curls", sets: 4, reps: "6-8 + 8-12", rest: "120s" },
+      { name: "Lateral Raises + Hammer Curls", sets: 4, reps: "12-15 + 10-12", rest: "90s" },
+      { name: "Rear Delt Flyes + Preacher Curls", sets: 3, reps: "12-15 + 8-12", rest: "90s" },
+      { name: "Upright Rows + Tricep Extensions", sets: 3, reps: "10-12 + 12-15", rest: "90s" },
+      { name: "Front Raises + Dips", sets: 3, reps: "12-15 + 8-12", rest: "60s" },
+    ],
+    tags: ["arnold-split", "supersets", "shoulders-arms", "advanced", "isolation"],
+  },
+  {
+    id: "arnold-split-legs",
+    title: "Arnold Split: Legs",
+    description:
+      "Arnold's legendary leg day workout for building tree trunk thighs and powerful legs.",
+    category: "strength",
+    difficulty: "advanced",
+    split: "arnold-split",
+    duration: 90,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Squats", sets: 5, reps: "8-12", rest: "180s" },
+      { name: "Leg Press", sets: 4, reps: "10-15", rest: "120s" },
+      { name: "Romanian Deadlifts", sets: 4, reps: "8-12", rest: "120s" },
+      { name: "Leg Extensions", sets: 3, reps: "12-15", rest: "90s" },
+      { name: "Leg Curls", sets: 3, reps: "12-15", rest: "90s" },
+      { name: "Calf Raises", sets: 4, reps: "15-20", rest: "60s" },
+      { name: "Walking Lunges", sets: 3, reps: "20 steps", rest: "90s" },
+    ],
+    tags: ["arnold-split", "legs", "advanced", "quadriceps", "hamstrings"],
+  },
+  {
+    id: "functional-strength",
+    title: "Functional Strength",
+    description:
+      "Real-world strength training focusing on movements that translate to daily activities.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "functional",
+    duration: 60,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Turkish Get-ups", sets: 3, reps: "5 each side", rest: "120s" },
+      { name: "Farmer's Walks", sets: 3, reps: "50 yards", rest: "120s" },
+      { name: "Single-leg Deadlifts", sets: 3, reps: "8 each leg", rest: "90s" },
+      { name: "Pallof Press", sets: 3, reps: "10 each side", rest: "90s" },
+      { name: "Bear Crawls", sets: 3, reps: "30 yards", rest: "90s" },
+      { name: "Plank Variations", sets: 3, reps: "45s each", rest: "60s" },
+    ],
+    tags: ["functional", "real-world-strength", "mobility", "stability"],
+  },
+  {
+    id: "strength-endurance",
+    title: "Strength Endurance",
+    description:
+      "Build both strength and endurance with this hybrid workout combining heavy lifts and conditioning.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "functional",
+    duration: 70,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Deadlifts", sets: 4, reps: "5", rest: "180s" },
+      { name: "Burpees", sets: 3, reps: "10", rest: "60s" },
+      { name: "Bench Press", sets: 4, reps: "6-8", rest: "150s" },
+      { name: "Mountain Climbers", sets: 3, reps: "30s", rest: "60s" },
+      { name: "Pull-ups", sets: 3, reps: "6-10", rest: "120s" },
+      { name: "Jump Squats", sets: 3, reps: "15", rest: "60s" },
+    ],
+    tags: ["strength-endurance", "hybrid", "conditioning", "metabolic"],
+  },
+
+  // Additional Cardio Workouts
+  {
+    id: "interval-running",
+    title: "Interval Running",
+    description:
+      "High-intensity interval running workout to improve speed and cardiovascular fitness.",
+    category: "cardio",
+    difficulty: "intermediate",
+    split: "cardio-focused",
+    duration: 40,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Warm-up Jog", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Sprint Intervals", sets: 8, reps: "30s sprint, 90s jog", rest: "90s" },
+      { name: "Recovery Jog", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Cool-down Walk", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["running", "intervals", "sprint-training", "speed-work"],
+  },
+  {
+    id: "cycling-workout",
+    title: "Indoor Cycling",
+    description:
+      "High-energy indoor cycling workout with varying resistance and cadence.",
+    category: "cardio",
+    difficulty: "intermediate",
+    split: "cardio-focused",
+    duration: 45,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Warm-up", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Hill Climbs", sets: 4, reps: "3 minutes", rest: "2 minutes" },
+      { name: "Sprint Intervals", sets: 6, reps: "30s sprint, 90s recovery", rest: "90s" },
+      { name: "Endurance Ride", sets: 1, reps: "10 minutes", rest: "none" },
+      { name: "Cool-down", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["cycling", "indoor-bike", "cardio", "endurance"],
+  },
+  {
+    id: "rowing-cardio",
+    title: "Rowing Cardio",
+    description:
+      "Full-body cardio workout using rowing machine for strength and endurance.",
+    category: "cardio",
+    difficulty: "intermediate",
+    split: "cardio-focused",
+    duration: 35,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Warm-up", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Distance Rows", sets: 3, reps: "500m", rest: "2 minutes" },
+      { name: "Interval Rows", sets: 5, reps: "250m", rest: "1 minute" },
+      { name: "Endurance Row", sets: 1, reps: "1000m", rest: "none" },
+      { name: "Cool-down", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["rowing", "full-body-cardio", "endurance", "low-impact"],
+  },
+  {
+    id: "elliptical-workout",
+    title: "Elliptical Training",
+    description:
+      "Low-impact elliptical workout perfect for recovery days or joint-friendly cardio.",
+    category: "cardio",
+    difficulty: "beginner",
+    split: "cardio-focused",
+    duration: 30,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Warm-up", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Steady State", sets: 1, reps: "15 minutes", rest: "none" },
+      { name: "Hill Intervals", sets: 3, reps: "2 minutes", rest: "1 minute" },
+      { name: "Cool-down", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["elliptical", "low-impact", "recovery", "joint-friendly"],
+  },
+
+  // Additional HIIT Workouts
+  {
+    id: "tabata-hiit",
+    title: "Tabata HIIT",
+    description:
+      "Classic Tabata protocol: 20 seconds work, 10 seconds rest for 8 rounds per exercise.",
+    category: "hiit",
+    difficulty: "advanced",
+    split: "cardio-focused",
+    duration: 25,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Burpees", sets: 8, reps: "20s work, 10s rest", rest: "1 minute" },
+      { name: "Mountain Climbers", sets: 8, reps: "20s work, 10s rest", rest: "1 minute" },
+      { name: "Jump Squats", sets: 8, reps: "20s work, 10s rest", rest: "1 minute" },
+      { name: "Push-ups", sets: 8, reps: "20s work, 10s rest", rest: "1 minute" },
+    ],
+    tags: ["tabata", "hiit", "high-intensity", "fat-burning"],
+  },
+  {
+    id: "amrap-hiit",
+    title: "AMRAP HIIT",
+    description:
+      "As Many Rounds As Possible in 20 minutes of high-intensity exercises.",
+    category: "hiit",
+    difficulty: "intermediate",
+    split: "cardio-focused",
+    duration: 25,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Burpees", sets: 1, reps: "10 reps", rest: "none" },
+      { name: "Air Squats", sets: 1, reps: "20 reps", rest: "none" },
+      { name: "Push-ups", sets: 1, reps: "10 reps", rest: "none" },
+      { name: "Mountain Climbers", sets: 1, reps: "30 reps", rest: "none" },
+      { name: "Rest", sets: 1, reps: "1 minute", rest: "none" },
+    ],
+    tags: ["amrap", "hiit", "endurance", "metabolic-conditioning"],
+  },
+  {
+    id: "emom-hiit",
+    title: "EMOM HIIT",
+    description:
+      "Every Minute On the Minute workout with alternating exercises for maximum intensity.",
+    category: "hiit",
+    difficulty: "advanced",
+    split: "cardio-focused",
+    duration: 20,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Minute 1: Burpees", sets: 10, reps: "10 reps", rest: "remainder of minute" },
+      { name: "Minute 2: Air Squats", sets: 10, reps: "15 reps", rest: "remainder of minute" },
+      { name: "Minute 3: Push-ups", sets: 10, reps: "10 reps", rest: "remainder of minute" },
+      { name: "Minute 4: Mountain Climbers", sets: 10, reps: "20 reps", rest: "remainder of minute" },
+    ],
+    tags: ["emom", "hiit", "timed-workouts", "high-intensity"],
+  },
+  {
+    id: "circuit-hiit",
+    title: "Circuit HIIT",
+    description:
+      "High-intensity circuit training with minimal rest between exercises.",
+    category: "hiit",
+    difficulty: "intermediate",
+    split: "cardio-focused",
+    duration: 35,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Burpees", sets: 3, reps: "15 reps", rest: "30s" },
+      { name: "Jump Squats", sets: 3, reps: "20 reps", rest: "30s" },
+      { name: "Push-ups", sets: 3, reps: "15 reps", rest: "30s" },
+      { name: "Mountain Climbers", sets: 3, reps: "30 reps", rest: "30s" },
+      { name: "High Knees", sets: 3, reps: "30 seconds", rest: "30s" },
+      { name: "Plank Jacks", sets: 3, reps: "20 reps", rest: "30s" },
+    ],
+    tags: ["circuit", "hiit", "metabolic", "full-body"],
+  },
+
+  // Additional Yoga Workouts
+  {
+    id: "power-yoga",
+    title: "Power Yoga",
+    description:
+      "Dynamic, fitness-based approach to vinyasa-style yoga for strength and flexibility.",
+    category: "yoga",
+    difficulty: "intermediate",
+    split: "functional",
+    duration: 60,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Sun Salutation A", sets: 3, reps: "5 rounds", rest: "30s" },
+      { name: "Sun Salutation B", sets: 3, reps: "3 rounds", rest: "30s" },
+      { name: "Warrior Sequence", sets: 2, reps: "45s each pose", rest: "30s" },
+      { name: "Balance Poses", sets: 2, reps: "30s each side", rest: "30s" },
+      { name: "Core Work", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Cool-down", sets: 1, reps: "10 minutes", rest: "none" },
+    ],
+    tags: ["power-yoga", "vinyasa", "strength", "dynamic"],
+  },
+  {
+    id: "yin-yoga",
+    title: "Yin Yoga",
+    description:
+      "Slow-paced style of yoga with postures held for longer periods to target deep connective tissues.",
+    category: "yoga",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 45,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Butterfly Pose", sets: 1, reps: "3-5 minutes", rest: "30s" },
+      { name: "Dragon Pose", sets: 1, reps: "3-5 minutes each side", rest: "30s" },
+      { name: "Sphinx Pose", sets: 1, reps: "3-5 minutes", rest: "30s" },
+      { name: "Child's Pose", sets: 1, reps: "3-5 minutes", rest: "30s" },
+      { name: "Savasana", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["yin-yoga", "deep-stretch", "relaxation", "connective-tissue"],
+  },
+  {
+    id: "restorative-yoga",
+    title: "Restorative Yoga",
+    description:
+      "Gentle, therapeutic style of yoga that uses props to support the body in passive poses.",
+    category: "yoga",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 40,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Supported Child's Pose", sets: 1, reps: "5 minutes", rest: "30s" },
+      { name: "Legs Up the Wall", sets: 1, reps: "8 minutes", rest: "30s" },
+      { name: "Supported Bridge", sets: 1, reps: "5 minutes", rest: "30s" },
+      { name: "Reclined Twist", sets: 1, reps: "5 minutes each side", rest: "30s" },
+      { name: "Corpse Pose", sets: 1, reps: "10 minutes", rest: "none" },
+    ],
+    tags: ["restorative", "recovery", "relaxation", "therapeutic"],
+  },
+  {
+    id: "morning-yoga",
+    title: "Morning Yoga Flow",
+    description:
+      "Energizing morning yoga sequence to wake up the body and mind.",
+    category: "yoga",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 25,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Cat-Cow Stretch", sets: 1, reps: "10 rounds", rest: "none" },
+      { name: "Sun Salutation A", sets: 3, reps: "3 rounds", rest: "15s" },
+      { name: "Standing Forward Fold", sets: 1, reps: "1 minute", rest: "15s" },
+      { name: "Warrior I", sets: 2, reps: "30s each side", rest: "15s" },
+      { name: "Tree Pose", sets: 2, reps: "30s each side", rest: "15s" },
+      { name: "Seated Meditation", sets: 1, reps: "3 minutes", rest: "none" },
+    ],
+    tags: ["morning", "energizing", "flow", "meditation"],
+  },
+
+  // Additional Flexibility Workouts
+  {
+    id: "dynamic-stretching",
+    title: "Dynamic Stretching",
+    description:
+      "Active stretching routine to warm up muscles and improve range of motion.",
+    category: "flexibility",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 20,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Arm Circles", sets: 2, reps: "10 each direction", rest: "15s" },
+      { name: "Leg Swings", sets: 2, reps: "10 each leg", rest: "15s" },
+      { name: "Hip Circles", sets: 2, reps: "10 each direction", rest: "15s" },
+      { name: "Walking Knee Hugs", sets: 1, reps: "10 each leg", rest: "15s" },
+      { name: "Walking Butt Kicks", sets: 1, reps: "10 each leg", rest: "15s" },
+      { name: "Walking High Knees", sets: 1, reps: "10 each leg", rest: "15s" },
+    ],
+    tags: ["dynamic-stretching", "warm-up", "mobility", "pre-workout"],
+  },
+  {
+    id: "post-workout-stretch",
+    title: "Post-Workout Stretch",
+    description:
+      "Comprehensive cool-down stretching routine to aid recovery and reduce muscle soreness.",
+    category: "flexibility",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 25,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Hamstring Stretch", sets: 2, reps: "30s each leg", rest: "30s" },
+      { name: "Quad Stretch", sets: 2, reps: "30s each leg", rest: "30s" },
+      { name: "Calf Stretch", sets: 2, reps: "30s each leg", rest: "30s" },
+      { name: "Hip Flexor Stretch", sets: 2, reps: "30s each side", rest: "30s" },
+      { name: "Chest Stretch", sets: 2, reps: "30s", rest: "30s" },
+      { name: "Shoulder Stretch", sets: 2, reps: "30s each arm", rest: "30s" },
+      { name: "Spinal Twist", sets: 1, reps: "30s each side", rest: "30s" },
+    ],
+    tags: ["post-workout", "cool-down", "recovery", "muscle-soreness"],
+  },
+  {
+    id: "deep-stretching",
+    title: "Deep Stretching",
+    description:
+      "Intensive stretching session for improving flexibility and releasing deep muscle tension.",
+    category: "flexibility",
+    difficulty: "intermediate",
+    split: "functional",
+    duration: 40,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Pigeon Pose", sets: 2, reps: "2 minutes each side", rest: "30s" },
+      { name: "Frog Pose", sets: 1, reps: "3 minutes", rest: "30s" },
+      { name: "Butterfly Stretch", sets: 2, reps: "2 minutes", rest: "30s" },
+      { name: "Split Stretches", sets: 2, reps: "2 minutes each side", rest: "30s" },
+      { name: "Backbend Prep", sets: 2, reps: "2 minutes", rest: "30s" },
+      { name: "Shoulder Opener", sets: 2, reps: "2 minutes", rest: "30s" },
+    ],
+    tags: ["deep-stretching", "flexibility", "muscle-release", "advanced-stretching"],
+  },
+  {
+    id: "foam-rolling",
+    title: "Foam Rolling Routine",
+    description:
+      "Self-myofascial release using foam roller to break up muscle knots and improve mobility.",
+    category: "flexibility",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 20,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Calf Roll", sets: 1, reps: "2 minutes each leg", rest: "15s" },
+      { name: "Hamstring Roll", sets: 1, reps: "2 minutes each leg", rest: "15s" },
+      { name: "Quad Roll", sets: 1, reps: "2 minutes each leg", rest: "15s" },
+      { name: "IT Band Roll", sets: 1, reps: "2 minutes each leg", rest: "15s" },
+      { name: "Back Roll", sets: 1, reps: "2 minutes", rest: "15s" },
+      { name: "Glute Roll", sets: 1, reps: "2 minutes each side", rest: "15s" },
+    ],
+    tags: ["foam-rolling", "myofascial-release", "recovery", "muscle-knots"],
+  },
+
+  // Additional Specialized Workouts
+  {
+    id: "core-focused",
+    title: "Core Focused",
+    description:
+      "Comprehensive core workout targeting all areas of the abdominal muscles and lower back.",
+    category: "strength",
+    difficulty: "intermediate",
+    split: "functional",
+    duration: 30,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Plank", sets: 3, reps: "60 seconds", rest: "60s" },
+      { name: "Russian Twists", sets: 3, reps: "20 each side", rest: "60s" },
+      { name: "Leg Raises", sets: 3, reps: "15 reps", rest: "60s" },
+      { name: "Bicycle Crunches", sets: 3, reps: "20 reps", rest: "60s" },
+      { name: "Side Plank", sets: 3, reps: "30s each side", rest: "60s" },
+      { name: "Dead Bug", sets: 3, reps: "10 each side", rest: "60s" },
+    ],
+    tags: ["core", "abs", "stability", "functional-strength"],
+  },
+  {
+    id: "calisthenics-beginner",
+    title: "Calisthenics Beginner",
+    description:
+      "Bodyweight training fundamentals focusing on building strength without equipment.",
+    category: "strength",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 45,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Push-ups", sets: 3, reps: "5-10", rest: "90s" },
+      { name: "Bodyweight Squats", sets: 3, reps: "15-20", rest: "90s" },
+      { name: "Assisted Pull-ups", sets: 3, reps: "3-5", rest: "120s" },
+      { name: "Plank", sets: 3, reps: "30 seconds", rest: "60s" },
+      { name: "Glute Bridges", sets: 3, reps: "15 reps", rest: "60s" },
+      { name: "Wall Handstand Practice", sets: 3, reps: "30 seconds", rest: "90s" },
+    ],
+    tags: ["calisthenics", "bodyweight", "beginner", "no-equipment"],
+  },
+  {
+    id: "calisthenics-advanced",
+    title: "Calisthenics Advanced",
+    description:
+      "Advanced bodyweight training with complex movements and progressions.",
+    category: "strength",
+    difficulty: "advanced",
+    split: "functional",
+    duration: 60,
+    author: "Joel Rivas",
+    exercises: [
+      { name: "Pull-ups", sets: 4, reps: "8-12", rest: "120s" },
+      { name: "Handstand Push-ups", sets: 3, reps: "5-8", rest: "150s" },
+      { name: "Pistol Squats", sets: 3, reps: "5 each leg", rest: "120s" },
+      { name: "Muscle-ups", sets: 3, reps: "3-5", rest: "180s" },
+      { name: "Planche Progressions", sets: 3, reps: "30 seconds", rest: "120s" },
+      { name: "Front Lever Progressions", sets: 3, reps: "30 seconds", rest: "120s" },
+    ],
+    tags: ["calisthenics", "advanced", "bodyweight", "skill-work"],
+  },
+  {
+    id: "recovery-workout",
+    title: "Recovery Workout",
+    description:
+      "Light, low-intensity workout perfect for active recovery days.",
+    category: "flexibility",
+    difficulty: "beginner",
+    split: "functional",
+    duration: 30,
+    author: "Atin Jain",
+    exercises: [
+      { name: "Light Walking", sets: 1, reps: "10 minutes", rest: "none" },
+      { name: "Gentle Stretching", sets: 1, reps: "10 minutes", rest: "none" },
+      { name: "Foam Rolling", sets: 1, reps: "5 minutes", rest: "none" },
+      { name: "Deep Breathing", sets: 1, reps: "5 minutes", rest: "none" },
+    ],
+    tags: ["recovery", "active-recovery", "low-intensity", "rest-day"],
+  }
+] 

@@ -1,8 +1,10 @@
-import { PRIVATE_STRIPE_API_KEY } from "$env/static/private"
 import { error, redirect } from "@sveltejs/kit"
 import Stripe from "stripe"
 import { getOrCreateCustomerId } from "../../../subscription_helpers.server"
 import type { PageServerLoad } from "./$types"
+
+// Get environment variables with fallbacks
+const PRIVATE_STRIPE_API_KEY = process.env.PRIVATE_STRIPE_API_KEY || "fake_stripe_key"
 const stripe = new Stripe(PRIVATE_STRIPE_API_KEY, { apiVersion: "2023-08-16" })
 
 export const load: PageServerLoad = async ({

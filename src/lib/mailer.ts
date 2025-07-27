@@ -1,10 +1,12 @@
 import { Resend } from "resend"
 import { env } from "$env/dynamic/private"
-import { PRIVATE_SUPABASE_SERVICE_ROLE } from "$env/static/private"
-import { PUBLIC_SUPABASE_URL } from "$env/static/public"
 import { createClient, type User } from "@supabase/supabase-js"
 import type { Database } from "../DatabaseDefinitions"
 import handlebars from "handlebars"
+
+// Get environment variables with fallbacks
+const PUBLIC_SUPABASE_URL = process.env.PUBLIC_SUPABASE_URL || "https://fake_test_url.supabase.co"
+const PRIVATE_SUPABASE_SERVICE_ROLE = process.env.PRIVATE_SUPABASE_SERVICE_ROLE || "fake_service_role"
 
 // Sends an email to the admin email address.
 // Does not throw errors, but logs them.

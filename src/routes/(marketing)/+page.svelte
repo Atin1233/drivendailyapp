@@ -89,11 +89,7 @@
           >Driven Daily.</span
         >
       </div>
-      <div class="mt-6 md:mt-10 text-sm md:text-lg">
-        Empower Gen Z/Millennials to make daily progress in fitness, nutrition,
-        and mindset—through honest, research-backed, no-fluff content that meets
-        them where they are.
-      </div>
+
       <div
         class="mt-6 md:mt-4 flex flex-row flex-wrap gap-4 place-content-center"
       >

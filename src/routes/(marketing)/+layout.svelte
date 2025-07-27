@@ -11,7 +11,16 @@
 
 <div class="navbar bg-base-100 container mx-auto">
   <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl" href="/">{WebsiteName}</a>
+    <a
+      class="btn btn-ghost normal-case text-xl flex items-center gap-2"
+      href="/"
+    >
+      <img
+        src="/images/driven-daily-logo.svg"
+        alt="{WebsiteName} Logo"
+        class="h-16 w-16"
+      />
+    </a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1 hidden sm:flex font-bold text-lg">
@@ -84,12 +93,24 @@
 <div class="">
   <div class="border-t max-w-[1000px] mx-auto"></div>
   <footer class="footer p-6 place-content-center text-base">
-    <nav class="flex flex-wrap justify-center gap-6">
-      <a class="link link-hover" href="/">Overview</a>
-      <a class="link link-hover" href="/pricing">Pricing</a>
-      <a class="link link-hover" href="/blog">Blog</a>
-      <a class="link link-hover" href="/testimonials">Testimonials</a>
-      <a class="link link-hover" href="/contact_us">Contact Us</a>
-    </nav>
+    <div class="flex flex-col items-center gap-4">
+      <div class="flex flex-col items-center gap-2">
+        <img
+          src="/images/driven-daily-logo.svg"
+          alt="{WebsiteName} Logo"
+          class="h-12 w-12"
+        />
+        <span class="text-sm text-slate-600"
+          >© 2024 {WebsiteName}. All rights reserved.</span
+        >
+      </div>
+      <nav class="flex flex-wrap justify-center gap-6">
+        <a class="link link-hover" href="/">Overview</a>
+        <a class="link link-hover" href="/pricing">Pricing</a>
+        <a class="link link-hover" href="/blog">Blog</a>
+        <a class="link link-hover" href="/testimonials">Testimonials</a>
+        <a class="link link-hover" href="/contact_us">Contact Us</a>
+      </nav>
+    </div>
   </footer>
 </div>

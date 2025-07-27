@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Driven Daily Logo -->
+  <g>
+    <!-- "Driven" text -->
+    <text x="20" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="#1a1a2e">Driven</text>
+    
+    <!-- "Daily" text -->
+    <text x="20" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="#1a1a2e">Daily</text>
+    
+    <!-- Coral arrow positioned to the right of "Daily" -->
+    <path d="M 140 115 L 170 115 L 155 100 L 170 115 L 155 130 Z" fill="#ff6b6b"/>
+  </g>
+</svg>
