@@ -344,6 +344,13 @@
       <div
         class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
       >
+        <a href="/health-quiz">
+          <button
+            class="btn btn-accent btn-lg px-8 py-4 text-lg pulse-glow transform hover:scale-105 transition-all duration-300"
+          >
+            🧠 Get Your Personalized Plan
+          </button>
+        </a>
         <button
           class="btn btn-primary btn-lg px-8 py-4 text-lg pulse-glow"
           on:click={() => scrollToSection("features")}
@@ -521,6 +528,51 @@
           </div>
         </div>
       {/each}
+    </div>
+  </div>
+</div>
+
+<!-- Personalized Quiz Section -->
+<div class="py-20 bg-gradient-to-br from-accent to-primary text-white">
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-4xl mx-auto animate-on-scroll">
+      <div class="text-6xl mb-6">🧠</div>
+      <div class="text-4xl md:text-6xl font-bold mb-6">
+        Get Your Personalized Health Plan
+      </div>
+      <div class="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
+        Answer a few questions and get a customized diet, workout, and recovery
+        plan designed specifically for your goals and lifestyle.
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl mb-2">💪</div>
+          <div class="font-semibold">Custom Workout Plan</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl mb-2">🥗</div>
+          <div class="font-semibold">Personalized Nutrition</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl mb-2">🧘‍♀️</div>
+          <div class="font-semibold">Recovery Strategy</div>
+        </div>
+      </div>
+
+      <a href="/health-quiz">
+        <button
+          class="btn btn-secondary btn-lg px-12 py-6 text-xl font-bold pulse-glow transform hover:scale-105 transition-all duration-300"
+        >
+          🚀 Start Your Personalized Quiz
+        </button>
+      </a>
+
+      <div class="mt-8 text-white/60">
+        <p class="text-lg">
+          ✨ Takes 5 minutes • 100% free • Get instant results
+        </p>
+      </div>
     </div>
   </div>
 </div>

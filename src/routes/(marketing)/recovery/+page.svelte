@@ -1,5 +1,6 @@
 <script lang="ts">
   import { WebsiteName } from "../../../config"
+  import { onMount } from "svelte"
 
   type RecoveryCategory =
     | "physical-therapy"
@@ -445,6 +446,34 @@
         return "badge-outline"
     }
   }
+
+  let animatedStats = {
+    techniques: 0,
+    categories: 0,
+    benefits: 0,
+  }
+
+  onMount(() => {
+    // Animate stats
+    const duration = 2000
+    const steps = 60
+    const stepDuration = duration / steps
+
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      const progress = step / steps
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+
+      animatedStats.techniques = Math.floor(recoveryTechniques.length * easeOut)
+      animatedStats.categories = Math.floor(6 * easeOut)
+      animatedStats.benefits = Math.floor(60 * easeOut) // Total benefits across all techniques
+
+      if (step >= steps) {
+        clearInterval(interval)
+      }
+    }, stepDuration)
+  })
 </script>
 
 <svelte:head>
@@ -455,36 +484,83 @@
   />
 </svelte:head>
 
-<div class="py-8 lg:py-12 px-6 max-w-7xl mx-auto">
-  <!-- Header -->
-  <div class="text-center mb-12">
-    <h1
-      class="text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
-    >
-      Recovery & Wellness
-    </h1>
-    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-      Essential recovery techniques, physical therapies, and wellness practices
-      to help active people recover faster, prevent injury, and optimize
-      performance.
-    </p>
+<!-- Hero Section -->
+<div class="gradient-bg text-white py-20 relative overflow-hidden">
+  <!-- Floating Background Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div
+      class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"
+    ></div>
+    <div
+      class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full floating"
+      style="animation-delay: -2s;"
+    ></div>
+    <div
+      class="absolute bottom-20 left-1/4 w-12 h-12 bg-white/10 rounded-full floating"
+      style="animation-delay: -4s;"
+    ></div>
   </div>
 
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center max-w-4xl mx-auto">
+      <div class="slide-in-left mb-6">
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+          Recovery & Wellness
+        </h1>
+      </div>
+
+      <div class="slide-in-right mb-8">
+        <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
+          Essential recovery techniques, physical therapies, and wellness
+          practices to help active people recover faster, prevent injury, and
+          optimize performance.
+        </p>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl lg:text-4xl font-bold mb-2">
+            {animatedStats.techniques}
+          </div>
+          <div class="text-sm opacity-80">Techniques</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl lg:text-4xl font-bold mb-2">
+            {animatedStats.categories}
+          </div>
+          <div class="text-sm opacity-80">Categories</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl lg:text-4xl font-bold mb-2">
+            {animatedStats.benefits}
+          </div>
+          <div class="text-sm opacity-80">Benefits</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-12 lg:py-16 px-6 max-w-7xl mx-auto">
   <!-- Search and Filters -->
-  <div class="mb-8">
+  <div class="mb-12">
     <div class="flex flex-col lg:flex-row gap-4 mb-6">
       <!-- Search -->
       <div class="flex-1">
         <input
           type="text"
           placeholder="Search recovery techniques..."
-          class="input input-bordered w-full"
+          class="input input-bordered w-full input-lg"
           bind:value={searchQuery}
         />
       </div>
 
       <!-- Category Filter -->
-      <select class="select select-bordered" bind:value={selectedCategory}>
+      <select
+        class="select select-bordered select-lg"
+        bind:value={selectedCategory}
+      >
         <option value="all">All Categories</option>
         <option value="physical-therapy">Physical Therapy</option>
         <option value="mobility">Mobility</option>
@@ -495,7 +571,10 @@
       </select>
 
       <!-- Difficulty Filter -->
-      <select class="select select-bordered" bind:value={selectedDifficulty}>
+      <select
+        class="select select-bordered select-lg"
+        bind:value={selectedDifficulty}
+      >
         <option value="all">All Levels</option>
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
@@ -504,22 +583,26 @@
     </div>
 
     <!-- Results Count -->
-    <p class="text-slate-600">
+    <p class="text-slate-600 text-center">
       Showing {filteredTechniques.length} of {recoveryTechniques.length} recovery
       techniques
     </p>
   </div>
 
   <!-- Recovery Techniques Grid -->
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     {#each filteredTechniques as technique}
       <div
-        class="card bg-white shadow-lg border border-primary/10 hover:shadow-xl transition-shadow"
+        class="card bg-white shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:scale-105 group"
       >
-        <div class="card-body">
+        <div class="card-body p-8">
           <!-- Header -->
-          <div class="flex items-start justify-between mb-4">
-            <h3 class="text-xl font-bold text-primary">{technique.title}</h3>
+          <div class="flex items-start justify-between mb-6">
+            <h3
+              class="text-xl font-bold text-primary group-hover:text-accent transition-colors"
+            >
+              {technique.title}
+            </h3>
             <div class="flex gap-2">
               <span
                 class="badge badge-sm {getDifficultyColor(
@@ -537,32 +620,34 @@
           </div>
 
           <!-- Description -->
-          <p class="text-slate-600 mb-4">{technique.description}</p>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            {technique.description}
+          </p>
 
           <!-- Stats -->
-          <div class="flex items-center gap-4 mb-4 text-sm text-slate-500">
-            <div class="flex items-center gap-1">
-              <span>⏱️</span>
+          <div class="flex items-center gap-6 mb-6 text-sm text-slate-500">
+            <div class="flex items-center gap-2">
+              <span class="text-primary">⏱️</span>
               <span>{technique.duration} min</span>
             </div>
-            <div class="flex items-center gap-1">
-              <span>👤</span>
+            <div class="flex items-center gap-2">
+              <span class="text-primary">👤</span>
               <span>{technique.author}</span>
             </div>
           </div>
 
           <!-- Benefits -->
-          <div class="mb-4">
-            <h4 class="font-semibold mb-2">Benefits:</h4>
-            <ul class="text-sm text-slate-600 space-y-1">
+          <div class="mb-6">
+            <h4 class="font-semibold mb-3 text-slate-800">Key Benefits:</h4>
+            <ul class="text-sm text-slate-600 space-y-2">
               {#each technique.benefits.slice(0, 3) as benefit}
-                <li class="flex items-start gap-2">
-                  <span class="text-primary">✓</span>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-lg">✓</span>
                   <span>{benefit}</span>
                 </li>
               {/each}
               {#if technique.benefits.length > 3}
-                <li class="text-slate-500">
+                <li class="text-slate-500 italic">
                   +{technique.benefits.length - 3} more benefits
                 </li>
               {/if}
@@ -571,9 +656,9 @@
 
           <!-- Equipment -->
           {#if technique.equipment && technique.equipment.length > 0}
-            <div class="mb-4">
-              <h4 class="font-semibold mb-2">Equipment:</h4>
-              <div class="flex flex-wrap gap-1">
+            <div class="mb-6">
+              <h4 class="font-semibold mb-3 text-slate-800">Equipment:</h4>
+              <div class="flex flex-wrap gap-2">
                 {#each technique.equipment as item}
                   <span class="badge badge-outline badge-sm">{item}</span>
                 {/each}
@@ -582,8 +667,8 @@
           {/if}
 
           <!-- Tags -->
-          <div class="mb-4">
-            <div class="flex flex-wrap gap-1">
+          <div class="mb-6">
+            <div class="flex flex-wrap gap-2">
               {#each technique.tags.slice(0, 3) as tag}
                 <span class="badge badge-outline badge-xs">{tag}</span>
               {/each}
@@ -592,7 +677,10 @@
 
           <!-- View Details Button -->
           <div class="card-actions justify-end">
-            <a href="/recovery/{technique.id}" class="btn btn-primary btn-sm">
+            <a
+              href="/recovery/{technique.id}"
+              class="btn btn-primary btn-sm group-hover:btn-accent transition-all duration-300"
+            >
               View Details
             </a>
           </div>
@@ -603,15 +691,15 @@
 
   <!-- No Results -->
   {#if filteredTechniques.length === 0}
-    <div class="text-center py-12">
-      <div class="text-6xl mb-4">🧘‍♀️</div>
-      <h2 class="text-2xl font-bold mb-4">No Recovery Techniques Found</h2>
-      <p class="text-slate-600 mb-6">
+    <div class="text-center py-16">
+      <div class="text-8xl mb-6">🧘‍♀️</div>
+      <h2 class="text-3xl font-bold mb-4">No Recovery Techniques Found</h2>
+      <p class="text-slate-600 mb-8 text-lg">
         Try adjusting your search terms or filters to find what you're looking
         for.
       </p>
       <button
-        class="btn btn-primary"
+        class="btn btn-primary btn-lg"
         on:click={() => {
           selectedCategory = "all"
           selectedDifficulty = "all"
@@ -624,16 +712,21 @@
   {/if}
 
   <!-- Recovery Tips Section -->
-  <div class="mt-16">
-    <h2 class="text-3xl font-bold text-center mb-8">
+  <div class="mt-20">
+    <h2
+      class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+    >
       Recovery Tips & Best Practices
     </h2>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="card bg-gradient-to-br from-primary to-primary/80 text-white">
-        <div class="card-body">
-          <h3 class="text-xl font-bold mb-3">Listen to Your Body</h3>
-          <p class="opacity-90">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        class="card bg-gradient-to-br from-primary to-primary/80 text-white shadow-xl transform hover:scale-105 transition-all duration-300"
+      >
+        <div class="card-body p-8">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-bold mb-4">Listen to Your Body</h3>
+          <p class="opacity-90 leading-relaxed">
             Pay attention to signs of overtraining and adjust your recovery
             accordingly. Rest when needed and don't push through pain.
           </p>
@@ -641,11 +734,12 @@
       </div>
 
       <div
-        class="card bg-gradient-to-br from-secondary to-secondary/80 text-white"
+        class="card bg-gradient-to-br from-secondary to-secondary/80 text-white shadow-xl transform hover:scale-105 transition-all duration-300"
       >
-        <div class="card-body">
-          <h3 class="text-xl font-bold mb-3">Consistency is Key</h3>
-          <p class="opacity-90">
+        <div class="card-body p-8">
+          <div class="text-4xl mb-4">🔄</div>
+          <h3 class="text-xl font-bold mb-4">Consistency is Key</h3>
+          <p class="opacity-90 leading-relaxed">
             Make recovery a regular part of your routine, not just when you're
             sore. Consistent recovery practices lead to better long-term
             results.
@@ -653,10 +747,13 @@
         </div>
       </div>
 
-      <div class="card bg-gradient-to-br from-accent to-accent/80 text-white">
-        <div class="card-body">
-          <h3 class="text-xl font-bold mb-3">Quality Over Quantity</h3>
-          <p class="opacity-90">
+      <div
+        class="card bg-gradient-to-br from-accent to-accent/80 text-white shadow-xl transform hover:scale-105 transition-all duration-300"
+      >
+        <div class="card-body p-8">
+          <div class="text-4xl mb-4">⭐</div>
+          <h3 class="text-xl font-bold mb-4">Quality Over Quantity</h3>
+          <p class="opacity-90 leading-relaxed">
             Focus on the quality of your recovery techniques rather than
             spending hours on them. Even 10-15 minutes of focused recovery can
             be highly effective.
@@ -667,25 +764,28 @@
   </div>
 
   <!-- Call to Action -->
-  <div class="text-center mt-16">
+  <div class="text-center mt-20">
     <div
-      class="card bg-gradient-to-r from-primary to-accent text-white shadow-xl"
+      class="card bg-gradient-to-r from-primary to-accent text-white shadow-2xl border-0"
     >
-      <div class="card-body">
-        <h3 class="text-2xl font-bold mb-4">
+      <div class="card-body p-12">
+        <h3 class="text-3xl lg:text-4xl font-bold mb-6">
           Ready to Optimize Your Recovery?
         </h3>
-        <p class="text-lg opacity-90 mb-6">
+        <p class="text-xl opacity-90 mb-8 leading-relaxed max-w-2xl mx-auto">
           Explore our comprehensive recovery techniques and start implementing
-          them into your routine.
+          them into your routine for better performance and faster recovery.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/workouts" class="btn btn-secondary btn-lg">
+          <a
+            href="/workouts"
+            class="btn btn-secondary btn-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             Browse Workouts
           </a>
           <a
             href="/blog"
-            class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary"
+            class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary transition-all duration-300"
           >
             Read Recovery Tips
           </a>
@@ -694,3 +794,53 @@
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-left {
+    animation: slideInFromLeft 0.8s ease-out;
+  }
+
+  .slide-in-right {
+    animation: slideInFromRight 0.8s ease-out;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>

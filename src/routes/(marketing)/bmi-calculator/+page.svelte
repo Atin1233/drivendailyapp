@@ -1,5 +1,6 @@
 <script lang="ts">
   import { WebsiteName } from "../../../config"
+  import { onMount } from "svelte"
 
   let heightFeet = 5
   let heightInches = 8
@@ -7,8 +8,15 @@
   let bmi = 0
   let bmiCategory = ""
   let showResults = false
+  let isCalculating = false
+  let animatedBMI = 0
+  let progressValue = 0
+  let currentStep = 1
 
   function calculateBMI() {
+    isCalculating = true
+    currentStep = 2
+
     // Convert height to inches
     const totalHeightInches = heightFeet * 12 + heightInches
 
@@ -32,7 +40,34 @@
       bmiCategory = "Obese"
     }
 
-    showResults = true
+    // Animate the BMI result
+    animateBMI()
+
+    setTimeout(() => {
+      showResults = true
+      currentStep = 3
+      isCalculating = false
+    }, 2000)
+  }
+
+  function animateBMI() {
+    const duration = 2000
+    const steps = 60
+    const stepDuration = duration / steps
+
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      const progress = step / steps
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+
+      animatedBMI = bmi * easeOut
+      progressValue = progress * 100
+
+      if (step >= steps) {
+        clearInterval(interval)
+      }
+    }, stepDuration)
   }
 
   function resetCalculator() {
@@ -42,7 +77,38 @@
     bmi = 0
     bmiCategory = ""
     showResults = false
+    animatedBMI = 0
+    progressValue = 0
+    currentStep = 1
   }
+
+  function getBMIColor() {
+    if (bmi < 18.5) return "text-amber-500"
+    if (bmi < 25) return "text-green-500"
+    if (bmi < 30) return "text-orange-500"
+    return "text-red-500"
+  }
+
+  function getBMIBgColor() {
+    if (bmi < 18.5) return "bg-amber-500"
+    if (bmi < 25) return "bg-green-500"
+    if (bmi < 30) return "bg-orange-500"
+    return "bg-red-500"
+  }
+
+  function getBMIGradient() {
+    if (bmi < 18.5) return "from-amber-400 to-amber-600"
+    if (bmi < 25) return "from-green-400 to-green-600"
+    if (bmi < 30) return "from-orange-400 to-orange-600"
+    return "from-red-400 to-red-600"
+  }
+
+  onMount(() => {
+    // Add some initial animation
+    setTimeout(() => {
+      currentStep = 1
+    }, 500)
+  })
 </script>
 
 <svelte:head>
@@ -53,40 +119,147 @@
   />
 </svelte:head>
 
-<div class="py-8 lg:py-12 px-6 max-w-4xl mx-auto">
-  <!-- Header Section -->
-  <div class="text-center mb-12">
-    <h1
-      class="text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
-    >
-      BMI Calculator
-    </h1>
-    <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-      Calculate your Body Mass Index (BMI) to understand your weight status and
-      get insights into your health.
-    </p>
+<!-- Hero Section -->
+<div class="gradient-bg text-white py-20 relative overflow-hidden">
+  <!-- Floating Background Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div
+      class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"
+    ></div>
+    <div
+      class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full floating"
+      style="animation-delay: -2s;"
+    ></div>
+    <div
+      class="absolute bottom-20 left-1/4 w-12 h-12 bg-white/10 rounded-full floating"
+      style="animation-delay: -4s;"
+    ></div>
+    <div
+      class="absolute top-1/2 left-1/3 w-8 h-8 bg-white/10 rounded-full floating"
+      style="animation-delay: -1s;"
+    ></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center max-w-4xl mx-auto">
+      <div class="slide-in-left mb-6">
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+          BMI Calculator
+        </h1>
+      </div>
+
+      <div class="slide-in-right mb-8">
+        <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
+          Calculate your Body Mass Index with our modern, interactive
+          calculator. Get instant insights into your health status with
+          beautiful visualizations.
+        </p>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl lg:text-4xl font-bold mb-2">Instant</div>
+          <div class="text-sm opacity-80">Results</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl lg:text-4xl font-bold mb-2">Accurate</div>
+          <div class="text-sm opacity-80">Calculations</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl lg:text-4xl font-bold mb-2">Free</div>
+          <div class="text-sm opacity-80">Tool</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-12 lg:py-16 px-6 max-w-6xl mx-auto">
+  <!-- Progress Steps -->
+  <div class="mb-12">
+    <div class="flex items-center justify-center gap-4">
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold {currentStep >=
+          1
+            ? 'bg-primary text-white'
+            : 'bg-gray-200 text-gray-500'}"
+        >
+          1
+        </div>
+        <span
+          class="text-sm {currentStep >= 1
+            ? 'text-primary font-medium'
+            : 'text-gray-500'}">Enter Data</span
+        >
+      </div>
+      <div
+        class="w-16 h-0.5 {currentStep >= 2 ? 'bg-primary' : 'bg-gray-200'}"
+      ></div>
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold {currentStep >=
+          2
+            ? 'bg-primary text-white'
+            : 'bg-gray-200 text-gray-500'}"
+        >
+          2
+        </div>
+        <span
+          class="text-sm {currentStep >= 2
+            ? 'text-primary font-medium'
+            : 'text-gray-500'}">Calculating</span
+        >
+      </div>
+      <div
+        class="w-16 h-0.5 {currentStep >= 3 ? 'bg-primary' : 'bg-gray-200'}"
+      ></div>
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold {currentStep >=
+          3
+            ? 'bg-primary text-white'
+            : 'bg-gray-200 text-gray-500'}"
+        >
+          3
+        </div>
+        <span
+          class="text-sm {currentStep >= 3
+            ? 'text-primary font-medium'
+            : 'text-gray-500'}">Results</span
+        >
+      </div>
+    </div>
   </div>
 
   <div class="grid lg:grid-cols-2 gap-12">
     <!-- Calculator Section -->
-    <div class="card bg-white shadow-lg border border-primary/10">
-      <div class="card-body">
-        <h2 class="text-2xl font-bold mb-6 text-center">Calculate Your BMI</h2>
+    <div class="card bg-white shadow-2xl border-0 overflow-hidden">
+      <div class="card-body p-8">
+        <div class="text-center mb-8">
+          <div class="text-4xl mb-4">📏</div>
+          <h2
+            class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+          >
+            Enter Your Measurements
+          </h2>
+        </div>
 
-        <form on:submit|preventDefault={calculateBMI} class="space-y-6">
+        <form on:submit|preventDefault={calculateBMI} class="space-y-8">
           <!-- Height Input -->
-          <div>
+          <div class="space-y-4">
             <label class="label">
-              <span class="label-text font-semibold">Height</span>
+              <span class="label-text font-bold text-lg">Height</span>
             </label>
             <div class="flex gap-4">
               <div class="flex-1">
                 <label class="label">
-                  <span class="label-text text-sm">Feet</span>
+                  <span class="label-text text-sm opacity-70">Feet</span>
                 </label>
                 <select
                   bind:value={heightFeet}
-                  class="select select-bordered w-full"
+                  class="select select-bordered select-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300"
                 >
                   {#each Array(8) as _, i}
                     <option value={i + 4}>{i + 4}</option>
@@ -95,11 +268,11 @@
               </div>
               <div class="flex-1">
                 <label class="label">
-                  <span class="label-text text-sm">Inches</span>
+                  <span class="label-text text-sm opacity-70">Inches</span>
                 </label>
                 <select
                   bind:value={heightInches}
-                  class="select select-bordered w-full"
+                  class="select select-bordered select-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300"
                 >
                   {#each Array(12) as _, i}
                     <option value={i}>{i}</option>
@@ -110,97 +283,191 @@
           </div>
 
           <!-- Weight Input -->
-          <div>
+          <div class="space-y-4">
             <label class="label">
-              <span class="label-text font-semibold">Weight (pounds)</span>
+              <span class="label-text font-bold text-lg">Weight (pounds)</span>
             </label>
             <input
               type="number"
               bind:value={weight}
               min="50"
               max="500"
-              class="input input-bordered w-full"
+              class="input input-bordered input-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300"
               placeholder="Enter your weight"
             />
           </div>
 
           <!-- Calculate Button -->
-          <button type="submit" class="btn btn-primary w-full">
-            Calculate BMI
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg w-full text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            disabled={isCalculating}
+          >
+            {#if isCalculating}
+              <span class="loading loading-spinner loading-md"></span>
+              Calculating...
+            {:else}
+              🚀 Calculate BMI
+            {/if}
           </button>
         </form>
 
         <!-- Reset Button -->
         <button
           on:click={resetCalculator}
-          class="btn btn-outline btn-sm w-full mt-4"
+          class="btn btn-outline btn-sm w-full mt-6 hover:btn-error transition-all duration-300"
         >
-          Reset Calculator
+          🔄 Reset Calculator
         </button>
       </div>
     </div>
 
     <!-- Results Section -->
     <div class="space-y-6">
-      {#if showResults}
+      {#if isCalculating}
+        <!-- Loading Animation -->
+        <div
+          class="card bg-gradient-to-br from-primary to-accent text-white shadow-2xl border-0"
+        >
+          <div class="card-body p-8 text-center">
+            <div class="text-6xl mb-6">⚡</div>
+            <h3 class="text-2xl font-bold mb-4">Calculating Your BMI...</h3>
+            <div class="w-full bg-white/20 rounded-full h-3 mb-4">
+              <div
+                class="bg-white h-3 rounded-full transition-all duration-300"
+                style="width: {progressValue}%"
+              ></div>
+            </div>
+            <div class="text-4xl font-bold mb-2">{animatedBMI.toFixed(1)}</div>
+            <div class="text-lg opacity-90">Processing your data...</div>
+          </div>
+        </div>
+      {:else if showResults}
         <!-- BMI Results -->
         <div
-          class="card bg-gradient-to-r from-primary to-accent text-white shadow-lg"
+          class="card bg-gradient-to-br {getBMIGradient()} text-white shadow-2xl border-0 transform hover:scale-105 transition-all duration-500"
         >
-          <div class="card-body text-center">
-            <h3 class="text-2xl font-bold mb-4">Your BMI Results</h3>
-            <div class="text-6xl font-bold mb-2">{bmi.toFixed(1)}</div>
-            <div class="text-xl mb-4">{bmiCategory}</div>
-            <div class="text-sm opacity-90">
-              Based on your height of {heightFeet}'{heightInches}" and weight of {weight}
-              lbs
+          <div class="card-body p-8 text-center">
+            <div class="text-6xl mb-6">🎯</div>
+            <h3 class="text-3xl font-bold mb-6">Your BMI Results</h3>
+            <div class="text-8xl font-bold mb-4 drop-shadow-lg">
+              {bmi.toFixed(1)}
+            </div>
+            <div class="text-2xl mb-6 font-semibold">{bmiCategory}</div>
+            <div class="text-lg opacity-90 mb-6">
+              Based on your height of <strong
+                >{heightFeet}'{heightInches}"</strong
+              >
+              and weight of <strong>{weight} lbs</strong>
+            </div>
+
+            <!-- BMI Scale Visualization -->
+            <div class="w-full bg-white/20 rounded-full h-4 mb-4">
+              <div
+                class="bg-white h-4 rounded-full transition-all duration-1000"
+                style="width: {Math.min(
+                  Math.max(((bmi - 15) / 20) * 100, 0),
+                  100,
+                )}%"
+              ></div>
+            </div>
+            <div class="flex justify-between text-sm opacity-80">
+              <span>15</span>
+              <span>25</span>
+              <span>35</span>
             </div>
           </div>
         </div>
 
         <!-- BMI Category Explanation -->
-        <div class="card bg-white shadow-lg border border-primary/10">
-          <div class="card-body">
-            <h3 class="text-xl font-bold mb-4">What This Means</h3>
-            <div class="space-y-3">
+        <div
+          class="card bg-white shadow-xl border-0 transform hover:scale-105 transition-all duration-300"
+        >
+          <div class="card-body p-8">
+            <h3 class="text-2xl font-bold mb-6 text-center">What This Means</h3>
+            <div class="space-y-4">
               {#if bmiCategory === "Underweight"}
-                <p class="text-amber-600">
-                  <strong>Underweight (BMI &lt; 18.5):</strong> You may be below
-                  a healthy weight range. Consider consulting with a healthcare provider
-                  about healthy ways to gain weight.
-                </p>
+                <div
+                  class="p-6 bg-amber-50 border-l-4 border-amber-500 rounded-lg"
+                >
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="text-2xl">⚠️</span>
+                    <h4 class="text-lg font-bold text-amber-700">
+                      Underweight (BMI &lt; 18.5)
+                    </h4>
+                  </div>
+                  <p class="text-amber-800 leading-relaxed">
+                    You may be below a healthy weight range. Consider consulting
+                    with a healthcare provider about healthy ways to gain weight
+                    through proper nutrition and exercise.
+                  </p>
+                </div>
               {:else if bmiCategory === "Normal weight"}
-                <p class="text-green-600">
-                  <strong>Normal weight (BMI 18.5-24.9):</strong> Congratulations!
-                  You're within a healthy weight range. Focus on maintaining a balanced
-                  diet and regular exercise.
-                </p>
+                <div
+                  class="p-6 bg-green-50 border-l-4 border-green-500 rounded-lg"
+                >
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="text-2xl">✅</span>
+                    <h4 class="text-lg font-bold text-green-700">
+                      Normal weight (BMI 18.5-24.9)
+                    </h4>
+                  </div>
+                  <p class="text-green-800 leading-relaxed">
+                    Congratulations! You're within a healthy weight range. Focus
+                    on maintaining a balanced diet and regular exercise to stay
+                    healthy and strong.
+                  </p>
+                </div>
               {:else if bmiCategory === "Overweight"}
-                <p class="text-orange-600">
-                  <strong>Overweight (BMI 25-29.9):</strong> You're above the healthy
-                  weight range. Consider lifestyle changes like improved nutrition
-                  and increased physical activity.
-                </p>
+                <div
+                  class="p-6 bg-orange-50 border-l-4 border-orange-500 rounded-lg"
+                >
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="text-2xl">📈</span>
+                    <h4 class="text-lg font-bold text-orange-700">
+                      Overweight (BMI 25-29.9)
+                    </h4>
+                  </div>
+                  <p class="text-orange-800 leading-relaxed">
+                    You're above the healthy weight range. Consider lifestyle
+                    changes like improved nutrition and increased physical
+                    activity to reach a healthier weight.
+                  </p>
+                </div>
               {:else}
-                <p class="text-red-600">
-                  <strong>Obese (BMI ≥ 30):</strong> You're significantly above the
-                  healthy weight range. Consider consulting with a healthcare provider
-                  for personalized guidance.
-                </p>
+                <div class="p-6 bg-red-50 border-l-4 border-red-500 rounded-lg">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="text-2xl">💪</span>
+                    <h4 class="text-lg font-bold text-red-700">
+                      Obese (BMI ≥ 30)
+                    </h4>
+                  </div>
+                  <p class="text-red-800 leading-relaxed">
+                    You're significantly above the healthy weight range.
+                    Consider consulting with a healthcare provider for
+                    personalized guidance on weight management and health
+                    improvement.
+                  </p>
+                </div>
               {/if}
             </div>
           </div>
         </div>
       {:else}
         <!-- Placeholder -->
-        <div class="card bg-gray-50 border-2 border-dashed border-gray-300">
-          <div class="card-body text-center">
-            <div class="text-6xl mb-4">📊</div>
-            <h3 class="text-xl font-bold mb-2">Ready to Calculate</h3>
-            <p class="text-gray-600">
+        <div
+          class="card bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-dashed border-gray-300 shadow-lg"
+        >
+          <div class="card-body p-8 text-center">
+            <div class="text-8xl mb-6">📊</div>
+            <h3 class="text-2xl font-bold mb-4 text-gray-700">
+              Ready to Calculate
+            </h3>
+            <p class="text-gray-600 text-lg leading-relaxed">
               Enter your height and weight above to see your BMI results and
-              what they mean for your health.
+              what they mean for your health journey.
             </p>
+            <div class="mt-6 text-4xl">🎯</div>
           </div>
         </div>
       {/if}
@@ -208,71 +475,101 @@
   </div>
 
   <!-- Educational Content -->
-  <div class="mt-16 space-y-8">
+  <div class="mt-20 space-y-12">
     <div class="text-center">
-      <h2 class="text-3xl font-bold mb-6">Understanding BMI</h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+      <h2
+        class="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+      >
+        Understanding BMI
+      </h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
         Body Mass Index (BMI) is a simple calculation that uses your height and
         weight to estimate body fat. While it's a useful screening tool, it's
-        important to understand its limitations.
+        important to understand its limitations and use it as part of a
+        comprehensive health assessment.
       </p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
       <!-- BMI Categories -->
-      <div class="card bg-white shadow-lg border border-primary/10">
-        <div class="card-body">
-          <h3 class="text-xl font-bold mb-4">BMI Categories</h3>
-          <div class="space-y-3">
+      <div
+        class="card bg-white shadow-xl border-0 transform hover:scale-105 transition-all duration-300"
+      >
+        <div class="card-body p-8">
+          <h3 class="text-2xl font-bold mb-6 text-center">BMI Categories</h3>
+          <div class="space-y-4">
             <div
-              class="flex justify-between items-center p-3 bg-amber-50 rounded-lg"
+              class="flex justify-between items-center p-4 bg-amber-50 rounded-xl border border-amber-200"
             >
-              <span class="font-semibold">Underweight</span>
-              <span class="text-amber-600 font-bold">&lt; 18.5</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">⚠️</span>
+                <span class="font-semibold text-amber-800">Underweight</span>
+              </div>
+              <span class="text-amber-600 font-bold text-lg">&lt; 18.5</span>
             </div>
             <div
-              class="flex justify-between items-center p-3 bg-green-50 rounded-lg"
+              class="flex justify-between items-center p-4 bg-green-50 rounded-xl border border-green-200"
             >
-              <span class="font-semibold">Normal weight</span>
-              <span class="text-green-600 font-bold">18.5 - 24.9</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">✅</span>
+                <span class="font-semibold text-green-800">Normal weight</span>
+              </div>
+              <span class="text-green-600 font-bold text-lg">18.5 - 24.9</span>
             </div>
             <div
-              class="flex justify-between items-center p-3 bg-orange-50 rounded-lg"
+              class="flex justify-between items-center p-4 bg-orange-50 rounded-xl border border-orange-200"
             >
-              <span class="font-semibold">Overweight</span>
-              <span class="text-orange-600 font-bold">25.0 - 29.9</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">📈</span>
+                <span class="font-semibold text-orange-800">Overweight</span>
+              </div>
+              <span class="text-orange-600 font-bold text-lg">25.0 - 29.9</span>
             </div>
             <div
-              class="flex justify-between items-center p-3 bg-red-50 rounded-lg"
+              class="flex justify-between items-center p-4 bg-red-50 rounded-xl border border-red-200"
             >
-              <span class="font-semibold">Obese</span>
-              <span class="text-red-600 font-bold">≥ 30.0</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">💪</span>
+                <span class="font-semibold text-red-800">Obese</span>
+              </div>
+              <span class="text-red-600 font-bold text-lg">≥ 30.0</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Limitations -->
-      <div class="card bg-white shadow-lg border border-primary/10">
-        <div class="card-body">
-          <h3 class="text-xl font-bold mb-4">Important Limitations</h3>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2">
-              <span class="text-primary mt-1">•</span>
-              <span>BMI doesn't distinguish between muscle and fat mass</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary mt-1">•</span>
-              <span>May not be accurate for athletes with high muscle mass</span
+      <div
+        class="card bg-white shadow-xl border-0 transform hover:scale-105 transition-all duration-300"
+      >
+        <div class="card-body p-8">
+          <h3 class="text-2xl font-bold mb-6 text-center">
+            Important Limitations
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4 p-3 bg-blue-50 rounded-lg">
+              <span class="text-primary text-xl mt-1">💪</span>
+              <span class="text-blue-800"
+                >BMI doesn't distinguish between muscle and fat mass</span
               >
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary mt-1">•</span>
-              <span>Doesn't account for age, sex, or body composition</span>
+            <li class="flex items-start gap-4 p-3 bg-purple-50 rounded-lg">
+              <span class="text-primary text-xl mt-1">🏃‍♂️</span>
+              <span class="text-purple-800"
+                >May not be accurate for athletes with high muscle mass</span
+              >
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary mt-1">•</span>
-              <span>Should be used as one of many health indicators</span>
+            <li class="flex items-start gap-4 p-3 bg-indigo-50 rounded-lg">
+              <span class="text-primary text-xl mt-1">👥</span>
+              <span class="text-indigo-800"
+                >Doesn't account for age, sex, or body composition</span
+              >
+            </li>
+            <li class="flex items-start gap-4 p-3 bg-cyan-50 rounded-lg">
+              <span class="text-primary text-xl mt-1">🔍</span>
+              <span class="text-cyan-800"
+                >Should be used as one of many health indicators</span
+              >
             </li>
           </ul>
         </div>
@@ -280,23 +577,29 @@
     </div>
 
     <!-- Call to Action -->
-    <div class="text-center mt-12">
+    <div class="text-center mt-16">
       <div
-        class="card bg-gradient-to-r from-primary to-accent text-white shadow-xl"
+        class="card bg-gradient-to-r from-primary to-accent text-white shadow-2xl border-0"
       >
-        <div class="card-body">
-          <h3 class="text-2xl font-bold mb-4">Take Your Health Further</h3>
-          <p class="text-lg opacity-90 mb-6">
+        <div class="card-body p-12">
+          <h3 class="text-4xl font-bold mb-6">Take Your Health Further</h3>
+          <p class="text-xl opacity-90 mb-8 leading-relaxed max-w-2xl mx-auto">
             BMI is just one piece of the health puzzle. Explore our
-            comprehensive guides to nutrition, fitness, and wellness.
+            comprehensive guides to nutrition, fitness, and wellness for a
+            complete health transformation.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/blog" class="btn btn-secondary btn-lg"> Read Our Blog </a>
+            <a
+              href="/blog"
+              class="btn btn-secondary btn-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              📚 Read Our Blog
+            </a>
             <a
               href="/testimonials"
-              class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary"
+              class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary transition-all duration-300"
             >
-              Success Stories
+              🌟 Success Stories
             </a>
           </div>
         </div>
@@ -304,3 +607,53 @@
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-left {
+    animation: slideInFromLeft 0.8s ease-out;
+  }
+
+  .slide-in-right {
+    animation: slideInFromRight 0.8s ease-out;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>
