@@ -73,6 +73,9 @@
       year: "numeric",
     })}
   </div>
+  <div class="text-sm text-slate-500 mb-2">
+    By {currentPost.author}
+  </div>
   <h1>{currentPost.title}</h1>
   {@render children?.()}
 </article>

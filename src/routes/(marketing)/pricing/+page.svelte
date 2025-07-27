@@ -4,111 +4,173 @@
 
   type PlanFeatureRow = {
     name: string
-    freeIncluded?: boolean
+    starterIncluded?: boolean
     proIncluded?: boolean
-    freeString?: string
+    ultimateIncluded?: boolean
+    starterString?: string
     proString?: string
+    ultimateString?: string
     header?: boolean
   }
 
   const planFeatures: PlanFeatureRow[] = [
     {
-      name: "Section 1",
+      name: "Content Access",
       header: true,
     },
     {
-      name: "Feature 1",
-      freeIncluded: true,
+      name: "Blog Content",
+      starterIncluded: true,
       proIncluded: true,
+      ultimateIncluded: true,
     },
     {
-      name: "Feature 2",
-      freeIncluded: false,
+      name: "Newsletter",
+      starterString: "Weekly",
+      proString: "3x Weekly",
+      ultimateString: "3x Weekly",
+    },
+    {
+      name: "Early Access",
+      starterIncluded: false,
       proIncluded: true,
+      ultimateIncluded: true,
     },
     {
-      name: "Feature 3",
-      freeString: "3",
-      proString: "Unlimited",
-    },
-    {
-      name: "Section 2",
+      name: "Tools & Resources",
       header: true,
     },
     {
-      name: "Feature 4",
-      freeIncluded: true,
+      name: "Meal Planner",
+      starterIncluded: false,
       proIncluded: true,
+      ultimateIncluded: true,
     },
     {
-      name: "Feature 5",
-      freeIncluded: false,
+      name: "Workout Tracker",
+      starterIncluded: false,
       proIncluded: true,
+      ultimateIncluded: true,
+    },
+    {
+      name: "Goal Setting",
+      starterIncluded: false,
+      proIncluded: false,
+      ultimateIncluded: true,
+    },
+    {
+      name: "Downloads",
+      starterString: "Basic",
+      proString: "Advanced",
+      ultimateString: "All + Reports",
+    },
+    {
+      name: "Support",
+      header: true,
+    },
+    {
+      name: "Community Access",
+      starterIncluded: true,
+      proIncluded: true,
+      ultimateIncluded: true,
+    },
+    {
+      name: "Priority Support",
+      starterIncluded: false,
+      proIncluded: true,
+      ultimateIncluded: true,
+    },
+    {
+      name: "1-on-1 Consultation",
+      starterIncluded: false,
+      proIncluded: false,
+      ultimateIncluded: true,
     },
   ]
 </script>
 
 <svelte:head>
-  <title>Pricing</title>
-  <meta name="description" content="Pricing - {WebsiteName}" />
+  <title>Choose Your Plan - {WebsiteName}</title>
+  <meta
+    name="description"
+    content="Fuel Your Progress — Choose Your Plan. Small steps, real results. Built for your daily grind."
+  />
 </svelte:head>
 
 <div class="min-h-[70vh] pb-8 pt-[5vh] px-4">
-  <h1 class="text-3xl font-bold text-center">Pricing</h1>
+  <h1 class="text-3xl font-bold text-center">
+    Fuel Your Progress — Choose Your Plan
+  </h1>
   <h2 class="text-xl text-center text-slate-500 mt-1 pb-3">
-    Totally free, scale to millions of users
+    Small steps, real results. Built for your daily grind.
   </h2>
 
   <div class="w-full my-8">
     <PricingModule callToAction="Get Started" highlightedPlanId="pro" />
-    <h1 class="text-2xl font-bold text-center mt-24">Pricing FAQ</h1>
+
+    <!-- Monthly vs Annual Toggle -->
+    <div class="flex justify-center mt-8">
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text mr-4">Monthly</span>
+          <input type="checkbox" class="toggle toggle-primary" />
+          <span class="label-text ml-4">Annual (Save 15%)</span>
+        </label>
+      </div>
+    </div>
+
+    <h1 class="text-2xl font-bold text-center mt-24">
+      Frequently Asked Questions
+    </h1>
     <div class="flex place-content-center">
       <div class="join join-vertical max-w-xl py-6 mx-auto">
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            Is this template free to use?
-          </div>
-          <div class="collapse-content">
-            <p>Yup! This template is free to use for any project.</p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow join-item border border-primary">
-          <input type="radio" name="faq-accordion" />
-          <div class="collapse-title text-lg font-medium">
-            Why does a free template have a pricing page?
+            Can I cancel my subscription anytime?
           </div>
           <div class="collapse-content">
             <p>
-              The pricing page is part of the boilerplate. It shows how the
-              pricing page integrates into the billing portal and the Stripe
-              Checkout flows.
+              Absolutely! Cancel anytime, zero hassle. We believe in earning
+              your business every day.
             </p>
           </div>
         </div>
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            What license is the template under?
+            What's included in the newsletter?
           </div>
           <div class="collapse-content">
-            <p>The template is under the MIT license.</p>
+            <p>
+              Our newsletter delivers research-backed wellness tips, quick
+              workouts, meal ideas, and mindset strategies—all designed to fit
+              your busy lifestyle.
+            </p>
           </div>
         </div>
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            Can I try out purchase flows without real a credit card?
+            Do you offer refunds?
           </div>
           <div class="collapse-content">
             <p>
-              Our demo page <a href="https://saasstarter.work" class="link"
-                >SaasStarter.work</a
-              > has a functional demo page, using Stripe's test environment.
+              Yes! If you're not satisfied within 30 days, we'll give you a full
+              refund. No questions asked.
             </p>
-            <p class="mt-4">
-              You can use the credit card number 4242 4242 4242 4242 with any
-              future expiry date to test the payment and upgrade flows.
+          </div>
+        </div>
+        <div class="collapse collapse-arrow join-item border border-primary">
+          <input type="radio" name="faq-accordion" />
+          <div class="collapse-title text-lg font-medium">
+            How do the meal and workout planners work?
+          </div>
+          <div class="collapse-content">
+            <p>
+              Our planners are designed for real life. Drag and drop meals to
+              your calendar, track workouts with sets and reps, and see your
+              progress over time. Everything syncs across your devices.
             </p>
           </div>
         </div>
@@ -142,35 +204,36 @@
       </defs>
     </svg>
 
-    <h1 class="text-2xl font-bold text-center mt-16">Plan Features</h1>
+    <h1 class="text-2xl font-bold text-center mt-16">Plan Comparison</h1>
     <h2 class="text-xl text-center text-slate-500 mt-1 pb-3">
-      Example feature table
+      See what's included in each plan
     </h2>
 
-    <div class="overflow-visible mx-auto max-w-xl mt-4">
+    <div class="overflow-visible mx-auto max-w-4xl mt-4">
       <table class="table">
         <thead
           class="text-lg sticky top-0 bg-base-100 bg-opacity-50 z-10 backdrop-blur-sm"
         >
           <tr>
             <th></th>
-            <th class="text-center">Free</th>
+            <th class="text-center">Starter</th>
             <th class="text-center">Pro</th>
+            <th class="text-center">Ultimate</th>
           </tr>
         </thead>
         <tbody>
           {#each planFeatures as feature}
             {#if feature.header}
               <tr class="bg-base-200 font-bold">
-                <td colspan="3">{feature.name} </td>
+                <td colspan="4">{feature.name} </td>
               </tr>
             {:else}
               <tr class="relative">
                 <td>{feature.name} </td>
                 <td class="text-center">
-                  {#if feature.freeString}
-                    {feature.freeString}
-                  {:else if feature.freeIncluded}
+                  {#if feature.starterString}
+                    {feature.starterString}
+                  {:else if feature.starterIncluded}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="w-8 h-8 ml-2 inline text-success"
@@ -190,6 +253,25 @@
                   {#if feature.proString}
                     {feature.proString}
                   {:else if feature.proIncluded}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-8 h-8 ml-2 inline text-success"
+                    >
+                      <use href="#checkcircle" />
+                    </svg>
+                  {:else}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-[26px] h-[26px] inline text-base-200"
+                    >
+                      <use href="#nocircle" />
+                    </svg>
+                  {/if}
+                </td>
+                <td class="text-center">
+                  {#if feature.ultimateString}
+                    {feature.ultimateString}
+                  {:else if feature.ultimateIncluded}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="w-8 h-8 ml-2 inline text-success"

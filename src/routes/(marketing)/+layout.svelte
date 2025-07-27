@@ -15,15 +15,14 @@
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1 hidden sm:flex font-bold text-lg">
-      <li class="md:mx-4">
-        <a
-          href="https://github.com/CriticalMoments/CMSaasStarter"
-          class="border border-primary">★ us on Github</a
-        >
-      </li>
       <li class="md:mx-2"><a href="/blog">Blog</a></li>
+      <li class="md:mx-2"><a href="/recipes">Recipes</a></li>
+      <li class="md:mx-2"><a href="/workouts">Workouts</a></li>
+      <li class="md:mx-2"><a href="/recovery">Recovery</a></li>
+      <li class="md:mx-2"><a href="/testimonials">Testimonials</a></li>
+      <li class="md:mx-2"><a href="/bmi-calculator">BMI Calculator</a></li>
       <li class="md:mx-2"><a href="/pricing">Pricing</a></li>
-      <li class="md:mx-2"><a href="/account">Account</a></li>
+      <li class="md:mx-2"><a href="/login">Account</a></li>
       <li class="md:mx-0">
         <a href="/search" aria-label="Search">
           <svg
@@ -63,15 +62,14 @@
         class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
       >
         <li><a href="/blog">Blog</a></li>
+        <li><a href="/recipes">Recipes</a></li>
+        <li><a href="/workouts">Workouts</a></li>
+        <li><a href="/recovery">Recovery</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/bmi-calculator">BMI Calculator</a></li>
         <li><a href="/pricing">Pricing</a></li>
-        <li><a href="/account">Account</a></li>
+        <li><a href="/login">Account</a></li>
         <li><a href="/search">Search</a></li>
-        <li>
-          <a
-            href="https://github.com/CriticalMoments/CMSaasStarter"
-            class="border border-primary">★ us on Github</a
-          >
-        </li>
       </ul>
     </div>
   </div>
@@ -85,31 +83,13 @@
 <div class="grow"></div>
 <div class="">
   <div class="border-t max-w-[1000px] mx-auto"></div>
-  <footer
-    class="footer md:footer-horizontal p-10 gap-x-48 lg:gap-x-64 xl:gap-x-96 place-content-center text-base"
-  >
-    <nav>
-      <span class="footer-title opacity-80">Explore</span>
-      <a class="link link-hover mb-1" href="/">Overview</a>
-      <a class="link link-hover my-1" href="/pricing">Pricing</a>
-      <a class="link link-hover my-1" href="/blog">Blog</a>
-      <a class="link link-hover my-1" href="/contact_us">Contact Us</a>
-      <a
-        class="link link-hover my-1"
-        href="https://github.com/CriticalMoments/CMSaasStarter">Github</a
-      >
+  <footer class="footer p-6 place-content-center text-base">
+    <nav class="flex flex-wrap justify-center gap-6">
+      <a class="link link-hover" href="/">Overview</a>
+      <a class="link link-hover" href="/pricing">Pricing</a>
+      <a class="link link-hover" href="/blog">Blog</a>
+      <a class="link link-hover" href="/testimonials">Testimonials</a>
+      <a class="link link-hover" href="/contact_us">Contact Us</a>
     </nav>
-    <aside>
-      <span class="footer-title opacity-80">Sponsor</span>
-      <a class="max-w-[260px]" href="https://getkiln.ai">
-        <div class="font-bold text-3xl mb-1">Kiln AI</div>
-        <div class="font-medium mb-3">Build High Quality AI Products</div>
-        <div class="font-light">
-          Use advanced AI tactics, and collaborate with your team. Free apps for
-          Mac and Windows.
-        </div>
-        <div class="link text-sm font-bold mt-2">Learn More</div>
-      </a>
-    </aside>
   </footer>
 </div>
