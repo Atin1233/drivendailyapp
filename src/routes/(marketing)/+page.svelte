@@ -589,7 +589,7 @@
         <button
           class="btn btn-secondary btn-lg px-12 py-6 text-xl font-bold pulse-glow transform hover:scale-105 transition-all duration-300"
         >
-          🚀 Start Your Personalized Quiz
+          Start Your Personalized Quiz
         </button>
       </a>
 
