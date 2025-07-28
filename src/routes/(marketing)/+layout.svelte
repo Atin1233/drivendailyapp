@@ -301,8 +301,8 @@
   </div>
 {/if}
 
-<!-- Add minimal top padding to account for fixed navbar -->
-<div class="pt-4">
+<!-- Content starts immediately after navbar -->
+<div>
   {@render children?.()}
 </div>
 
