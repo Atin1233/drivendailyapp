@@ -290,7 +290,7 @@
       class="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 text-white text-sm font-semibold shadow-lg"
     >
       <span class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></span>
-      Currently in BETA - FREE until September 30th, 2024!
+      Currently in BETA - FREE until September 30th, 2024! ✨
     </div>
   </div>
 
