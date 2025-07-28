@@ -66,7 +66,10 @@
     : ''} {currentPage === '/recipes' ? 'page-recipes' : ''} {currentPage ===
   '/workouts'
     ? 'page-workouts'
-    : ''} {currentPage === '/recovery' ? 'page-recovery' : ''}"
+    : ''} {currentPage === '/recovery' ? 'page-recovery' : ''} {currentPage ===
+  '/testimonials'
+    ? 'page-testimonials'
+    : ''}"
 >
   <div class="container mx-auto flex justify-between items-center">
     <!-- Logo on the left -->
@@ -379,6 +382,10 @@
     background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
   }
 
+  .navbar-glass.page-testimonials {
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+  }
+
   /* Page-specific scrolled backgrounds */
   .navbar-glass.page-home.scrolled {
     background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
@@ -398,6 +405,10 @@
 
   .navbar-glass.page-recovery.scrolled {
     background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  }
+
+  .navbar-glass.page-testimonials.scrolled {
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
   }
 
   .nav-link {

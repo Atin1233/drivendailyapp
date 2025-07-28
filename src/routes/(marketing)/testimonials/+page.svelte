@@ -43,7 +43,7 @@
 <div class="hero-section text-white py-24 relative overflow-hidden">
   <!-- Background Pattern -->
   <div
-    class="absolute inset-0 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500"
+    class="absolute inset-0 bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500"
   ></div>
   <div class="absolute inset-0 bg-black/20"></div>
 
@@ -117,7 +117,7 @@
   <!-- Featured Testimonials -->
   <div class="mb-20">
     <h2
-      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500"
+      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500"
     >
       Featured Stories
     </h2>
@@ -183,7 +183,7 @@
   <!-- More Testimonials Grid -->
   <div class="mb-20">
     <h2
-      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500"
+      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500"
     >
       More Success Stories
     </h2>
@@ -347,7 +347,7 @@
   <!-- Success Metrics -->
   <div class="mb-20">
     <h2
-      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500"
+      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500"
     >
       Community Impact
     </h2>
@@ -374,7 +374,7 @@
   <!-- Transformation Timeline - Unique to Testimonials Page -->
   <div class="mb-20">
     <h2
-      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500"
+      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500"
     >
       Your Transformation Journey
     </h2>
