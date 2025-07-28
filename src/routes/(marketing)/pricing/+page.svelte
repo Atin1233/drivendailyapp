@@ -204,7 +204,7 @@
         >
           <span class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"
           ></span>
-          🚀 BETA VERSION - FREE until September 30th!
+          BETA VERSION - FREE until September 30th!
         </div>
 
         <div
@@ -627,7 +627,7 @@
           ✨ Free to start • No commitment required • Cancel anytime
         </p>
         <p class="text-lg mt-2 text-green-400 font-semibold">
-          🚀 Currently in BETA - FREE until September 30th, 2024!
+          Currently in BETA - FREE until September 30th, 2024!
         </p>
       </div>
     </div>
