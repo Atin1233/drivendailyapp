@@ -336,18 +336,60 @@
 
 <style>
   .navbar-glass {
-    background: transparent;
-    backdrop-filter: none;
-    border-bottom: none;
-    box-shadow: none;
+    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    overflow: hidden;
+  }
+
+  .navbar-glass::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 0
+    );
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+
+  .navbar-glass::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(219, 39, 119, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(199, 185, 248, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
   }
 
   .navbar-glass.scrolled {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   /* Page-specific navbar colors */
@@ -357,14 +399,14 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
     padding: 8px 16px;
-    color: rgba(24, 0, 66, 0.9);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
   .nav-link:hover {
-    color: #180042;
+    color: #ffffff;
     transform: translateY(-1px);
-    text-shadow: 0 2px 6px rgba(255, 255, 255, 1);
+    text-shadow: 0 2px 6px rgba(255, 255, 255, 0.8);
   }
 
   .nav-link::after {
