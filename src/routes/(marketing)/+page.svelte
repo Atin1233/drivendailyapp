@@ -391,9 +391,9 @@
             </div>
 
             <div class="text-center">
-              <button class="btn btn-secondary btn-sm">
+              <a href="/dashboard" class="btn btn-secondary btn-sm">
                 Preview Dashboard →
-              </button>
+              </a>
             </div>
           </div>
         </div>
