@@ -12,7 +12,6 @@
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
   let currentPage = $derived($page.url.pathname)
-  let mobileMenuOpen = $state(false)
 
   onMount(() => {
     const handleScroll = () => {
@@ -56,14 +55,6 @@
     } catch (error) {
       console.log("Could not save to localStorage")
     }
-  }
-
-  function toggleMobileMenu() {
-    mobileMenuOpen = !mobileMenuOpen
-  }
-
-  function closeMobileMenu() {
-    mobileMenuOpen = false
   }
 </script>
 
@@ -139,13 +130,7 @@
 
       <!-- Mobile menu for smaller screens -->
       <div class="dropdown dropdown-end lg:hidden">
-        <!-- svelte-ignore a11y_label_has_associated_control -->
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <label
-          tabindex="0"
-          class="btn btn-ghost btn-circle"
-          onclick={toggleMobileMenu}
-        >
+        <label tabindex="0" class="btn btn-ghost btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -161,28 +146,19 @@
           >
         </label>
         <!-- Mobile dropdown menu -->
-        <div class="dropdown-menu-container relative">
-          <ul
-            class="menu menu-lg dropdown-content mt-3 z-[60] p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold absolute right-0 {mobileMenuOpen
-              ? 'block'
-              : 'hidden'}"
-          >
-            <li><a href="/blog" onclick={closeMobileMenu}>Blog</a></li>
-            <li><a href="/recipes" onclick={closeMobileMenu}>Recipes</a></li>
-            <li><a href="/workouts" onclick={closeMobileMenu}>Workouts</a></li>
-            <li><a href="/recovery" onclick={closeMobileMenu}>Recovery</a></li>
-            <li>
-              <a href="/testimonials" onclick={closeMobileMenu}>Testimonials</a>
-            </li>
-            <li>
-              <a href="/bmi-calculator" onclick={closeMobileMenu}
-                >BMI Calculator</a
-              >
-            </li>
-            <li><a href="/pricing" onclick={closeMobileMenu}>Pricing</a></li>
-            <li><a href="/search" onclick={closeMobileMenu}>Search</a></li>
-          </ul>
-        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-lg dropdown-content mt-3 z-[60] p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
+        >
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/recipes">Recipes</a></li>
+          <li><a href="/workouts">Workouts</a></li>
+          <li><a href="/recovery">Recovery</a></li>
+          <li><a href="/testimonials">Testimonials</a></li>
+          <li><a href="/bmi-calculator">BMI Calculator</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/search">Search</a></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -507,5 +483,15 @@
       z-index: 60;
       width: 13rem;
     }
+  }
+
+  /* Fix for mobile dropdown menu */
+  .dropdown-menu-container {
+    position: relative;
+  }
+
+  .dropdown-menu-container ul {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 </style>
