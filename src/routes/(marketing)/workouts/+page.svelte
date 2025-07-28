@@ -186,7 +186,7 @@
 
 <!-- Hero Section - Athletic/Energetic Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-purple-700 via-indigo-700 to-blue-700 text-white relative overflow-hidden"
 >
   <!-- Athletic Background Elements -->
   <div class="absolute inset-0 overflow-hidden">
@@ -229,7 +229,7 @@
         <div
           class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
         >
-          <span class="w-3 h-3 bg-emerald-400 rounded-full mr-3 animate-pulse"
+          <span class="w-3 h-3 bg-purple-400 rounded-full mr-3 animate-pulse"
           ></span>
           New: High-Intensity Workouts Added
         </div>
@@ -242,7 +242,7 @@
           <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
             Power Your
             <span
-              class="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent"
+              class="bg-gradient-to-r from-purple-300 to-indigo-300 bg-clip-text text-transparent"
               >Performance</span
             >
           </h1>
@@ -266,7 +266,7 @@
               <h3 class="text-3xl font-bold text-white mb-2">
                 Featured Workout
               </h3>
-              <div class="text-5xl font-bold text-emerald-400 mb-2">
+              <div class="text-5xl font-bold text-purple-400 mb-2">
                 HIIT Cardio
               </div>
               <div class="text-white/80 text-lg">
@@ -277,22 +277,22 @@
             <!-- Workout Stats Row -->
             <div class="grid grid-cols-3 gap-4 mb-6">
               <div class="text-center">
-                <div class="text-2xl font-bold text-emerald-400">30</div>
+                <div class="text-2xl font-bold text-purple-400">30</div>
                 <div class="text-sm text-white/80">Minutes</div>
               </div>
               <div class="text-center">
-                <div class="text-2xl font-bold text-emerald-400">6</div>
+                <div class="text-2xl font-bold text-purple-400">6</div>
                 <div class="text-sm text-white/80">Exercises</div>
               </div>
               <div class="text-center">
-                <div class="text-2xl font-bold text-emerald-400">Advanced</div>
+                <div class="text-2xl font-bold text-purple-400">Advanced</div>
                 <div class="text-sm text-white/80">Difficulty</div>
               </div>
             </div>
 
             <a
               href="/workouts/hiit-cardio"
-              class="btn btn-success btn-lg w-full"
+              class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg w-full"
             >
               Start Workout →
             </a>

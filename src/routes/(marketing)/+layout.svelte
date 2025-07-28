@@ -372,7 +372,7 @@
   }
 
   .navbar-glass.page-workouts {
-    background: linear-gradient(135deg, #059669 0%, #16a34a 50%, #0d9488 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #3b82f6 100%);
   }
 
   .navbar-glass.page-recovery {
@@ -393,7 +393,7 @@
   }
 
   .navbar-glass.page-workouts.scrolled {
-    background: linear-gradient(135deg, #059669 0%, #16a34a 50%, #0d9488 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #3b82f6 100%);
   }
 
   .navbar-glass.page-recovery.scrolled {
