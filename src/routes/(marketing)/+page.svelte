@@ -280,107 +280,132 @@
   </style>
 </svelte:head>
 
-<!-- Hero Section with Parallax -->
+<!-- Hero Section - Split Layout with Video Background -->
 <div
   class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-primary via-purple-900 to-accent"
 >
-  <!-- Animated Background Elements -->
+  <!-- Geometric Background Pattern -->
   <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div
+        class="absolute top-0 left-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute top-1/2 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-0 left-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+      ></div>
+    </div>
+    <!-- Animated Grid -->
     <div
-      class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full float-animation"
-    ></div>
-    <div
-      class="absolute top-40 right-20 w-16 h-16 bg-accent/20 rounded-full float-animation"
-      style="animation-delay: -2s;"
-    ></div>
-    <div
-      class="absolute bottom-20 left-1/4 w-24 h-24 bg-secondary/30 rounded-full float-animation"
-      style="animation-delay: -4s;"
-    ></div>
-    <div
-      class="absolute bottom-40 right-1/3 w-12 h-12 bg-white/15 rounded-full float-animation"
-      style="animation-delay: -1s;"
+      class="absolute inset-0"
+      style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 50px 50px;"
     ></div>
   </div>
 
-  <div class="hero-content text-center py-12 relative z-10">
-    <div class="max-w-4xl">
-      <!-- Animated Tagline -->
-      <div class="slide-in-left mb-6">
-        <div class="text-xl md:text-3xl font-bold text-white/90 mb-3">
-          Transform Your Life, One Day at a Time
-        </div>
-      </div>
-
-      <!-- Main Headline -->
-      <div class="fade-in-up mb-8">
-        <div
-          class="text-5xl md:text-8xl font-bold px-2 text-white mb-4"
-          style="line-height: 1.1;"
-        >
-          Become the
-          <span class="gradient-text">Best You.</span>
-        </div>
-        <div class="text-3xl md:text-5xl font-bold text-white/80">
-          <span
-            class="underline decoration-accent decoration-4 md:decoration-8 underline-offset-8"
+  <div class="hero-content py-12 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+      <!-- Left Content -->
+      <div class="text-left space-y-8">
+        <div class="slide-in-left">
+          <div
+            class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6"
           >
-            Driven Daily.
-          </span>
-        </div>
-      </div>
-
-      <!-- Subtitle -->
-      <div class="slide-in-right mb-12">
-        <p
-          class="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed"
-        >
-          Join thousands of motivated individuals making daily progress in their
-          wellness journey. Simple, effective, and sustainable.
-        </p>
-      </div>
-
-      <!-- CTA Buttons -->
-      <div
-        class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-      >
-        <a href="/health-quiz">
-          <button
-            class="btn btn-accent btn-lg px-8 py-4 text-lg pulse-glow transform hover:scale-105 transition-all duration-300"
-          >
-            🧠 Get Your Personalized Plan
-          </button>
-        </a>
-        <button
-          class="btn btn-primary btn-lg px-8 py-4 text-lg pulse-glow"
-          on:click={() => scrollToSection("features")}
-        >
-          🎯 Start Your Journey
-        </button>
-        <button
-          class="btn btn-outline btn-lg px-8 py-4 text-lg glass-effect text-white border-white/30 hover:bg-white/10"
-          on:click={() => scrollToSection("testimonials")}
-        >
-          👥 See Success Stories
-        </button>
-      </div>
-
-      <!-- Stats Preview -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold text-white mb-2">
-            5,000+
+            <span class="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"
+            ></span>
+            Join 5,000+ members transforming their lives
           </div>
-          <div class="text-white/70">Active Members</div>
         </div>
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold text-white mb-2">150+</div>
-          <div class="text-white/70">Expert Articles</div>
+
+        <div class="fade-in-up">
+          <h1
+            class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          >
+            Transform Your Life,
+            <span class="gradient-text">One Day</span>
+            at a Time
+          </h1>
         </div>
-        <div class="text-center">
-          <div class="text-3xl md:text-4xl font-bold text-white mb-2">200+</div>
-          <div class="text-white/70">Workout Plans</div>
+
+        <div class="slide-in-right">
+          <p class="text-xl lg:text-2xl text-white/80 leading-relaxed mb-8">
+            Join thousands of motivated individuals making daily progress in
+            their wellness journey. Simple, effective, and sustainable.
+          </p>
         </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <a href="/health-quiz">
+            <button
+              class="btn btn-accent btn-lg px-8 py-4 text-lg pulse-glow transform hover:scale-105 transition-all duration-300"
+            >
+              🧠 Get Your Personalized Plan
+            </button>
+          </a>
+          <button
+            class="btn btn-outline btn-lg px-8 py-4 text-lg glass-effect text-white border-white/30 hover:bg-white/10"
+          >
+            🎯 Start Your Journey
+          </button>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="flex items-center space-x-6 text-white/70">
+          <div class="flex items-center">
+            <span class="text-2xl mr-2">⭐</span>
+            <span class="text-sm">4.9/5 Rating</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-2xl mr-2">🔒</span>
+            <span class="text-sm">30-Day Guarantee</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Content - Interactive Preview -->
+      <div class="relative">
+        <div
+          class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+        >
+          <div class="card-body p-8">
+            <div class="text-center mb-6">
+              <div class="text-4xl mb-4">📊</div>
+              <h3 class="text-2xl font-bold text-white mb-2">
+                Your Daily Progress
+              </h3>
+              <p class="text-white/80">See what you'll track</p>
+            </div>
+
+            <!-- Animated Stats -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="text-center p-4 bg-white/10 rounded-lg">
+                <div class="text-2xl font-bold text-white">150+</div>
+                <div class="text-sm text-white/70">Expert Articles</div>
+              </div>
+              <div class="text-center p-4 bg-white/10 rounded-lg">
+                <div class="text-2xl font-bold text-white">200+</div>
+                <div class="text-sm text-white/70">Workout Plans</div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-secondary btn-sm">
+                Preview Dashboard →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div
+          class="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full float-animation"
+        ></div>
+        <div
+          class="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full float-animation"
+          style="animation-delay: -2s;"
+        ></div>
       </div>
     </div>
   </div>

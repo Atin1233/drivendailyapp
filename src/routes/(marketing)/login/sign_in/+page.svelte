@@ -7,20 +7,25 @@
   import { WebsiteName } from "../../../../config"
 
   let { data } = $props()
-  let { supabase } = data
+  let { supabase, url } = data
 
   onMount(() => {
-    supabase.auth.onAuthStateChange((event) => {
-      // Redirect to account after successful login
-      if (event == "SIGNED_IN") {
-        // Delay needed because order of callback not guaranteed.
-        // Give the layout callback priority to update state or
-        // we'll just bounch back to login when /account tries to load
+    // Listen for auth state changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN" && session) {
+        // Redirect to account after successful login
         setTimeout(() => {
           goto("/account")
-        }, 1)
+        }, 100)
       }
     })
+
+    // Cleanup subscription on component destroy
+    return () => {
+      subscription.unsubscribe()
+    }
   })
 </script>
 
@@ -58,13 +63,32 @@
     </div>
   {/if}
 
+  <!-- Error Message -->
+  {#if $page.url.searchParams.get("error")}
+    <div role="alert" class="alert alert-error mb-6">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        /></svg
+      >
+      <span>Authentication error. Please try again.</span>
+    </div>
+  {/if}
+
   <!-- Sign In Form -->
   <div class="card bg-white shadow-lg border border-primary/10">
     <div class="card-body">
       <Auth
-        supabaseClient={data.supabase}
+        supabaseClient={supabase}
         view="sign_in"
-        redirectTo={`${data.url}/auth/callback`}
+        redirectTo={`${url}/auth/callback`}
         providers={oauthProviders}
         socialLayout="horizontal"
         showLinks={false}

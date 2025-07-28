@@ -119,56 +119,149 @@
   />
 </svelte:head>
 
-<!-- Hero Section -->
-<div class="gradient-bg text-white py-20 relative overflow-hidden">
-  <!-- Floating Background Elements -->
+<!-- Hero Section - BMI Calculator Focused -->
+<div
+  class="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 text-white relative overflow-hidden"
+>
+  <!-- Animated Health and Scale Icons -->
   <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 text-6xl animate-bounce">⚖️</div>
+      <div class="absolute top-20 right-20 text-4xl animate-pulse">📊</div>
+      <div
+        class="absolute bottom-20 left-1/4 text-5xl animate-spin"
+        style="animation-duration: 12s;"
+      >
+        🏥
+      </div>
+      <div
+        class="absolute bottom-10 right-1/3 text-3xl animate-bounce"
+        style="animation-delay: 1s;"
+      >
+        💪
+      </div>
+      <div
+        class="absolute top-1/2 left-1/4 text-4xl animate-pulse"
+        style="animation-delay: 2s;"
+      >
+        📈
+      </div>
+    </div>
+    <!-- Animated Grid Pattern -->
     <div
-      class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"
-    ></div>
-    <div
-      class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full floating"
-      style="animation-delay: -2s;"
-    ></div>
-    <div
-      class="absolute bottom-20 left-1/4 w-12 h-12 bg-white/10 rounded-full floating"
-      style="animation-delay: -4s;"
-    ></div>
-    <div
-      class="absolute top-1/2 left-1/3 w-8 h-8 bg-white/10 rounded-full floating"
-      style="animation-delay: -1s;"
+      class="absolute inset-0"
+      style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"
     ></div>
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center max-w-4xl mx-auto">
-      <div class="slide-in-left mb-6">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-          BMI Calculator
-        </h1>
+    <div class="max-w-6xl mx-auto">
+      <!-- Tool Badge -->
+      <div class="text-center mb-8">
+        <div
+          class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
+        >
+          <span class="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"
+          ></span>
+          Professional BMI Calculator Tool
+        </div>
       </div>
 
-      <div class="slide-in-right mb-8">
-        <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
-          Calculate your Body Mass Index with our modern, interactive
-          calculator. Get instant insights into your health status with
-          beautiful visualizations.
-        </p>
-      </div>
+      <!-- Main Content -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Content -->
+        <div class="text-left space-y-8">
+          <div class="slide-in-left">
+            <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+              Calculate Your
+              <span
+                class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                >BMI</span
+              >
+            </h1>
+          </div>
 
-      <!-- Stats Section -->
-      <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">Instant</div>
-          <div class="text-sm opacity-80">Results</div>
+          <div class="slide-in-right">
+            <p class="text-xl lg:text-2xl opacity-90 leading-relaxed mb-8">
+              Calculate your Body Mass Index with our modern, interactive
+              calculator. Get instant insights into your health status with
+              beautiful visualizations.
+            </p>
+          </div>
+
+          <!-- Tool Stats -->
+          <div class="grid grid-cols-3 gap-4">
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">Instant</div>
+              <div class="text-sm opacity-80">Results</div>
+            </div>
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">Accurate</div>
+              <div class="text-sm opacity-80">Calculations</div>
+            </div>
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">Free</div>
+              <div class="text-sm opacity-80">Tool</div>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">Accurate</div>
-          <div class="text-sm opacity-80">Calculations</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">Free</div>
-          <div class="text-sm opacity-80">Tool</div>
+
+        <!-- Right Content - Calculator Preview -->
+        <div class="relative">
+          <div
+            class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+          >
+            <div class="card-body p-8">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">⚖️</div>
+                <h3 class="text-2xl font-bold text-white mb-2">
+                  Quick Calculator
+                </h3>
+                <p class="text-white/80">Get your BMI in seconds</p>
+              </div>
+
+              <!-- Calculator Preview -->
+              <div class="space-y-4 mb-6">
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">Height</div>
+                  <div class="text-white font-medium">5' 8" (173 cm)</div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">Weight</div>
+                  <div class="text-white font-medium">150 lbs (68 kg)</div>
+                </div>
+                <div
+                  class="p-4 bg-gradient-to-r from-green-400 to-blue-400 rounded-lg text-center"
+                >
+                  <div class="text-sm text-white/90 mb-1">Your BMI</div>
+                  <div class="text-2xl font-bold text-white">22.8</div>
+                  <div class="text-sm text-white/90">Normal Weight</div>
+                </div>
+              </div>
+
+              <button
+                class="btn btn-info btn-lg w-full"
+                on:click={calculateBMI}
+              >
+                Calculate Your BMI →
+              </button>
+            </div>
+          </div>
+
+          <!-- Floating Elements -->
+          <div
+            class="absolute -top-6 -right-6 w-12 h-12 bg-blue-400 rounded-full float-animation"
+          ></div>
+          <div
+            class="absolute -bottom-6 -left-6 w-8 h-8 bg-purple-400 rounded-full float-animation"
+            style="animation-delay: -2s;"
+          ></div>
         </div>
       </div>
     </div>

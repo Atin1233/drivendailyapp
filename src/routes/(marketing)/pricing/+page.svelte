@@ -1,6 +1,13 @@
 <script lang="ts">
-  import PricingModule from "./pricing_module.svelte"
+  import { onMount } from "svelte"
   import { WebsiteName } from "./../../../config"
+
+  let isAnnual = false
+  let animatedCounters = {
+    users: 0,
+    satisfaction: 0,
+    support: 0,
+  }
 
   type PlanFeatureRow = {
     name: string
@@ -87,6 +94,61 @@
       ultimateIncluded: true,
     },
   ]
+
+  const faqs = [
+    {
+      question: "Can I cancel my subscription anytime?",
+      answer:
+        "Absolutely! Cancel anytime, zero hassle. We believe in earning your business every day.",
+    },
+    {
+      question: "What's included in the newsletter?",
+      answer:
+        "Our newsletter delivers research-backed wellness tips, quick workouts, meal ideas, and mindset strategies—all designed to fit your busy lifestyle.",
+    },
+    {
+      question: "Do you offer refunds?",
+      answer:
+        "Yes! If you're not satisfied within 30 days, we'll give you a full refund. No questions asked.",
+    },
+    {
+      question: "How do the meal and workout planners work?",
+      answer:
+        "Our planners are designed for real life. Drag and drop meals to your calendar, track workouts with sets and reps, and see your progress over time. Everything syncs across your devices.",
+    },
+    {
+      question: "Is there a free trial?",
+      answer:
+        "Yes! Start with our 3-day free trial, then our Starter plan is just $5/month. No credit card required to get started.",
+    },
+    {
+      question: "Can I change plans later?",
+      answer:
+        "Absolutely! Upgrade or downgrade your plan at any time. Changes take effect immediately.",
+    },
+  ]
+
+  onMount(() => {
+    // Animate stats
+    const duration = 2000
+    const steps = 60
+    const stepDuration = duration / steps
+
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      const progress = step / steps
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+
+      animatedCounters.users = Math.floor(5000 * easeOut)
+      animatedCounters.satisfaction = Math.floor(98 * easeOut)
+      animatedCounters.support = Math.floor(24 * easeOut)
+
+      if (step >= steps) {
+        clearInterval(interval)
+      }
+    }, stepDuration)
+  })
 </script>
 
 <svelte:head>
@@ -97,201 +159,548 @@
   />
 </svelte:head>
 
-<div class="min-h-[70vh] pb-8 pt-[5vh] px-4">
-  <h1 class="text-3xl font-bold text-center">
-    Fuel Your Progress — Choose Your Plan
-  </h1>
-  <h2 class="text-xl text-center text-slate-500 mt-1 pb-3">
-    Small steps, real results. Built for your daily grind.
-  </h2>
-
-  <div class="w-full my-8">
-    <PricingModule callToAction="Get Started" highlightedPlanId="pro" />
-
-    <!-- Monthly vs Annual Toggle -->
-    <div class="flex justify-center mt-8">
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <span class="label-text mr-4">Monthly</span>
-          <input type="checkbox" class="toggle toggle-primary" />
-          <span class="label-text ml-4">Annual (Save 15%)</span>
-        </label>
+<!-- Hero Section - Business/Financial Focused -->
+<div
+  class="py-20 bg-gradient-to-br from-amber-600 via-orange-600 to-red-600 text-white relative overflow-hidden"
+>
+  <!-- Business/Financial Background Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-10 left-10 text-6xl transform rotate-12">💰</div>
+      <div class="absolute top-20 right-20 text-4xl transform -rotate-12">
+        📈
+      </div>
+      <div class="absolute bottom-20 left-1/4 text-5xl transform rotate-6">
+        🎯
+      </div>
+      <div class="absolute bottom-10 right-1/3 text-3xl transform -rotate-6">
+        ⭐
       </div>
     </div>
+    <!-- Business Grid Pattern -->
+    <div class="absolute inset-0">
+      <div
+        class="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+      ></div>
+      <div
+        class="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+      ></div>
+      <div
+        class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"
+      ></div>
+      <div
+        class="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"
+      ></div>
+    </div>
+  </div>
 
-    <h1 class="text-2xl font-bold text-center mt-24">
-      Frequently Asked Questions
-    </h1>
-    <div class="flex place-content-center">
-      <div class="join join-vertical max-w-xl py-6 mx-auto">
-        <div class="collapse collapse-arrow join-item border border-primary">
-          <input type="radio" name="faq-accordion" />
-          <div class="collapse-title text-lg font-medium">
-            Can I cancel my subscription anytime?
-          </div>
-          <div class="collapse-content">
-            <p>
-              Absolutely! Cancel anytime, zero hassle. We believe in earning
-              your business every day.
-            </p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow join-item border border-primary">
-          <input type="radio" name="faq-accordion" />
-          <div class="collapse-title text-lg font-medium">
-            What's included in the newsletter?
-          </div>
-          <div class="collapse-content">
-            <p>
-              Our newsletter delivers research-backed wellness tips, quick
-              workouts, meal ideas, and mindset strategies—all designed to fit
-              your busy lifestyle.
-            </p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow join-item border border-primary">
-          <input type="radio" name="faq-accordion" />
-          <div class="collapse-title text-lg font-medium">
-            Do you offer refunds?
-          </div>
-          <div class="collapse-content">
-            <p>
-              Yes! If you're not satisfied within 30 days, we'll give you a full
-              refund. No questions asked.
-            </p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow join-item border border-primary">
-          <input type="radio" name="faq-accordion" />
-          <div class="collapse-title text-lg font-medium">
-            How do the meal and workout planners work?
-          </div>
-          <div class="collapse-content">
-            <p>
-              Our planners are designed for real life. Drag and drop meals to
-              your calendar, track workouts with sets and reps, and see your
-              progress over time. Everything syncs across your devices.
-            </p>
-          </div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <!-- Top Badge -->
+      <div class="text-center mb-8">
+        <div
+          class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
+        >
+          <span class="w-3 h-3 bg-amber-400 rounded-full mr-3 animate-pulse"
+          ></span>
+          Limited Time: Save 15% on Annual Plans
         </div>
       </div>
-    </div>
 
-    <svg style="display:none" version="2.0">
-      <defs>
-        <symbol
-          id="checkcircle"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          fill="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M16.417 10.283A7.917 7.917 0 1 1 8.5 2.366a7.916 7.916 0 0 1 7.917 7.917zm-4.105-4.498a.791.791 0 0 0-1.082.29l-3.828 6.63-1.733-2.08a.791.791 0 1 0-1.216 1.014l2.459 2.952a.792.792 0 0 0 .608.285.83.83 0 0 0 .068-.003.791.791 0 0 0 .618-.393L12.6 6.866a.791.791 0 0 0-.29-1.081z"
-          />
-        </symbol>
-      </defs>
-    </svg>
+      <!-- Main Content -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Content -->
+        <div class="text-left space-y-8">
+          <div class="slide-in-left">
+            <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+              Choose Your
+              <span
+                class="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent"
+                >Investment</span
+              >
+            </h1>
+          </div>
 
-    <svg style="display:none" version="2.0">
-      <defs>
-        <symbol id="nocircle" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm4,11H8a1,1,0,0,1,0-2h8a1,1,0,0,1,0,2Z"
-          />
-        </symbol>
-      </defs>
-    </svg>
+          <div class="slide-in-right">
+            <p class="text-xl lg:text-2xl opacity-90 leading-relaxed mb-8">
+              Invest in your health and fitness journey. Choose the perfect plan
+              that fits your goals and budget.
+            </p>
+          </div>
 
-    <h1 class="text-2xl font-bold text-center mt-16">Plan Comparison</h1>
-    <h2 class="text-xl text-center text-slate-500 mt-1 pb-3">
-      See what's included in each plan
-    </h2>
+          <!-- Business Stats -->
+          <div class="grid grid-cols-3 gap-6">
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">
+                {animatedCounters.users.toLocaleString()}+
+              </div>
+              <div class="text-sm opacity-80">Active Members</div>
+            </div>
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">
+                {animatedCounters.satisfaction}%
+              </div>
+              <div class="text-sm opacity-80">Satisfaction</div>
+            </div>
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">
+                {animatedCounters.support}h
+              </div>
+              <div class="text-sm opacity-80">Support</div>
+            </div>
+          </div>
+        </div>
 
-    <div class="overflow-visible mx-auto max-w-4xl mt-4">
-      <table class="table">
-        <thead
-          class="text-lg sticky top-0 bg-base-100 bg-opacity-50 z-10 backdrop-blur-sm"
-        >
-          <tr>
-            <th></th>
-            <th class="text-center">Starter</th>
-            <th class="text-center">Pro</th>
-            <th class="text-center">Ultimate</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each planFeatures as feature}
-            {#if feature.header}
-              <tr class="bg-base-200 font-bold">
-                <td colspan="4">{feature.name} </td>
-              </tr>
-            {:else}
-              <tr class="relative">
-                <td>{feature.name} </td>
-                <td class="text-center">
-                  {#if feature.starterString}
-                    {feature.starterString}
-                  {:else if feature.starterIncluded}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-8 h-8 ml-2 inline text-success"
-                    >
-                      <use href="#checkcircle" />
-                    </svg>
-                  {:else}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-[26px] h-[26px] inline text-base-200"
-                    >
-                      <use href="#nocircle" />
-                    </svg>
-                  {/if}
-                </td>
-                <td class="text-center">
-                  {#if feature.proString}
-                    {feature.proString}
-                  {:else if feature.proIncluded}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-8 h-8 ml-2 inline text-success"
-                    >
-                      <use href="#checkcircle" />
-                    </svg>
-                  {:else}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-[26px] h-[26px] inline text-base-200"
-                    >
-                      <use href="#nocircle" />
-                    </svg>
-                  {/if}
-                </td>
-                <td class="text-center">
-                  {#if feature.ultimateString}
-                    {feature.ultimateString}
-                  {:else if feature.ultimateIncluded}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-8 h-8 ml-2 inline text-success"
-                    >
-                      <use href="#checkcircle" />
-                    </svg>
-                  {:else}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-[26px] h-[26px] inline text-base-200"
-                    >
-                      <use href="#nocircle" />
-                    </svg>
-                  {/if}
-                </td>
-              </tr>
-            {/if}
-          {/each}
-        </tbody>
-      </table>
+        <!-- Right Content - Business Card Style -->
+        <div class="relative">
+          <div
+            class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+          >
+            <div class="card-body p-8">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">💎</div>
+                <h3 class="text-2xl font-bold text-white mb-2">Most Popular</h3>
+                <div class="text-4xl font-bold text-amber-400 mb-2">$15</div>
+                <div class="text-white/80">Pro Plan</div>
+              </div>
+
+              <ul class="space-y-3 mb-6 text-sm">
+                <li class="flex items-center text-white/90">
+                  <span class="text-green-400 mr-2">✓</span>
+                  Meal & workout planner
+                </li>
+                <li class="flex items-center text-white/90">
+                  <span class="text-green-400 mr-2">✓</span>
+                  3x weekly tips
+                </li>
+                <li class="flex items-center text-white/90">
+                  <span class="text-green-400 mr-2">✓</span>
+                  Priority support
+                </li>
+              </ul>
+
+              <a
+                href="/account/subscribe/price_1NkdZCHMjzZ8mGZnRSjUm4yA"
+                class="btn btn-warning btn-lg w-full"
+              >
+                Get Started →
+              </a>
+            </div>
+          </div>
+
+          <!-- Floating Business Elements -->
+          <div
+            class="absolute -top-6 -right-6 w-12 h-12 bg-amber-400 rounded-full float-animation"
+          ></div>
+          <div
+            class="absolute -bottom-6 -left-6 w-8 h-8 bg-orange-400 rounded-full float-animation"
+            style="animation-delay: -2s;"
+          ></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Pricing Plans Section -->
+<div class="py-20 bg-gradient-to-b from-white to-gray-50">
+  <div class="container mx-auto px-6">
+    <!-- Billing Toggle -->
+    <div class="text-center mb-12">
+      <div
+        class="inline-flex items-center bg-white rounded-full p-2 shadow-lg border border-gray-200"
+      >
+        <button
+          class="px-4 py-2 rounded-full transition-all duration-300 {!isAnnual
+            ? 'bg-primary text-white font-semibold'
+            : 'text-gray-600'}"
+          on:click={() => (isAnnual = false)}
+        >
+          Monthly
+        </button>
+        <button
+          class="px-4 py-2 rounded-full transition-all duration-300 {isAnnual
+            ? 'bg-primary text-white font-semibold'
+            : 'text-gray-600'}"
+          on:click={() => (isAnnual = true)}
+        >
+          Annual
+          <span class="ml-2 badge badge-accent badge-sm">Save 15%</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+      <!-- Starter Plan -->
+      <div
+        class="card bg-white shadow-xl border-0 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+      >
+        <div class="card-body p-8">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-4">🚀</div>
+            <h3 class="text-2xl font-bold mb-2">Starter</h3>
+            <p class="text-gray-600">
+              Perfect for beginners starting their wellness journey
+            </p>
+          </div>
+
+          <div class="text-center mb-8">
+            <div class="text-4xl font-bold mb-2">
+              {isAnnual ? "$51" : "$5"}
+              <span class="text-lg text-gray-500"
+                >{isAnnual ? "/year" : "/month"}</span
+              >
+            </div>
+            {#if isAnnual}
+              <div class="text-sm text-success font-semibold">Save $9/year</div>
+            {/if}
+          </div>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              All blog content access
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Weekly newsletter
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Bookmark posts
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Basic downloads
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Community access
+            </li>
+          </ul>
+
+          <a
+            href="/account/subscribe/free_plan"
+            class="btn btn-outline btn-primary btn-lg w-full"
+          >
+            Get Started Free
+          </a>
+        </div>
+      </div>
+
+      <!-- Pro Plan -->
+      <div
+        class="card bg-gradient-to-br from-primary to-accent text-white shadow-2xl border-0 overflow-hidden hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 relative"
+      >
+        <div class="absolute top-4 right-4">
+          <span class="badge badge-secondary">Most Popular</span>
+        </div>
+        <div class="card-body p-8">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-4">💪</div>
+            <h3 class="text-2xl font-bold mb-2">Pro</h3>
+            <p class="opacity-90">
+              Take your progress to the next level with personalized tools
+            </p>
+          </div>
+
+          <div class="text-center mb-8">
+            <div class="text-4xl font-bold mb-2">
+              {isAnnual ? "$153" : "$15"}
+              <span class="text-lg opacity-80"
+                >{isAnnual ? "/year" : "/month"}</span
+              >
+            </div>
+            {#if isAnnual}
+              <div class="text-sm opacity-90 font-semibold">Save $27/year</div>
+            {/if}
+          </div>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <span class="opacity-90 mr-3">✓</span>
+              Everything in Starter
+            </li>
+            <li class="flex items-center">
+              <span class="opacity-90 mr-3">✓</span>
+              Meal & workout planner
+            </li>
+            <li class="flex items-center">
+              <span class="opacity-90 mr-3">✓</span>
+              3x weekly tips
+            </li>
+            <li class="flex items-center">
+              <span class="opacity-90 mr-3">✓</span>
+              Early content access
+            </li>
+            <li class="flex items-center">
+              <span class="opacity-90 mr-3">✓</span>
+              Priority support
+            </li>
+            <li class="flex items-center">
+              <span class="opacity-90 mr-3">✓</span>
+              Advanced downloads
+            </li>
+          </ul>
+
+          <a
+            href="/account/subscribe/price_1Nkda2HMjzZ8mGZn4sKvbDAV"
+            class="btn btn-secondary btn-lg w-full"
+          >
+            Start Pro Plan
+          </a>
+        </div>
+      </div>
+
+      <!-- Ultimate Plan -->
+      <div
+        class="card bg-white shadow-xl border-0 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+      >
+        <div class="card-body p-8">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-4">👑</div>
+            <h3 class="text-2xl font-bold mb-2">Ultimate</h3>
+            <p class="text-gray-600">
+              Complete wellness transformation with exclusive resources
+            </p>
+          </div>
+
+          <div class="text-center mb-8">
+            <div class="text-4xl font-bold mb-2">
+              {isAnnual ? "$306" : "$30"}
+              <span class="text-lg text-gray-500"
+                >{isAnnual ? "/year" : "/month"}</span
+              >
+            </div>
+            {#if isAnnual}
+              <div class="text-sm text-success font-semibold">
+                Save $54/year
+              </div>
+            {/if}
+          </div>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Everything in Pro
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Custom goal setting
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Exclusive web courses
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Content requests
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              Personal PDF reports
+            </li>
+            <li class="flex items-center">
+              <span class="text-success mr-3">✓</span>
+              1-on-1 consultation
+            </li>
+          </ul>
+
+          <a
+            href="/account/subscribe/price_1Nkda2HMjzZ8mGZn4sKvbDAV"
+            class="btn btn-outline btn-primary btn-lg w-full"
+          >
+            Go Ultimate
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="text-center mb-20">
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="card bg-white shadow-lg border-0">
+          <div class="card-body p-6">
+            <div class="text-3xl mb-3">🔒</div>
+            <h4 class="font-bold mb-2">Secure & Private</h4>
+            <p class="text-sm text-gray-600">
+              Your data is protected with bank-level security
+            </p>
+          </div>
+        </div>
+        <div class="card bg-white shadow-lg border-0">
+          <div class="card-body p-6">
+            <div class="text-3xl mb-3">💰</div>
+            <h4 class="font-bold mb-2">30-Day Guarantee</h4>
+            <p class="text-sm text-gray-600">
+              Full refund if you're not satisfied
+            </p>
+          </div>
+        </div>
+        <div class="card bg-white shadow-lg border-0">
+          <div class="card-body p-6">
+            <div class="text-3xl mb-3">🚀</div>
+            <h4 class="font-bold mb-2">Cancel Anytime</h4>
+            <p class="text-sm text-gray-600">
+              No long-term commitments required
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+      >
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Everything you need to know about our plans and pricing
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4">
+        {#each faqs as faq, index}
+          <div class="collapse collapse-arrow bg-gray-50 rounded-lg">
+            <input type="radio" name="faq-accordion" checked={index === 0} />
+            <div class="collapse-title text-lg font-semibold">
+              {faq.question}
+            </div>
+            <div class="collapse-content">
+              <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<div
+  class="py-20 bg-gradient-to-br from-gray-900 via-primary to-accent text-white"
+>
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl lg:text-6xl font-bold mb-6">
+        Ready to Transform Your Life?
+      </h2>
+      <p class="text-xl lg:text-2xl opacity-90 mb-12 leading-relaxed">
+        Join thousands of motivated individuals who are already making daily
+        progress. Start your wellness journey today.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <a href="/health-quiz">
+          <button class="btn btn-secondary btn-lg px-8 py-4 text-lg pulse-glow">
+            🧠 Take Health Quiz
+          </button>
+        </a>
+        <a href="/login">
+          <button
+            class="btn btn-outline btn-lg px-8 py-4 text-lg glass-effect text-white border-white/30 hover:bg-white/10"
+          >
+            💎 Choose Your Plan
+          </button>
+        </a>
+      </div>
+
+      <div class="mt-12 opacity-60">
+        <p class="text-lg">
+          ✨ Free to start • No commitment required • Cancel anytime
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-left {
+    animation: slideInFromLeft 0.8s ease-out;
+  }
+
+  .slide-in-right {
+    animation: slideInFromRight 0.8s ease-out;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(219, 39, 119, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(219, 39, 119, 0.6);
+    }
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+</style>

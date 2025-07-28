@@ -64,6 +64,23 @@
     }
   }
 
+  function getCategoryIcon(category: any) {
+    switch (category) {
+      case "strength":
+        return "💪"
+      case "cardio":
+        return "🏃‍♂️"
+      case "hiit":
+        return "⚡"
+      case "yoga":
+        return "🧘‍♀️"
+      case "flexibility":
+        return "🤸‍♀️"
+      default:
+        return "🏋️‍♂️"
+    }
+  }
+
   function getSplitColor(split: any) {
     switch (split) {
       case "full-body":
@@ -92,6 +109,13 @@
   }
 
   onMount(() => {
+    // Initialize stats immediately
+    animatedStats.workouts = workouts.length
+    animatedStats.categories = uniqueCategories.length
+    animatedStats.avgDuration = Math.floor(
+      workouts.reduce((sum, w) => sum + w.duration, 0) / workouts.length,
+    )
+
     // Intersection Observer for animations
     const observer = new IntersectionObserver(
       (entries) => {
@@ -150,166 +174,241 @@
   />
 </svelte:head>
 
-<!-- Hero Section -->
-<div class="gradient-bg text-white py-20 relative overflow-hidden">
-  <!-- Floating Background Elements -->
+<!-- Hero Section - Athletic/Energetic Focused -->
+<div
+  class="py-20 bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 text-white relative overflow-hidden"
+>
+  <!-- Athletic Background Elements -->
   <div class="absolute inset-0 overflow-hidden">
-    <div
-      class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"
-    ></div>
-    <div
-      class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full floating"
-      style="animation-delay: -2s;"
-    ></div>
-    <div
-      class="absolute bottom-20 left-1/4 w-12 h-12 bg-white/10 rounded-full floating"
-      style="animation-delay: -4s;"
-    ></div>
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-10 left-10 text-6xl transform rotate-12">💪</div>
+      <div class="absolute top-20 right-20 text-4xl transform -rotate-12">
+        🏃‍♂️
+      </div>
+      <div class="absolute bottom-20 left-1/4 text-5xl transform rotate-6">
+        ⚡
+      </div>
+      <div class="absolute bottom-10 right-1/3 text-3xl transform -rotate-6">
+        🏋️‍♂️
+      </div>
+    </div>
+    <!-- Dynamic Movement Lines -->
+    <div class="absolute inset-0">
+      <div
+        class="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"
+      ></div>
+      <div
+        class="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"
+        style="animation-delay: -1s;"
+      ></div>
+      <div
+        class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent animate-pulse"
+        style="animation-delay: -0.5s;"
+      ></div>
+      <div
+        class="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent animate-pulse"
+        style="animation-delay: -1.5s;"
+      ></div>
+    </div>
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center max-w-4xl mx-auto">
-      <div class="slide-in-left mb-6">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-          Workout Plans
-        </h1>
+    <div class="max-w-6xl mx-auto">
+      <!-- Top Badge -->
+      <div class="text-center mb-8">
+        <div
+          class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
+        >
+          <span class="w-3 h-3 bg-emerald-400 rounded-full mr-3 animate-pulse"
+          ></span>
+          New: High-Intensity Workouts Added
+        </div>
       </div>
 
-      <div class="slide-in-right mb-8">
-        <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
-          Discover effective workout plans and training splits from our fitness
-          experts. Strength, cardio, HIIT, and yoga workouts for every fitness
-          level.
-        </p>
-      </div>
+      <!-- Main Content - Centered Single Column -->
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Main Heading -->
+        <div class="slide-in-left mb-8">
+          <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            Power Your
+            <span
+              class="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent"
+              >Performance</span
+            >
+          </h1>
+        </div>
 
-      <!-- Stats Section -->
-      <div
-        class="stats-section animate-on-scroll grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-      >
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">
-            {animatedStats.workouts}
-          </div>
-          <div class="text-sm opacity-80">Workouts</div>
+        <!-- Subtitle -->
+        <div class="slide-in-right mb-12">
+          <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
+            Transform your body with science-backed workouts designed for real
+            results. From strength to cardio, we've got you covered.
+          </p>
         </div>
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">
-            {animatedStats.categories}
+
+        <!-- Large Workout Preview Card -->
+        <div class="relative mb-12">
+          <div
+            class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl p-8 max-w-2xl mx-auto"
+          >
+            <div class="text-center mb-6">
+              <div class="text-6xl mb-4">⚡</div>
+              <h3 class="text-3xl font-bold text-white mb-2">
+                Featured Workout
+              </h3>
+              <div class="text-5xl font-bold text-emerald-400 mb-2">
+                HIIT Cardio
+              </div>
+              <div class="text-white/80 text-lg">
+                High-intensity interval training for maximum calorie burn
+              </div>
+            </div>
+
+            <!-- Workout Stats Row -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-emerald-400">30</div>
+                <div class="text-sm text-white/80">Minutes</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-emerald-400">6</div>
+                <div class="text-sm text-white/80">Exercises</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-emerald-400">Advanced</div>
+                <div class="text-sm text-white/80">Difficulty</div>
+              </div>
+            </div>
+
+            <a
+              href="/workouts/hiit-cardio"
+              class="btn btn-success btn-lg w-full"
+            >
+              Start Workout →
+            </a>
           </div>
-          <div class="text-sm opacity-80">Categories</div>
+
+          <!-- Floating Athletic Elements -->
+          <div
+            class="absolute -top-6 -right-6 w-12 h-12 bg-emerald-400 rounded-full float-animation"
+          ></div>
+          <div
+            class="absolute -bottom-6 -left-6 w-8 h-8 bg-green-400 rounded-full float-animation"
+            style="animation-delay: -2s;"
+          ></div>
         </div>
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">
-            {animatedStats.avgDuration} min
+
+        <!-- Stats Section - Horizontal Layout -->
+        <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+            <div class="text-4xl font-bold mb-2">
+              {animatedStats.workouts}+
+            </div>
+            <div class="text-lg opacity-80">Workouts</div>
           </div>
-          <div class="text-sm opacity-80">Avg Duration</div>
+          <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+            <div class="text-4xl font-bold mb-2">
+              {animatedStats.categories}
+            </div>
+            <div class="text-lg opacity-80">Categories</div>
+          </div>
+          <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+            <div class="text-4xl font-bold mb-2">
+              {animatedStats.avgDuration}min
+            </div>
+            <div class="text-lg opacity-80">Avg Duration</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="py-12 lg:py-16 px-6 max-w-7xl mx-auto">
+<div class="py-16 lg:py-20 px-6 max-w-7xl mx-auto">
   <!-- Search and Filters -->
-  <div class="animate-on-scroll mb-12">
-    <div class="card bg-white shadow-xl border-0">
-      <div class="card-body p-8">
-        <!-- Search Bar -->
-        <div class="mb-6">
-          <div class="relative">
-            <input
-              type="text"
-              bind:value={searchTerm}
-              placeholder="Search workouts, exercises, or training styles..."
-              class="input input-bordered input-lg w-full pl-12 bg-gray-50 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20"
+  <div class="animate-on-scroll mb-16">
+    <div class="search-card">
+      <!-- Search Bar -->
+      <div class="mb-8">
+        <div class="relative max-w-2xl mx-auto">
+          <input
+            type="text"
+            bind:value={searchTerm}
+            placeholder="Search workouts, exercises, or training styles..."
+            class="search-input"
+          />
+          <svg
+            class="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
-            <svg
-              class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </div>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <label class="filter-label">Category</label>
+          <select bind:value={selectedCategory} class="filter-select">
+            <option value="all">All Categories</option>
+            {#each uniqueCategories as category}
+              <option value={category}
+                >{getCategoryIcon(category)} {category}</option
+              >
+            {/each}
+          </select>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Category Filter -->
-          <div>
-            <label class="label">
-              <span class="label-text font-semibold">Category</span>
-            </label>
-            <select
-              bind:value={selectedCategory}
-              class="select select-bordered w-full"
-            >
-              <option value="all">All Categories</option>
-              {#each uniqueCategories as category}
-                <option value={category}>{category}</option>
-              {/each}
-            </select>
-          </div>
+        <!-- Difficulty Filter -->
+        <div class="filter-group">
+          <label class="filter-label">Difficulty</label>
+          <select bind:value={selectedDifficulty} class="filter-select">
+            <option value="all">All Levels</option>
+            <option value="beginner">🟢 Beginner</option>
+            <option value="intermediate">🟡 Intermediate</option>
+            <option value="advanced">🔴 Advanced</option>
+          </select>
+        </div>
 
-          <!-- Difficulty Filter -->
-          <div>
-            <label class="label">
-              <span class="label-text font-semibold">Difficulty</span>
-            </label>
-            <select
-              bind:value={selectedDifficulty}
-              class="select select-bordered w-full"
-            >
-              <option value="all">All Levels</option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
-            </select>
-          </div>
-
-          <!-- Split Filter -->
-          <div>
-            <label class="label">
-              <span class="label-text font-semibold">Training Split</span>
-            </label>
-            <select
-              bind:value={selectedSplit}
-              class="select select-bordered w-full"
-            >
-              <option value="all">All Splits</option>
-              <option value="full-body">Full Body</option>
-              <option value="push-pull-legs">Push/Pull/Legs</option>
-              <option value="upper-lower">Upper/Lower</option>
-              <option value="bro-split">Bro Split</option>
-              <option value="arnold-split">Arnold Split</option>
-              <option value="strength-focused">Strength Focused</option>
-              <option value="powerlifting">Powerlifting</option>
-              <option value="bodybuilding">Bodybuilding</option>
-              <option value="functional">Functional</option>
-              <option value="cardio-focused">Cardio Focused</option>
-            </select>
-          </div>
+        <!-- Split Filter -->
+        <div class="filter-group">
+          <label class="filter-label">Training Split</label>
+          <select bind:value={selectedSplit} class="filter-select">
+            <option value="all">All Splits</option>
+            <option value="full-body">🏋️‍♂️ Full Body</option>
+            <option value="push-pull-legs">🔄 Push/Pull/Legs</option>
+            <option value="upper-lower">⚖️ Upper/Lower</option>
+            <option value="bro-split">💪 Bro Split</option>
+            <option value="arnold-split">🏆 Arnold Split</option>
+            <option value="strength-focused">🎯 Strength Focused</option>
+            <option value="powerlifting">🏋️ Powerlifting</option>
+            <option value="bodybuilding">💪 Bodybuilding</option>
+            <option value="functional">⚡ Functional</option>
+            <option value="cardio-focused">🏃‍♂️ Cardio Focused</option>
+          </select>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Results Count -->
-  <div class="animate-on-scroll mb-8">
+  <div class="animate-on-scroll mb-12">
     <div class="text-center">
-      <h2 class="text-2xl font-bold text-gray-800 mb-2">
+      <h2 class="text-3xl font-bold text-gray-800 mb-3 font-poppins">
         {filteredWorkouts.length} Workout{filteredWorkouts.length !== 1
           ? "s"
           : ""} Found
       </h2>
-      <p class="text-gray-600">
+      <p class="text-gray-600 text-lg">
         {searchTerm ? `Searching for "${searchTerm}"` : "All workouts"}
       </p>
     </div>
@@ -320,100 +419,93 @@
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {#each filteredWorkouts as workout}
         <a href={`/workouts/${workout.id}`} class="block group">
-          <div
-            class="card bg-white shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden workout-card border border-gray-100"
-          >
-            <div class="card-body p-6">
-              <!-- Workout Header -->
-              <div class="flex items-start justify-between mb-4">
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="badge {getCategoryColor(workout.category)} badge-sm"
-                  >
-                    {workout.category}
-                  </span>
-                  <span
-                    class="badge {getDifficultyColor(
-                      workout.difficulty,
-                    )} badge-sm"
-                  >
-                    {workout.difficulty}
-                  </span>
-                </div>
-                <span class="badge badge-outline badge-primary badge-sm">
-                  {workout.split}
+          <div class="workout-card">
+            <!-- Workout Header -->
+            <div class="workout-header">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="badge {getCategoryColor(workout.category)} badge-sm"
+                >
+                  {getCategoryIcon(workout.category)}
+                  {workout.category}
+                </span>
+                <span
+                  class="badge {getDifficultyColor(
+                    workout.difficulty,
+                  )} badge-sm"
+                >
+                  {workout.difficulty}
                 </span>
               </div>
-
-              <!-- Workout Title -->
-              <h3
-                class="text-xl font-bold text-gray-800 group-hover:text-primary transition-colors mb-3 leading-tight"
-              >
-                {workout.title}
-              </h3>
-
-              <!-- Workout Description -->
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                {workout.description}
-              </p>
-
-              <!-- Workout Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="text-center p-3 bg-gray-50 rounded-lg">
-                  <div class="text-lg font-bold text-primary">
-                    {workout.duration} min
-                  </div>
-                  <div class="text-xs text-gray-500">Duration</div>
-                </div>
-                <div class="text-center p-3 bg-gray-50 rounded-lg">
-                  <div class="text-lg font-bold text-accent">
-                    {workout.exercises.length}
-                  </div>
-                  <div class="text-xs text-gray-500">Exercises</div>
-                </div>
+              <div class="split-badge">
+                <span class="text-xs">{workout.split}</span>
               </div>
+            </div>
 
-              <!-- Workout Meta -->
-              <div
-                class="flex items-center justify-between text-sm text-gray-500"
-              >
-                <div class="flex items-center gap-4">
-                  <span class="flex items-center gap-1">
-                    <svg
-                      class="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                    {workout.intensity}
-                  </span>
-                  <span class="flex items-center gap-1">
-                    <svg
-                      class="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    {workout.frequency}
-                  </span>
-                </div>
-                <div class="text-xs">
-                  By {workout.author}
-                </div>
+            <!-- Workout Title -->
+            <h3 class="workout-title">
+              {workout.title}
+            </h3>
+
+            <!-- Workout Description -->
+            <p class="workout-description">
+              {workout.description}
+            </p>
+
+            <!-- Workout Stats -->
+            <div class="workout-stats">
+              <div class="stat-item">
+                <div class="stat-value">{workout.duration}</div>
+                <div class="stat-label">Minutes</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">{workout.exercises.length}</div>
+                <div class="stat-label">Exercises</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">{workout.difficulty}</div>
+                <div class="stat-label">Level</div>
+              </div>
+            </div>
+
+            <!-- Workout Meta -->
+            <div class="workout-meta">
+              <div class="meta-info">
+                <span class="meta-item">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                  {workout.difficulty}
+                </span>
+                <span class="meta-item">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {workout.duration} min
+                </span>
+              </div>
+              <div class="author-info">
+                By {workout.author}
               </div>
             </div>
           </div>
@@ -424,15 +516,17 @@
 
   <!-- No Results -->
   {#if filteredWorkouts.length === 0}
-    <div class="animate-on-scroll text-center py-16">
-      <div class="text-6xl mb-4">💪</div>
-      <h3 class="text-2xl font-bold text-gray-800 mb-2">No workouts found</h3>
-      <p class="text-gray-600 mb-6">
+    <div class="animate-on-scroll text-center py-20">
+      <div class="text-8xl mb-6">💪</div>
+      <h3 class="text-3xl font-bold text-gray-800 mb-4 font-poppins">
+        No workouts found
+      </h3>
+      <p class="text-gray-600 mb-8 text-lg max-w-md mx-auto">
         Try adjusting your search terms or filters to find what you're looking
         for.
       </p>
       <button
-        class="btn btn-primary"
+        class="btn btn-primary btn-lg"
         on:click={() => {
           searchTerm = ""
           selectedCategory = "all"
@@ -444,6 +538,72 @@
       </button>
     </div>
   {/if}
+
+  <!-- Featured Categories -->
+  <div class="mt-24">
+    <h2
+      class="text-4xl font-bold text-center mb-12 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"
+    >
+      Training Categories
+    </h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        class="category-card bg-gradient-to-br from-blue-500 to-blue-600 text-white"
+      >
+        <div class="text-4xl mb-4">💪</div>
+        <h3 class="text-2xl font-bold mb-3">Strength Training</h3>
+        <p class="opacity-90">
+          Build muscle and increase strength with proven lifting programs.
+        </p>
+      </div>
+      <div
+        class="category-card bg-gradient-to-br from-green-500 to-green-600 text-white"
+      >
+        <div class="text-4xl mb-4">🏃‍♂️</div>
+        <h3 class="text-2xl font-bold mb-3">Cardio</h3>
+        <p class="opacity-90">
+          Improve endurance and burn calories with effective cardio workouts.
+        </p>
+      </div>
+      <div
+        class="category-card bg-gradient-to-br from-purple-500 to-purple-600 text-white"
+      >
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-2xl font-bold mb-3">HIIT</h3>
+        <p class="opacity-90">
+          High-intensity interval training for maximum fat burn and
+          conditioning.
+        </p>
+      </div>
+      <div
+        class="category-card bg-gradient-to-br from-pink-500 to-pink-600 text-white"
+      >
+        <div class="text-4xl mb-4">🧘‍♀️</div>
+        <h3 class="text-2xl font-bold mb-3">Yoga</h3>
+        <p class="opacity-90">
+          Improve flexibility, balance, and mental wellness with yoga flows.
+        </p>
+      </div>
+      <div
+        class="category-card bg-gradient-to-br from-orange-500 to-orange-600 text-white"
+      >
+        <div class="text-4xl mb-4">🤸‍♀️</div>
+        <h3 class="text-2xl font-bold mb-3">Flexibility</h3>
+        <p class="opacity-90">
+          Enhance mobility and prevent injury with stretching routines.
+        </p>
+      </div>
+      <div
+        class="category-card bg-gradient-to-br from-indigo-500 to-indigo-600 text-white"
+      >
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-2xl font-bold mb-3">Functional</h3>
+        <p class="opacity-90">
+          Real-world movement patterns for everyday strength and mobility.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -480,24 +640,13 @@
     }
   }
 
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes pulse {
+  @keyframes float {
     0%,
     100% {
-      transform: scale(1);
+      transform: translateY(0px);
     }
     50% {
-      transform: scale(1.05);
+      transform: translateY(-10px);
     }
   }
 
@@ -520,44 +669,203 @@
     animation: slideInFromRight 0.8s ease-out;
   }
 
-  .scale-in {
-    animation: scaleIn 0.6s ease-out;
-  }
-
-  .pulse-hover:hover {
-    animation: pulse 0.3s ease-in-out;
-  }
-
-  .gradient-bg {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  }
-
-  .glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
   .floating {
     animation: float 6s ease-in-out infinite;
   }
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+  .hero-section {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #667eea 100%);
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .search-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    background: white;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+    font-size: 0.95rem;
+  }
+
+  .filter-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    background: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .filter-select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
   }
 
   .workout-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .workout-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .workout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .split-badge {
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-transform: capitalize;
+  }
+
+  .workout-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+
+  .workout-card:hover .workout-title {
+    color: #4facfe;
+  }
+
+  .workout-description {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .workout-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 0.75rem;
+    background: #f9fafb;
+    border-radius: 10px;
+  }
+
+  .stat-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #4facfe;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .workout-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: auto;
+  }
+
+  .meta-info {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .author-info {
+    font-style: italic;
+  }
+
+  .category-card {
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
   }
 </style>

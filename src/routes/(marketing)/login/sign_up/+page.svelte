@@ -1,9 +1,32 @@
 <script lang="ts">
   import { Auth } from "@supabase/auth-ui-svelte"
   import { sharedAppearance, oauthProviders } from "../login_config"
+  import { goto } from "$app/navigation"
+  import { onMount } from "svelte"
+  import { page } from "$app/stores"
   import { WebsiteName } from "../../../../config"
 
   let { data } = $props()
+  let { supabase, url } = data
+
+  onMount(() => {
+    // Listen for auth state changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_UP" && session) {
+        // Redirect to account after successful signup
+        setTimeout(() => {
+          goto("/account")
+        }, 100)
+      }
+    })
+
+    // Cleanup subscription on component destroy
+    return () => {
+      subscription.unsubscribe()
+    }
+  })
 </script>
 
 <svelte:head>
@@ -23,13 +46,32 @@
     </p>
   </div>
 
+  <!-- Error Message -->
+  {#if $page.url.searchParams.get("error")}
+    <div role="alert" class="alert alert-error mb-6">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        /></svg
+      >
+      <span>Registration error. Please try again.</span>
+    </div>
+  {/if}
+
   <!-- Sign Up Form -->
   <div class="card bg-white shadow-lg border border-primary/10">
     <div class="card-body">
       <Auth
-        supabaseClient={data.supabase}
+        supabaseClient={supabase}
         view="sign_up"
-        redirectTo={`${data.url}/auth/callback`}
+        redirectTo={`${url}/auth/callback`}
         showLinks={false}
         providers={oauthProviders}
         socialLayout="horizontal"

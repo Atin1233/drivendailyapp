@@ -1,9 +1,10 @@
 import { ThemeSupa } from "@supabase/auth-ui-shared"
 import type { Provider } from "@supabase/supabase-js"
 
-export const oauthProviders = ["github"] as Provider[]
+// Add more OAuth providers for better user experience
+export const oauthProviders = ["github", "google"] as Provider[]
 
-// use the css variables from DaisyUI to style Supabase auth template
+// Enhanced appearance configuration for better styling
 export const sharedAppearance = {
   theme: ThemeSupa,
   variables: {
@@ -18,13 +19,30 @@ export const sharedAppearance = {
         inputLabelText: "oklch(var(--n))",
         defaultButtonText: "oklch(var(--n))",
         anchorTextColor: "oklch(var(--p))",
+        inputBackground: "oklch(var(--b1))",
+        inputBorder: "oklch(var(--n))",
+        inputPlaceholder: "oklch(var(--n) / 0.6)",
       },
       fontSizes: {
         baseInputSize: "16px",
+        baseLabelSize: "14px",
+        baseButtonSize: "16px",
+      },
+      borderRadius: {
+        inputBorderRadius: "0.5rem",
+        buttonBorderRadius: "0.5rem",
+      },
+      spacing: {
+        inputPadding: "12px 16px",
+        buttonPadding: "12px 24px",
       },
     },
   },
   className: {
     button: "authBtn",
+    input: "input input-bordered",
+    label: "label-text",
+    anchor: "link link-hover",
+    message: "text-sm",
   },
 }

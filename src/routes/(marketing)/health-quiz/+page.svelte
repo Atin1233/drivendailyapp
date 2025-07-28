@@ -8,8 +8,19 @@
   let isSubmitting = false
   let progress = 0
 
+  // Function to scroll to quiz section
+  function scrollToQuiz() {
+    showQuiz = true
+    setTimeout(() => {
+      const quizSection = document.getElementById("quiz-section")
+      if (quizSection) {
+        quizSection.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    }, 100)
+  }
+
   // Quiz answers
-  let answers = {
+  let answers: Record<string, any> = {
     // Section 1: About You
     age: "",
     gender: "",
@@ -46,8 +57,14 @@
     trialInterest: false,
   }
 
+  // Function to update answers with proper reactivity
+  function updateAnswer(key: string, value: any) {
+    answers[key] = value
+    answers = { ...answers } // Trigger reactivity by creating a new object
+  }
+
   // Quiz questions structure
-  const quizSections = [
+  const quizSections: any[] = [
     {
       id: "about-you",
       title: "About You",
@@ -399,6 +416,9 @@
     } else {
       answers[questionId].push(value)
     }
+
+    // Trigger reactivity
+    answers = { ...answers }
   }
 
   function isMultiSelectSelected(questionId: string, value: string) {
@@ -407,11 +427,14 @@
 
   function canProceed() {
     const currentSection = quizSections[currentStep]
-    return currentSection.questions.every((question) => {
+    return currentSection.questions.every((question: any) => {
       if (question.type === "multiselect") {
         return answers[question.id] && answers[question.id].length > 0
       } else if (question.type === "boolean") {
         return answers[question.id] !== undefined
+      } else if (question.type === "text" || question.type === "email") {
+        // Text and email fields can be optional, so allow empty values
+        return true
       } else {
         return (
           answers[question.id] && answers[question.id].toString().trim() !== ""
@@ -446,58 +469,184 @@
   />
 </svelte:head>
 
-<!-- Hero Section -->
-<div class="gradient-bg text-white py-20 relative overflow-hidden">
-  <!-- Floating Background Elements -->
+<!-- Hero Section - Quiz Focused -->
+<div
+  class="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden"
+>
+  <!-- Animated Brain and Health Icons -->
   <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 text-6xl animate-bounce">🧠</div>
+      <div class="absolute top-20 right-20 text-4xl animate-pulse">💪</div>
+      <div
+        class="absolute bottom-20 left-1/4 text-5xl animate-spin"
+        style="animation-duration: 20s;"
+      >
+        🥗
+      </div>
+      <div
+        class="absolute bottom-10 right-1/3 text-3xl animate-bounce"
+        style="animation-delay: 1s;"
+      >
+        🧘‍♀️
+      </div>
+      <div
+        class="absolute top-1/2 left-1/4 text-4xl animate-pulse"
+        style="animation-delay: 2s;"
+      >
+        📊
+      </div>
+    </div>
+    <!-- Animated Dots Grid -->
     <div
-      class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"
-    ></div>
-    <div
-      class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full floating"
-      style="animation-delay: -2s;"
-    ></div>
-    <div
-      class="absolute bottom-20 left-1/4 w-12 h-12 bg-white/10 rounded-full floating"
-      style="animation-delay: -4s;"
+      class="absolute inset-0"
+      style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 30px 30px; animation: move 20s linear infinite;"
     ></div>
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center max-w-4xl mx-auto">
-      <div class="slide-in-left mb-6">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-          Your Personalized Health Plan
-        </h1>
+    <div class="max-w-6xl mx-auto">
+      <!-- Progress Indicator -->
+      <div class="text-center mb-8">
+        <div
+          class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
+        >
+          <div class="flex space-x-2 mr-4">
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+          </div>
+          Ready to get started? Let's begin!
+        </div>
       </div>
 
-      <div class="slide-in-right mb-8">
-        <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
-          Answer a few questions and get a customized diet, workout, and
-          recovery plan designed specifically for your goals and lifestyle.
-        </p>
-      </div>
+      <!-- Main Content -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Content -->
+        <div class="text-left space-y-8">
+          <div class="slide-in-left">
+            <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+              Your Personalized
+              <span
+                class="bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent"
+                >Health Plan</span
+              >
+            </h1>
+          </div>
 
-      <!-- Stats Section -->
-      <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">5</div>
-          <div class="text-sm opacity-80">Sections</div>
+          <div class="slide-in-right">
+            <p class="text-xl lg:text-2xl opacity-90 leading-relaxed mb-8">
+              Answer a few questions and get a customized diet, workout, and
+              recovery plan designed specifically for your goals and lifestyle.
+            </p>
+          </div>
+
+          <!-- Quiz Stats -->
+          <div class="grid grid-cols-3 gap-4">
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">6</div>
+              <div class="text-sm opacity-80">Sections</div>
+            </div>
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">3</div>
+              <div class="text-sm opacity-80">Plans</div>
+            </div>
+            <div
+              class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg"
+            >
+              <div class="text-3xl font-bold mb-2">100%</div>
+              <div class="text-sm opacity-80">Personalized</div>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">3</div>
-          <div class="text-sm opacity-80">Plans</div>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl lg:text-4xl font-bold mb-2">100%</div>
-          <div class="text-sm opacity-80">Personalized</div>
+
+        <!-- Right Content - Quiz Preview -->
+        <div class="relative">
+          <div
+            class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
+          >
+            <div class="card-body p-8">
+              <div class="text-center mb-6">
+                <div class="text-4xl mb-4">🎯</div>
+                <h3 class="text-2xl font-bold text-white mb-2">Quick Quiz</h3>
+                <p class="text-white/80">Takes just 5 minutes</p>
+              </div>
+
+              <!-- Sample Questions -->
+              <div class="space-y-4 mb-6">
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">
+                    Section 1: About You
+                  </div>
+                  <div class="text-white font-medium">
+                    What's your age and activity level?
+                  </div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">
+                    Section 2: Fitness Goals
+                  </div>
+                  <div class="text-white font-medium">
+                    What's your primary health goal?
+                  </div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">
+                    Section 3: Workout Preferences
+                  </div>
+                  <div class="text-white font-medium">
+                    Do you prefer at-home or gym workouts?
+                  </div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">
+                    Section 4: Nutrition & Diet
+                  </div>
+                  <div class="text-white font-medium">
+                    Any dietary restrictions or preferences?
+                  </div>
+                </div>
+                <div class="p-3 bg-white/10 rounded-lg">
+                  <div class="text-sm text-white/70 mb-1">
+                    Section 5: Lifestyle & Recovery
+                  </div>
+                  <div class="text-white font-medium">
+                    How many hours of sleep do you get?
+                  </div>
+                </div>
+              </div>
+
+              <button
+                class="btn btn-info btn-lg w-full"
+                on:click={scrollToQuiz}
+              >
+                Start Quiz Now →
+              </button>
+            </div>
+          </div>
+
+          <!-- Floating Elements -->
+          <div
+            class="absolute -top-6 -right-6 w-12 h-12 bg-cyan-400 rounded-full float-animation"
+          ></div>
+          <div
+            class="absolute -bottom-6 -left-6 w-8 h-8 bg-pink-400 rounded-full float-animation"
+            style="animation-delay: -2s;"
+          ></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="py-12 lg:py-16 px-6 max-w-4xl mx-auto">
+<div id="quiz-section" class="py-12 lg:py-16 px-6 max-w-4xl mx-auto">
   {#if showQuiz}
     <!-- Progress Bar -->
     <div class="mb-12">
@@ -543,7 +692,11 @@
 
               {#if question.type === "select"}
                 <select
-                  bind:value={answers[question.id]}
+                  value={answers[question.id] || ""}
+                  on:change={(e) => {
+                    const target = e.target as HTMLSelectElement
+                    updateAnswer(question.id, target.value)
+                  }}
                   class="select select-bordered select-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300"
                 >
                   <option value="">Choose an option...</option>
@@ -579,14 +732,22 @@
               {:else if question.type === "text"}
                 <input
                   type="text"
-                  bind:value={answers[question.id]}
+                  value={answers[question.id] || ""}
+                  on:input={(e) => {
+                    const target = e.target as HTMLInputElement
+                    updateAnswer(question.id, target.value)
+                  }}
                   placeholder={question.placeholder}
                   class="input input-bordered input-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300"
                 />
               {:else if question.type === "email"}
                 <input
                   type="email"
-                  bind:value={answers[question.id]}
+                  value={answers[question.id] || ""}
+                  on:input={(e) => {
+                    const target = e.target as HTMLInputElement
+                    updateAnswer(question.id, target.value)
+                  }}
                   placeholder={question.placeholder}
                   class="input input-bordered input-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300"
                 />
@@ -604,7 +765,9 @@
                       name={question.id}
                       class="radio radio-primary mr-3"
                       checked={answers[question.id] === true}
-                      on:change={() => (answers[question.id] = true)}
+                      on:change={() => {
+                        updateAnswer(question.id, true)
+                      }}
                     />
                     <span class="font-medium">Yes</span>
                   </label>
@@ -620,7 +783,9 @@
                       name={question.id}
                       class="radio radio-primary mr-3"
                       checked={answers[question.id] === false}
-                      on:change={() => (answers[question.id] = false)}
+                      on:change={() => {
+                        updateAnswer(question.id, false)
+                      }}
                     />
                     <span class="font-medium">No</span>
                   </label>
