@@ -109,6 +109,19 @@
           <div class="text-lg opacity-90">Average Rating</div>
         </div>
       </div>
+
+      <!-- Gallery Button -->
+      <div class="text-center mt-12 mb-8">
+        <a
+          href="/gallery"
+          class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+        >
+          📸 View Before & After Gallery
+        </a>
+        <p class="text-white/80 mt-4 text-lg">
+          See real transformations from our community members
+        </p>
+      </div>
     </div>
   </div>
 </div>

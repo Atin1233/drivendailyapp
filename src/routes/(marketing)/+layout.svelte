@@ -105,6 +105,9 @@
           <a href="/testimonials" class="nav-link">Testimonials</a>
         </li>
         <li class="mx-3">
+          <a href="/gallery" class="nav-link">Gallery</a>
+        </li>
+        <li class="mx-3">
           <a href="/bmi-calculator" class="nav-link">BMI Calculator</a>
         </li>
         <li class="mx-3">
@@ -157,6 +160,7 @@
           <li><a href="/workouts">Workouts</a></li>
           <li><a href="/recovery">Recovery</a></li>
           <li><a href="/testimonials">Testimonials</a></li>
+          <li><a href="/gallery">Gallery</a></li>
           <li><a href="/bmi-calculator">BMI Calculator</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/search">Search</a></li>
