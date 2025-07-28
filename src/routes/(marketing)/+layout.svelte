@@ -18,13 +18,24 @@
 
     window.addEventListener("scroll", handleScroll)
 
-    // Check if user has seen the popup before
-    const hasSeenPopup = localStorage.getItem("beta-popup-seen")
-    if (!hasSeenPopup) {
-      // Show popup after a short delay
+    // Check if user has seen the popup before (with error handling for SSR)
+    try {
+      const hasSeenPopup =
+        typeof window !== "undefined"
+          ? localStorage.getItem("beta-popup-seen")
+          : null
+      if (!hasSeenPopup) {
+        // Show popup after a short delay
+        setTimeout(() => {
+          showBetaPopup = true
+          console.log("Beta popup should be visible now")
+        }, 1000)
+      }
+    } catch (error) {
+      console.log("localStorage not available, showing popup anyway")
+      // Fallback: show popup if localStorage fails
       setTimeout(() => {
         showBetaPopup = true
-        console.log("Beta popup should be visible now")
       }, 1000)
     }
 
@@ -35,7 +46,13 @@
 
   function closeBetaPopup() {
     showBetaPopup = false
-    localStorage.setItem("beta-popup-seen", "true")
+    try {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("beta-popup-seen", "true")
+      }
+    } catch (error) {
+      console.log("Could not save to localStorage")
+    }
   }
 </script>
 
@@ -158,6 +175,15 @@
     </div>
   </div>
 </div>
+
+<!-- Debug button (temporary) -->
+<button
+  onclick={() => (showBetaPopup = true)}
+  class="fixed top-4 left-4 z-[200] bg-red-500 text-white px-2 py-1 text-xs rounded"
+  style="display: none;"
+>
+  Test Popup
+</button>
 
 <!-- Beta Version Popup Modal -->
 {#if showBetaPopup}
@@ -409,5 +435,24 @@
   /* Pause animation on hover */
   .ticker-container:hover .ticker-content {
     animation-play-state: paused;
+  }
+
+  /* Fallback for browsers that don't support animations */
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-content {
+      animation: none;
+      transform: translateX(0);
+    }
+  }
+
+  /* Ensure ticker is always visible */
+  .ticker-text {
+    display: inline-block;
+    padding-right: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    opacity: 1;
+    visibility: visible;
   }
 </style>
