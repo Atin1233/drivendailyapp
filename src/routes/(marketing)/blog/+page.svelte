@@ -29,7 +29,7 @@
 
 <!-- Hero Section - Blog Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-primary via-purple-800 to-accent text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 text-white relative overflow-hidden"
 >
   <!-- Animated Book and Reading Icons -->
   <div class="absolute inset-0 overflow-hidden">
@@ -87,7 +87,7 @@
             <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Knowledge is
               <span
-                class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent"
                 >Power</span
               >
             </h1>
@@ -171,7 +171,7 @@
 
                 <a
                   href={sortedBlogPosts[0].link}
-                  class="btn btn-success btn-lg w-full"
+                  class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg w-full"
                 >
                   Read Article →
                 </a>
@@ -181,10 +181,10 @@
 
           <!-- Floating Elements -->
           <div
-            class="absolute -top-6 -right-6 w-12 h-12 bg-emerald-400 rounded-full float-animation"
+            class="absolute -top-6 -right-6 w-12 h-12 bg-purple-400 rounded-full float-animation"
           ></div>
           <div
-            class="absolute -bottom-6 -left-6 w-8 h-8 bg-cyan-400 rounded-full float-animation"
+            class="absolute -bottom-6 -left-6 w-8 h-8 bg-pink-400 rounded-full float-animation"
             style="animation-delay: -2s;"
           ></div>
         </div>
@@ -212,8 +212,8 @@
     {#each categories as category}
       <button
         class="btn btn-sm {selectedCategory === category
-          ? 'btn-primary'
-          : 'btn-outline'}"
+          ? 'bg-purple-600 hover:bg-purple-700 text-white'
+          : 'btn-outline border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white'}"
         on:click={() => (selectedCategory = category)}
       >
         {category}
@@ -227,11 +227,11 @@
       <h2 class="text-2xl font-bold mb-6 text-center">Featured</h2>
       <a href={filteredPosts[0].link}>
         <div
-          class="card bg-gradient-to-r from-primary to-accent text-white shadow-xl overflow-hidden"
+          class="card bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-xl overflow-hidden"
         >
           <div class="card-body">
             <div class="flex items-center gap-2 mb-2">
-              <span class="badge badge-secondary"
+              <span class="badge bg-purple-500 text-white"
                 >{filteredPosts[0].category}</span
               >
               <span class="text-sm opacity-80">{filteredPosts[0].readTime}</span
@@ -264,13 +264,14 @@
         >
           <div class="card-body">
             <div class="flex items-center gap-2 mb-2">
-              <span class="badge badge-outline badge-primary"
+              <span
+                class="badge badge-outline border-purple-600 text-purple-600"
                 >{post.category}</span
               >
               <span class="text-sm text-slate-500">{post.readTime}</span>
             </div>
             <h3
-              class="text-xl font-bold text-slate-800 hover:text-primary transition-colors"
+              class="text-xl font-bold text-slate-800 hover:text-purple-600 transition-colors"
             >
               {post.title}
             </h3>
@@ -295,7 +296,7 @@
 
   <!-- Newsletter Signup -->
   <div class="mt-16 text-center">
-    <div class="card bg-base-100 shadow-lg border border-primary/20">
+    <div class="card bg-base-100 shadow-lg border border-purple-600/20">
       <div class="card-body">
         <h3 class="text-2xl font-bold">Get Driven Daily</h3>
         <p class="text-slate-600 mb-4">
@@ -308,7 +309,9 @@
             placeholder="Enter your email"
             class="input input-bordered flex-1 max-w-xs"
           />
-          <button class="btn btn-primary">Subscribe</button>
+          <button class="btn bg-purple-600 hover:bg-purple-700 text-white"
+            >Subscribe</button
+          >
         </div>
       </div>
     </div>
