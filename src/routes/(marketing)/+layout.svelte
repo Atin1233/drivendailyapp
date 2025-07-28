@@ -356,15 +356,15 @@
 
 <style>
   .navbar-glass {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(199, 185, 248, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(199, 185, 248, 0.2);
     transition: all 0.3s ease;
   }
 
   .navbar-glass.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(199, 185, 248, 0.98);
+    box-shadow: 0 4px 20px rgba(24, 0, 66, 0.1);
   }
 
   .nav-link {
