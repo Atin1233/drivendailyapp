@@ -111,7 +111,7 @@
       </div>
 
       <!-- Gallery Button -->
-      <div class="text-center mt-3 mb-8">
+      <div class="text-center mt-1 mb-8">
         <a
           href="/gallery"
           class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
