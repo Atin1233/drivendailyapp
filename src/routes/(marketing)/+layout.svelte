@@ -12,6 +12,7 @@
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
   let currentPage = $derived($page.url.pathname)
+  let mobileMenuOpen = $state(false)
 
   onMount(() => {
     const handleScroll = () => {
@@ -55,6 +56,14 @@
     } catch (error) {
       console.log("Could not save to localStorage")
     }
+  }
+
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen
+  }
+
+  function closeMobileMenu() {
+    mobileMenuOpen = false
   }
 </script>
 
@@ -129,10 +138,14 @@
       </a>
 
       <!-- Mobile menu for smaller screens -->
-      <div class="dropdown dropdown-end dropdown-hover lg:hidden">
+      <div class="dropdown dropdown-end lg:hidden">
         <!-- svelte-ignore a11y_label_has_associated_control -->
         <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <label tabindex="0" class="btn btn-ghost btn-circle">
+        <label
+          tabindex="0"
+          class="btn btn-ghost btn-circle"
+          on:click={toggleMobileMenu}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -150,16 +163,24 @@
         <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
         <ul
           tabindex="0"
-          class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
+          class="menu menu-lg dropdown-content mt-3 z-[60] p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold {mobileMenuOpen
+            ? 'block'
+            : 'hidden'}"
         >
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/recipes">Recipes</a></li>
-          <li><a href="/workouts">Workouts</a></li>
-          <li><a href="/recovery">Recovery</a></li>
-          <li><a href="/testimonials">Testimonials</a></li>
-          <li><a href="/bmi-calculator">BMI Calculator</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/search">Search</a></li>
+          <li><a href="/blog" on:click={closeMobileMenu}>Blog</a></li>
+          <li><a href="/recipes" on:click={closeMobileMenu}>Recipes</a></li>
+          <li><a href="/workouts" on:click={closeMobileMenu}>Workouts</a></li>
+          <li><a href="/recovery" on:click={closeMobileMenu}>Recovery</a></li>
+          <li>
+            <a href="/testimonials" on:click={closeMobileMenu}>Testimonials</a>
+          </li>
+          <li>
+            <a href="/bmi-calculator" on:click={closeMobileMenu}
+              >BMI Calculator</a
+            >
+          </li>
+          <li><a href="/pricing" on:click={closeMobileMenu}>Pricing</a></li>
+          <li><a href="/search" on:click={closeMobileMenu}>Search</a></li>
         </ul>
       </div>
     </div>
@@ -470,5 +491,16 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile menu improvements */
+  @media (max-width: 1023px) {
+    .dropdown-content {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      z-index: 60;
+      width: 13rem;
+    }
   }
 </style>
