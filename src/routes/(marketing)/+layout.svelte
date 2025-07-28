@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from "svelte"
-  import { page } from "$app/stores"
   import { WebsiteName } from "./../../config"
   import "../../app.css"
 
@@ -11,7 +10,6 @@
   let { children }: Props = $props()
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
-  let currentPage = $derived($page.url.pathname)
 
   onMount(() => {
     const handleScroll = () => {
@@ -61,12 +59,7 @@
 <div
   class="navbar navbar-glass fixed top-0 z-50 w-full {isScrolled
     ? 'scrolled'
-    : ''} {currentPage === '/' ? 'page-home' : ''} {currentPage === '/blog'
-    ? 'page-blog'
-    : ''} {currentPage === '/recipes' ? 'page-recipes' : ''} {currentPage ===
-  '/workouts'
-    ? 'page-workouts'
-    : ''} {currentPage === '/recovery' ? 'page-recovery' : ''}"
+    : ''}"
 >
   <div class="container mx-auto flex justify-between items-center">
     <!-- Logo on the left -->
@@ -352,93 +345,10 @@
     overflow: hidden;
   }
 
-  /* Page-specific navbar backgrounds */
-  .navbar-glass.page-home {
-    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
-  }
-
-  .navbar-glass.page-blog {
-    background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #0891b2 100%);
-  }
-
-  .navbar-glass.page-recipes {
-    background: linear-gradient(135deg, #ea580c 0%, #d97706 50%, #ca8a04 100%);
-  }
-
-  .navbar-glass.page-workouts {
-    background: linear-gradient(135deg, #059669 0%, #16a34a 50%, #0d9488 100%);
-  }
-
-  .navbar-glass.page-recovery {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
-  }
-
-  .navbar-glass::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(
-      circle at 1px 1px,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 0
-    );
-    background-size: 50px 50px;
-    pointer-events: none;
-  }
-
-  .navbar-glass::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-        circle at 20% 20%,
-        rgba(219, 39, 119, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 80% 80%,
-        rgba(199, 185, 248, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 50% 50%,
-        rgba(24, 0, 66, 0.1) 0%,
-        transparent 50%
-      );
-    pointer-events: none;
-  }
-
   .navbar-glass.scrolled {
-    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Page-specific scrolled backgrounds */
-  .navbar-glass.page-home.scrolled {
-    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
-  }
-
-  .navbar-glass.page-blog.scrolled {
-    background: linear-gradient(135deg, #047857 0%, #0f766e 50%, #0e7490 100%);
-  }
-
-  .navbar-glass.page-recipes.scrolled {
-    background: linear-gradient(135deg, #c2410c 0%, #b45309 50%, #a16207 100%);
-  }
-
-  .navbar-glass.page-workouts.scrolled {
-    background: linear-gradient(135deg, #047857 0%, #15803d 50%, #0f766e 100%);
-  }
-
-  .navbar-glass.page-recovery.scrolled {
-    background: linear-gradient(135deg, #7c3aed 0%, #5855eb 50%, #2563eb 100%);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   }
 
   /* Page-specific navbar colors */
