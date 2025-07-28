@@ -336,20 +336,71 @@
 
 <style>
   .navbar-glass {
-    background: rgba(199, 185, 248, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(199, 185, 248, 0.2);
-    transition: all 0.3s ease;
+    background: linear-gradient(
+      135deg,
+      rgba(199, 185, 248, 0.95) 0%,
+      rgba(180, 160, 240, 0.95) 50%,
+      rgba(160, 140, 230, 0.95) 100%
+    );
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px rgba(24, 0, 66, 0.15),
+      0 2px 8px rgba(24, 0, 66, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .navbar-glass::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    pointer-events: none;
+    border-radius: 0 0 20px 20px;
   }
 
   .navbar-glass.scrolled {
-    background: rgba(199, 185, 248, 0.98);
-    box-shadow: 0 4px 20px rgba(24, 0, 66, 0.1);
+    background: linear-gradient(
+      135deg,
+      rgba(199, 185, 248, 0.98) 0%,
+      rgba(180, 160, 240, 0.98) 50%,
+      rgba(160, 140, 230, 0.98) 100%
+    );
+    box-shadow:
+      0 12px 40px rgba(24, 0, 66, 0.2),
+      0 4px 16px rgba(24, 0, 66, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transform: translateY(0);
   }
 
   .nav-link {
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 25px rgba(24, 0, 66, 0.15),
+      0 4px 10px rgba(24, 0, 66, 0.1);
   }
 
   .nav-link::after {
@@ -358,14 +409,16 @@
     bottom: -2px;
     left: 50%;
     width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, #180042 0%, #db2777 100%);
-    transition: all 0.3s ease;
+    height: 3px;
+    background: linear-gradient(135deg, #180042 0%, #db2777 50%, #c7b9f8 100%);
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
+    box-shadow: 0 2px 8px rgba(24, 0, 66, 0.3);
   }
 
   .nav-link:hover::after {
-    width: 100%;
+    width: 80%;
   }
 
   .logo-hover {
