@@ -336,18 +336,18 @@
 
 <style>
   .navbar-glass {
-    background: rgba(199, 185, 248, 0.95);
+    background: transparent;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(199, 185, 248, 0.2);
-    box-shadow: 0 2px 10px rgba(24, 0, 66, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
   .navbar-glass.scrolled {
-    background: rgba(199, 185, 248, 0.98);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
-    box-shadow: 0 4px 20px rgba(24, 0, 66, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   /* Page-specific navbar colors */
@@ -357,8 +357,8 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
     padding: 8px 16px;
-    color: rgba(24, 0, 66, 0.8);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    color: rgba(24, 0, 66, 0.9);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
   }
 
   .nav-link:hover {
