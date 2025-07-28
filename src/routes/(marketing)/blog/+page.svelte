@@ -29,7 +29,7 @@
 
 <!-- Hero Section - Blog Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-primary via-purple-800 to-accent text-white relative overflow-hidden"
 >
   <!-- Animated Book and Reading Icons -->
   <div class="absolute inset-0 overflow-hidden">
@@ -73,7 +73,7 @@
         <div
           class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
         >
-          <span class="w-3 h-3 bg-emerald-400 rounded-full mr-3 animate-pulse"
+          <span class="w-3 h-3 bg-purple-400 rounded-full mr-3 animate-pulse"
           ></span>
           Expert insights from fitness professionals
         </div>
@@ -87,7 +87,7 @@
             <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Knowledge is
               <span
-                class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
                 >Power</span
               >
             </h1>
