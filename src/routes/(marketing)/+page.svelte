@@ -1,3 +1,4 @@
+<!-- Force Vercel deployment - v3.0.0 - New Repository Setup -->
 <script lang="ts">
   import { onMount } from "svelte"
   import {
