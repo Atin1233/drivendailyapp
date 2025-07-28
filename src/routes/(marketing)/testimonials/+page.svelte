@@ -570,10 +570,6 @@
     animation: float 6s ease-in-out infinite;
   }
 
-  .hero-section {
-    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
-  }
-
   .stat-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -613,7 +609,7 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6b21a8 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -621,7 +617,7 @@
   }
 
   .avatar-placeholder.secondary {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
   }
 
   .avatar-text {
@@ -709,19 +705,19 @@
   }
 
   .avatar-placeholder-small.primary {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6b21a8 100%);
   }
 
   .avatar-placeholder-small.secondary {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
   }
 
   .avatar-placeholder-small.accent {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
   }
 
   .avatar-placeholder-small.success {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6b21a8 100%);
   }
 
   .avatar-placeholder-small.warning {
@@ -801,7 +797,7 @@
   .metric-value {
     font-size: 3rem;
     font-weight: 700;
-    color: #10b981;
+    color: #8b5cf6;
     margin-bottom: 0.5rem;
   }
 
@@ -811,11 +807,11 @@
   }
 
   .cta-card {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6b21a8 100%);
     color: white;
     border-radius: 20px;
     padding: 3rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
   }
 
   .font-poppins {
@@ -859,7 +855,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6b21a8 100%);
   }
 
   .timeline-card:hover {
@@ -877,14 +873,14 @@
   .timeline-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6b21a8 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     color: white;
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
     border: 4px solid white;
     transition: all 0.3s ease;
     flex-shrink: 0;
@@ -892,7 +888,7 @@
 
   .timeline-card:hover .timeline-icon {
     transform: scale(1.1);
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
+    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.6);
   }
 
   .timeline-title {
