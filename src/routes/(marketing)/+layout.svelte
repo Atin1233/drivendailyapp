@@ -144,7 +144,7 @@
         <label
           tabindex="0"
           class="btn btn-ghost btn-circle"
-          on:click={toggleMobileMenu}
+          onclick={toggleMobileMenu}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -167,20 +167,20 @@
             ? 'block'
             : 'hidden'}"
         >
-          <li><a href="/blog" on:click={closeMobileMenu}>Blog</a></li>
-          <li><a href="/recipes" on:click={closeMobileMenu}>Recipes</a></li>
-          <li><a href="/workouts" on:click={closeMobileMenu}>Workouts</a></li>
-          <li><a href="/recovery" on:click={closeMobileMenu}>Recovery</a></li>
+          <li><a href="/blog" onclick={closeMobileMenu}>Blog</a></li>
+          <li><a href="/recipes" onclick={closeMobileMenu}>Recipes</a></li>
+          <li><a href="/workouts" onclick={closeMobileMenu}>Workouts</a></li>
+          <li><a href="/recovery" onclick={closeMobileMenu}>Recovery</a></li>
           <li>
-            <a href="/testimonials" on:click={closeMobileMenu}>Testimonials</a>
+            <a href="/testimonials" onclick={closeMobileMenu}>Testimonials</a>
           </li>
           <li>
-            <a href="/bmi-calculator" on:click={closeMobileMenu}
+            <a href="/bmi-calculator" onclick={closeMobileMenu}
               >BMI Calculator</a
             >
           </li>
-          <li><a href="/pricing" on:click={closeMobileMenu}>Pricing</a></li>
-          <li><a href="/search" on:click={closeMobileMenu}>Search</a></li>
+          <li><a href="/pricing" onclick={closeMobileMenu}>Pricing</a></li>
+          <li><a href="/search" onclick={closeMobileMenu}>Search</a></li>
         </ul>
       </div>
     </div>
