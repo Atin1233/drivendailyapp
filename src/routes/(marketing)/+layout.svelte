@@ -336,36 +336,18 @@
 
 <style>
   .navbar-glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
-  .navbar-glass::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.02) 10px,
-      rgba(255, 255, 255, 0.02) 20px
-    );
-    pointer-events: none;
-    border-radius: 0 0 20px 20px;
-  }
-
   .navbar-glass.scrolled {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   /* Page-specific navbar colors */
@@ -375,14 +357,14 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
     padding: 8px 16px;
-    color: rgba(24, 0, 66, 0.9);
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    color: rgba(24, 0, 66, 0.8);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
   }
 
   .nav-link:hover {
     color: #180042;
     transform: translateY(-1px);
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 2px 6px rgba(255, 255, 255, 1);
   }
 
   .nav-link::after {
