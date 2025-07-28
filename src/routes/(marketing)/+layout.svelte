@@ -10,13 +10,32 @@
   let { children }: Props = $props()
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
+  let currentPage = $state("home")
 
   onMount(() => {
     const handleScroll = () => {
       isScrolled = window.scrollY > 50
     }
 
+    const detectCurrentPage = () => {
+      const path = window.location.pathname
+      if (path === "/" || path === "") {
+        currentPage = "home"
+      } else if (path.startsWith("/blog")) {
+        currentPage = "blog"
+      } else if (path.startsWith("/recipes")) {
+        currentPage = "recipes"
+      } else if (path.startsWith("/workouts")) {
+        currentPage = "workouts"
+      } else if (path.startsWith("/recovery")) {
+        currentPage = "recovery"
+      } else {
+        currentPage = "home"
+      }
+    }
+
     window.addEventListener("scroll", handleScroll)
+    detectCurrentPage()
 
     // Check if user has seen the popup before (with error handling for SSR)
     try {
@@ -57,7 +76,7 @@
 </script>
 
 <div
-  class="navbar navbar-glass fixed top-0 z-50 w-full {isScrolled
+  class="navbar navbar-glass fixed top-0 z-50 w-full page-{currentPage} {isScrolled
     ? 'scrolled'
     : ''}"
 >
@@ -80,16 +99,31 @@
     <div class="hidden lg:flex justify-center flex-1">
       <ul class="menu menu-horizontal px-1 font-bold text-lg">
         <li class="mx-3">
-          <a href="/blog" class="nav-link">Blog</a>
+          <a
+            href="/blog"
+            class="nav-link {currentPage === 'blog' ? 'active' : ''}">Blog</a
+          >
         </li>
         <li class="mx-3">
-          <a href="/recipes" class="nav-link">Recipes</a>
+          <a
+            href="/recipes"
+            class="nav-link {currentPage === 'recipes' ? 'active' : ''}"
+            >Recipes</a
+          >
         </li>
         <li class="mx-3">
-          <a href="/workouts" class="nav-link">Workouts</a>
+          <a
+            href="/workouts"
+            class="nav-link {currentPage === 'workouts' ? 'active' : ''}"
+            >Workouts</a
+          >
         </li>
         <li class="mx-3">
-          <a href="/recovery" class="nav-link">Recovery</a>
+          <a
+            href="/recovery"
+            class="nav-link {currentPage === 'recovery' ? 'active' : ''}"
+            >Recovery</a
+          >
         </li>
         <li class="mx-3">
           <a href="/testimonials" class="nav-link">Testimonials</a>
@@ -336,12 +370,27 @@
 
 <style>
   .navbar-glass {
-    background: linear-gradient(
-      135deg,
-      rgba(199, 185, 248, 0.95) 0%,
-      rgba(180, 160, 240, 0.95) 50%,
-      rgba(160, 140, 230, 0.95) 100%
-    );
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(219, 39, 119, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.95) 0%,
+        rgba(180, 160, 240, 0.95) 50%,
+        rgba(160, 140, 230, 0.95) 100%
+      );
     backdrop-filter: blur(20px);
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     box-shadow:
@@ -359,23 +408,39 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 50%,
-      rgba(255, 255, 255, 0.1) 100%
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.02) 10px,
+      rgba(255, 255, 255, 0.02) 20px
     );
     pointer-events: none;
     border-radius: 0 0 20px 20px;
   }
 
   .navbar-glass.scrolled {
-    background: linear-gradient(
-      135deg,
-      rgba(199, 185, 248, 0.98) 0%,
-      rgba(180, 160, 240, 0.98) 50%,
-      rgba(160, 140, 230, 0.98) 100%
-    );
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(219, 39, 119, 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.15) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.98) 0%,
+        rgba(180, 160, 240, 0.98) 50%,
+        rgba(160, 140, 230, 0.98) 100%
+      );
     box-shadow:
       0 12px 40px rgba(24, 0, 66, 0.2),
       0 4px 16px rgba(24, 0, 66, 0.15),
@@ -383,42 +448,168 @@
     transform: translateY(0);
   }
 
+  /* Page-specific navbar colors */
+  .navbar-glass.page-home {
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(219, 39, 119, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.95) 0%,
+        rgba(180, 160, 240, 0.95) 50%,
+        rgba(160, 140, 230, 0.95) 100%
+      );
+  }
+
+  .navbar-glass.page-blog {
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(59, 130, 246, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.95) 0%,
+        rgba(147, 197, 253, 0.95) 50%,
+        rgba(96, 165, 250, 0.95) 100%
+      );
+  }
+
+  .navbar-glass.page-recipes {
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(34, 197, 94, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.95) 0%,
+        rgba(134, 239, 172, 0.95) 50%,
+        rgba(34, 197, 94, 0.95) 100%
+      );
+  }
+
+  .navbar-glass.page-workouts {
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(239, 68, 68, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.95) 0%,
+        rgba(252, 165, 165, 0.95) 50%,
+        rgba(239, 68, 68, 0.95) 100%
+      );
+  }
+
+  .navbar-glass.page-recovery {
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(168, 85, 247, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(24, 0, 66, 0.1) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(199, 185, 248, 0.95) 0%,
+        rgba(196, 181, 253, 0.95) 50%,
+        rgba(168, 85, 247, 0.95) 100%
+      );
+  }
+
   .nav-link {
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 500;
+    font-weight: 600;
     padding: 8px 16px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(24, 0, 66, 0.9);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
   }
 
   .nav-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
-    box-shadow:
-      0 8px 25px rgba(24, 0, 66, 0.15),
-      0 4px 10px rgba(24, 0, 66, 0.1);
+    color: #180042;
+    transform: translateY(-1px);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
   }
 
   .nav-link::after {
     content: "";
     position: absolute;
-    bottom: -2px;
+    bottom: -4px;
     left: 50%;
     width: 0;
-    height: 3px;
-    background: linear-gradient(135deg, #180042 0%, #db2777 50%, #c7b9f8 100%);
-    border-radius: 2px;
+    height: 2px;
+    background: linear-gradient(135deg, #180042 0%, #db2777 100%);
+    border-radius: 1px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
-    box-shadow: 0 2px 8px rgba(24, 0, 66, 0.3);
   }
 
   .nav-link:hover::after {
+    width: 60%;
+  }
+
+  /* Active page styling */
+  .nav-link.active {
+    color: #180042;
+    font-weight: 700;
+  }
+
+  .nav-link.active::after {
     width: 80%;
+    background: linear-gradient(135deg, #db2777 0%, #180042 100%);
   }
 
   .logo-hover {
