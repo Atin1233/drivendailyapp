@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte"
+  import { page } from "$app/stores"
   import { WebsiteName } from "./../../config"
   import "../../app.css"
 
@@ -10,6 +11,7 @@
   let { children }: Props = $props()
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
+  let currentPage = $derived($page.url.pathname)
 
   onMount(() => {
     const handleScroll = () => {
@@ -59,7 +61,12 @@
 <div
   class="navbar navbar-glass fixed top-0 z-50 w-full {isScrolled
     ? 'scrolled'
-    : ''}"
+    : ''} {currentPage === '/' ? 'page-home' : ''} {currentPage === '/blog'
+    ? 'page-blog'
+    : ''} {currentPage === '/recipes' ? 'page-recipes' : ''} {currentPage ===
+  '/workouts'
+    ? 'page-workouts'
+    : ''} {currentPage === '/recovery' ? 'page-recovery' : ''}"
 >
   <div class="container mx-auto flex justify-between items-center">
     <!-- Logo on the left -->
@@ -351,7 +358,47 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
-  /* Page-specific navbar colors */
+  /* Page-specific navbar backgrounds */
+  .navbar-glass.page-home {
+    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+  }
+
+  .navbar-glass.page-blog {
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+  }
+
+  .navbar-glass.page-recipes {
+    background: linear-gradient(135deg, #ea580c 0%, #d97706 50%, #ca8a04 100%);
+  }
+
+  .navbar-glass.page-workouts {
+    background: linear-gradient(135deg, #059669 0%, #16a34a 50%, #0d9488 100%);
+  }
+
+  .navbar-glass.page-recovery {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  }
+
+  /* Page-specific scrolled backgrounds */
+  .navbar-glass.page-home.scrolled {
+    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+  }
+
+  .navbar-glass.page-blog.scrolled {
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+  }
+
+  .navbar-glass.page-recipes.scrolled {
+    background: linear-gradient(135deg, #ea580c 0%, #d97706 50%, #ca8a04 100%);
+  }
+
+  .navbar-glass.page-workouts.scrolled {
+    background: linear-gradient(135deg, #059669 0%, #16a34a 50%, #0d9488 100%);
+  }
+
+  .navbar-glass.page-recovery.scrolled {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+  }
 
   .nav-link {
     position: relative;
