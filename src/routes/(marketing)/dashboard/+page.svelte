@@ -386,22 +386,48 @@
 
 <style>
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
   }
 
   .btn-sm {
-    @apply px-3 py-2 text-sm;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
   }
 
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90;
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 90%, transparent);
   }
 
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-secondary/90;
+    background-color: var(--color-secondary);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-secondary) 90%,
+      transparent
+    );
   }
 
   .btn-white {
-    @apply bg-white text-primary hover:bg-gray-50;
+    background-color: white;
+    color: var(--color-primary);
+  }
+
+  .btn-white:hover {
+    background-color: #f9fafb;
   }
 </style>
