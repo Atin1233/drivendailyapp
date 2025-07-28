@@ -164,7 +164,7 @@
 
 <!-- Hero Section - Culinary/Food Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 text-white relative overflow-hidden"
 >
   <!-- Culinary Background Elements -->
   <div class="absolute inset-0 overflow-hidden">
@@ -204,7 +204,7 @@
         <div
           class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
         >
-          <span class="w-3 h-3 bg-orange-400 rounded-full mr-3 animate-pulse"
+          <span class="w-3 h-3 bg-violet-400 rounded-full mr-3 animate-pulse"
           ></span>
           Fresh: Seasonal Recipes Added
         </div>
@@ -243,7 +243,7 @@
                 🥬
               </div>
               <div
-                class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-3xl backdrop-blur-sm border-2 border-orange-300"
+                class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-3xl backdrop-blur-sm border-2 border-violet-300"
               >
                 🥘
               </div>
@@ -298,7 +298,7 @@
             <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Fuel Your
               <span
-                class="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-violet-300 to-purple-300 bg-clip-text text-transparent"
                 >Journey</span
               >
             </h1>
@@ -321,7 +321,7 @@
               <div class="flex items-center justify-between mb-4">
                 <div>
                   <h3 class="text-2xl font-bold text-white">Chef's Pick</h3>
-                  <p class="text-orange-300 font-semibold">
+                  <p class="text-violet-300 font-semibold">
                     Grilled Chicken Breast
                   </p>
                 </div>
@@ -330,22 +330,22 @@
 
               <div class="grid grid-cols-3 gap-4 mb-4 text-center">
                 <div>
-                  <div class="text-2xl font-bold text-orange-400">42g</div>
+                  <div class="text-2xl font-bold text-violet-400">42g</div>
                   <div class="text-sm text-white/80">Protein</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-orange-400">10min</div>
+                  <div class="text-2xl font-bold text-violet-400">10min</div>
                   <div class="text-sm text-white/80">Prep Time</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-orange-400">280</div>
+                  <div class="text-2xl font-bold text-violet-400">280</div>
                   <div class="text-sm text-white/80">Calories</div>
                 </div>
               </div>
 
               <a
                 href="/recipes/nonveg-grilled-chicken-breast"
-                class="btn btn-warning btn-lg w-full"
+                class="btn bg-violet-600 hover:bg-violet-700 text-white btn-lg w-full"
               >
                 View Recipe →
               </a>

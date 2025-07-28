@@ -368,7 +368,7 @@
   }
 
   .navbar-glass.page-recipes {
-    background: linear-gradient(135deg, #ea580c 0%, #d97706 50%, #ca8a04 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 50%, #5b21b6 100%);
   }
 
   .navbar-glass.page-workouts {
@@ -389,7 +389,7 @@
   }
 
   .navbar-glass.page-recipes.scrolled {
-    background: linear-gradient(135deg, #ea580c 0%, #d97706 50%, #ca8a04 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 50%, #5b21b6 100%);
   }
 
   .navbar-glass.page-workouts.scrolled {
