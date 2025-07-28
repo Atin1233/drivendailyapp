@@ -336,18 +336,18 @@
 
 <style>
   .navbar-glass {
-    background: transparent;
+    background: rgba(199, 185, 248, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(199, 185, 248, 0.2);
+    box-shadow: 0 2px 10px rgba(24, 0, 66, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
   .navbar-glass.scrolled {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(199, 185, 248, 0.98);
     backdrop-filter: blur(15px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(24, 0, 66, 0.15);
   }
 
   /* Page-specific navbar colors */
