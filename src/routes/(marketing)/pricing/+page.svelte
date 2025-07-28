@@ -197,7 +197,16 @@
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-6xl mx-auto">
       <!-- Top Badge -->
-      <div class="text-center mb-8">
+      <div class="text-center mb-8 space-y-4">
+        <!-- Beta Version Notice -->
+        <div
+          class="inline-flex items-center px-6 py-3 bg-green-500/20 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium border border-green-400/30"
+        >
+          <span class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"
+          ></span>
+          🚀 BETA VERSION - FREE until September 30th!
+        </div>
+
         <div
           class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
         >
@@ -616,6 +625,9 @@
       <div class="mt-12 opacity-60">
         <p class="text-lg">
           ✨ Free to start • No commitment required • Cancel anytime
+        </p>
+        <p class="text-lg mt-2 text-green-400 font-semibold">
+          🚀 Currently in BETA - FREE until September 30th, 2024!
         </p>
       </div>
     </div>
