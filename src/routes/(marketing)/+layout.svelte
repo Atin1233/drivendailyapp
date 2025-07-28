@@ -129,7 +129,7 @@
       </a>
 
       <!-- Mobile menu for smaller screens -->
-      <div class="dropdown dropdown-end lg:hidden">
+      <div class="dropdown dropdown-end dropdown-hover lg:hidden">
         <!-- svelte-ignore a11y_label_has_associated_control -->
         <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
         <label tabindex="0" class="btn btn-ghost btn-circle">
