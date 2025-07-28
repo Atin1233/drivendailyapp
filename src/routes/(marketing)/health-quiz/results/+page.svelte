@@ -558,7 +558,7 @@
               <button
                 class="btn btn-secondary btn-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                🚀 Start Your Free Trial
+                Start Your Free Trial
               </button>
             </a>
             <a href="/blog">

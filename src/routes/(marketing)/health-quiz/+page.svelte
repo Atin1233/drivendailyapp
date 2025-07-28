@@ -823,7 +823,7 @@
                 <span class="loading loading-spinner loading-md"></span>
                 Creating Your Plan...
               {:else}
-                🚀 Get My Personalized Plan
+                Get My Personalized Plan
               {/if}
             </button>
           {/if}

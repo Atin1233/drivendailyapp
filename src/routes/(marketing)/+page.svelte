@@ -619,7 +619,7 @@
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
         <a href="/blog">
           <button class="btn btn-primary btn-lg px-8 py-4 text-lg pulse-glow">
-            🚀 Start Reading Now
+            Start Reading Now
           </button>
         </a>
         <a href="/pricing">

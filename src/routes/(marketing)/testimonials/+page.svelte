@@ -383,7 +383,7 @@
         <!-- Week 1-2 -->
         <div class="timeline-item">
           <div class="timeline-marker">
-            <div class="timeline-icon">🚀</div>
+            <div class="timeline-icon">⭐</div>
           </div>
           <div class="timeline-content">
             <h3 class="timeline-title">Weeks 1-2: Getting Started</h3>

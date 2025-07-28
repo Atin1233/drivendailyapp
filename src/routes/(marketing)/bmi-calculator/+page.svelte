@@ -400,7 +400,7 @@
               <span class="loading loading-spinner loading-md"></span>
               Calculating...
             {:else}
-              🚀 Calculate BMI
+              Calculate BMI
             {/if}
           </button>
         </form>
