@@ -392,101 +392,93 @@
       Your Transformation Journey
     </h2>
     <div class="timeline-container">
-      <div class="timeline">
+      <div class="timeline-grid">
         <!-- Week 1-2 -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
+        <div class="timeline-card">
+          <div class="timeline-header">
             <div class="timeline-icon">⭐</div>
-          </div>
-          <div class="timeline-content">
             <h3 class="timeline-title">Weeks 1-2: Getting Started</h3>
-            <p class="timeline-description">
-              Build foundational habits with our beginner-friendly workouts and
-              nutrition guidance. Most members report feeling more energized and
-              motivated.
-            </p>
-            <div class="timeline-stats">
-              <span class="timeline-stat">
-                <span class="stat-emoji">📈</span>
-                <span class="stat-text">78% feel more energized</span>
-              </span>
-              <span class="timeline-stat">
-                <span class="stat-emoji">💪</span>
-                <span class="stat-text">3-5 workouts completed</span>
-              </span>
-            </div>
+          </div>
+          <p class="timeline-description">
+            Build foundational habits with our beginner-friendly workouts and
+            nutrition guidance. Most members report feeling more energized and
+            motivated.
+          </p>
+          <div class="timeline-stats">
+            <span class="timeline-stat">
+              <span class="stat-emoji">📈</span>
+              <span class="stat-text">78% feel more energized</span>
+            </span>
+            <span class="timeline-stat">
+              <span class="stat-emoji">💪</span>
+              <span class="stat-text">3-5 workouts completed</span>
+            </span>
           </div>
         </div>
 
         <!-- Month 1 -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
+        <div class="timeline-card">
+          <div class="timeline-header">
             <div class="timeline-icon">💪</div>
-          </div>
-          <div class="timeline-content">
             <h3 class="timeline-title">Month 1: Building Momentum</h3>
-            <p class="timeline-description">
-              Establish consistent routines and see your first real results.
-              Improved sleep, better energy, and noticeable strength gains.
-            </p>
-            <div class="timeline-stats">
-              <span class="timeline-stat">
-                <span class="stat-emoji">😴</span>
-                <span class="stat-text">85% report better sleep</span>
-              </span>
-              <span class="timeline-stat">
-                <span class="stat-emoji">⚡</span>
-                <span class="stat-text">2-4 lbs weight loss/gain</span>
-              </span>
-            </div>
+          </div>
+          <p class="timeline-description">
+            Establish consistent routines and see your first real results.
+            Improved sleep, better energy, and noticeable strength gains.
+          </p>
+          <div class="timeline-stats">
+            <span class="timeline-stat">
+              <span class="stat-emoji">😴</span>
+              <span class="stat-text">85% report better sleep</span>
+            </span>
+            <span class="timeline-stat">
+              <span class="stat-emoji">⚡</span>
+              <span class="stat-text">2-4 lbs weight loss/gain</span>
+            </span>
           </div>
         </div>
 
         <!-- Month 3 -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
+        <div class="timeline-card">
+          <div class="timeline-header">
             <div class="timeline-icon">🔥</div>
-          </div>
-          <div class="timeline-content">
             <h3 class="timeline-title">Month 3: Real Transformation</h3>
-            <p class="timeline-description">
-              Significant changes become visible. Clothes fit differently,
-              confidence increases, and fitness becomes a lifestyle.
-            </p>
-            <div class="timeline-stats">
-              <span class="timeline-stat">
-                <span class="stat-emoji">👕</span>
-                <span class="stat-text">92% notice body changes</span>
-              </span>
-              <span class="timeline-stat">
-                <span class="stat-emoji">💪</span>
-                <span class="stat-text">8-12 lbs total progress</span>
-              </span>
-            </div>
+          </div>
+          <p class="timeline-description">
+            Significant changes become visible. Clothes fit differently,
+            confidence increases, and fitness becomes a lifestyle.
+          </p>
+          <div class="timeline-stats">
+            <span class="timeline-stat">
+              <span class="stat-emoji">👕</span>
+              <span class="stat-text">92% notice body changes</span>
+            </span>
+            <span class="timeline-stat">
+              <span class="stat-emoji">💪</span>
+              <span class="stat-text">8-12 lbs total progress</span>
+            </span>
           </div>
         </div>
 
         <!-- Month 6 -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
+        <div class="timeline-card">
+          <div class="timeline-header">
             <div class="timeline-icon">🏆</div>
-          </div>
-          <div class="timeline-content">
             <h3 class="timeline-title">Month 6: Life-Changing Results</h3>
-            <p class="timeline-description">
-              Complete transformation achieved. Sustainable habits, improved
-              health markers, and a new relationship with fitness.
-            </p>
-            <div class="timeline-stats">
-              <span class="timeline-stat">
-                <span class="stat-emoji">🎯</span>
-                <span class="stat-text">95% reach their goals</span>
-              </span>
-              <span class="timeline-stat">
-                <span class="stat-emoji">💚</span>
-                <span class="stat-text">15-25 lbs total transformation</span>
-              </span>
-            </div>
+          </div>
+          <p class="timeline-description">
+            Complete transformation achieved. Sustainable habits, improved
+            health markers, and a new relationship with fitness.
+          </p>
+          <div class="timeline-stats">
+            <span class="timeline-stat">
+              <span class="stat-emoji">🎯</span>
+              <span class="stat-text">95% reach their goals</span>
+            </span>
+            <span class="timeline-stat">
+              <span class="stat-emoji">💚</span>
+              <span class="stat-text">15-25 lbs total transformation</span>
+            </span>
           </div>
         </div>
       </div>
@@ -830,122 +822,108 @@
     font-family: "Poppins", sans-serif;
   }
 
-  /* Timeline Styles - Unique to Testimonials Page */
+  /* Timeline Grid Styles - Horizontal Layout */
   .timeline-container {
     position: relative;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  .timeline {
-    position: relative;
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     padding: 3rem 0;
+    align-items: stretch;
   }
 
-  .timeline::before {
+  .timeline-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .timeline-card::before {
     content: "";
     position: absolute;
-    left: 50%;
     top: 0;
-    bottom: 0;
-    width: 4px;
+    left: 0;
+    right: 0;
+    height: 4px;
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    transform: translateX(-50%);
-    border-radius: 2px;
   }
 
-  .timeline-item {
-    position: relative;
-    margin-bottom: 5rem;
+  .timeline-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .timeline-header {
     display: flex;
     align-items: center;
-    min-height: 120px;
-  }
-
-  .timeline-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .timeline-marker {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .timeline-icon {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: white;
-    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
-    border: 5px solid white;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    border: 4px solid white;
     transition: all 0.3s ease;
+    flex-shrink: 0;
   }
 
-  .timeline-item:hover .timeline-icon {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
-  }
-
-  .timeline-content {
-    width: 42%;
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.4s ease;
-    position: relative;
-  }
-
-  .timeline-item:nth-child(odd) .timeline-content {
-    margin-right: 58%;
-  }
-
-  .timeline-item:nth-child(even) .timeline-content {
-    margin-left: 58%;
-  }
-
-  .timeline-content:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  .timeline-card:hover .timeline-icon {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
   }
 
   .timeline-title {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #1f2937;
-    margin-bottom: 1.25rem;
     line-height: 1.3;
+    margin: 0;
   }
 
   .timeline-description {
     color: #6b7280;
     line-height: 1.7;
-    margin-bottom: 2rem;
-    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    flex-grow: 1;
   }
 
   .timeline-stats {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    margin-top: auto;
   }
 
   .timeline-stat {
     background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
     color: #374151;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1rem;
     border-radius: 12px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
@@ -960,7 +938,7 @@
   }
 
   .stat-emoji {
-    font-size: 1.1rem;
+    font-size: 1rem;
     flex-shrink: 0;
   }
 
@@ -968,23 +946,11 @@
     flex: 1;
   }
 
-  /* Responsive Timeline */
-  @media (max-width: 1024px) {
-    .timeline-container {
-      max-width: 900px;
-    }
-
-    .timeline-content {
-      width: 40%;
-      padding: 2rem;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-right: 60%;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      margin-left: 60%;
+  /* Responsive Timeline Grid */
+  @media (max-width: 1200px) {
+    .timeline-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
   }
 
@@ -993,33 +959,57 @@
       padding: 0 1rem;
     }
 
-    .timeline::before {
-      left: 2rem;
+    .timeline-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
     }
 
-    .timeline-item {
-      flex-direction: row !important;
-      margin-left: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .timeline-marker {
-      left: 2rem;
-      transform: translate(-50%, -50%);
-    }
-
-    .timeline-content {
-      width: calc(100% - 4rem);
-      margin-left: 2rem !important;
-      margin-right: 0 !important;
+    .timeline-card {
       padding: 1.5rem;
     }
 
+    .timeline-header {
+      margin-bottom: 1rem;
+    }
+
+    .timeline-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 1.25rem;
+    }
+
     .timeline-title {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
     }
 
     .timeline-description {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-stat {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .timeline-container {
+      padding: 0 0.5rem;
+    }
+
+    .timeline-card {
+      padding: 1.25rem;
+    }
+
+    .timeline-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+    }
+
+    .timeline-title {
       font-size: 1rem;
     }
   }
