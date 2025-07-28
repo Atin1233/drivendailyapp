@@ -406,8 +406,14 @@
               motivated.
             </p>
             <div class="timeline-stats">
-              <span class="timeline-stat">📈 78% feel more energized</span>
-              <span class="timeline-stat">💪 3-5 workouts completed</span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">📈</span>
+                <span class="stat-text">78% feel more energized</span>
+              </span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">💪</span>
+                <span class="stat-text">3-5 workouts completed</span>
+              </span>
             </div>
           </div>
         </div>
@@ -424,8 +430,14 @@
               Improved sleep, better energy, and noticeable strength gains.
             </p>
             <div class="timeline-stats">
-              <span class="timeline-stat">😴 85% report better sleep</span>
-              <span class="timeline-stat">⚡ 2-4 lbs weight loss/gain</span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">😴</span>
+                <span class="stat-text">85% report better sleep</span>
+              </span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">⚡</span>
+                <span class="stat-text">2-4 lbs weight loss/gain</span>
+              </span>
             </div>
           </div>
         </div>
@@ -442,8 +454,14 @@
               confidence increases, and fitness becomes a lifestyle.
             </p>
             <div class="timeline-stats">
-              <span class="timeline-stat">👕 92% notice body changes</span>
-              <span class="timeline-stat">💪 8-12 lbs total progress</span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">👕</span>
+                <span class="stat-text">92% notice body changes</span>
+              </span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">💪</span>
+                <span class="stat-text">8-12 lbs total progress</span>
+              </span>
             </div>
           </div>
         </div>
@@ -460,10 +478,14 @@
               health markers, and a new relationship with fitness.
             </p>
             <div class="timeline-stats">
-              <span class="timeline-stat">🎯 95% reach their goals</span>
-              <span class="timeline-stat"
-                >💚 15-25 lbs total transformation</span
-              >
+              <span class="timeline-stat">
+                <span class="stat-emoji">🎯</span>
+                <span class="stat-text">95% reach their goals</span>
+              </span>
+              <span class="timeline-stat">
+                <span class="stat-emoji">💚</span>
+                <span class="stat-text">15-25 lbs total transformation</span>
+              </span>
             </div>
           </div>
         </div>
@@ -927,11 +949,23 @@
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .timeline-stat:hover {
     background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
     transform: translateX(5px);
+  }
+
+  .stat-emoji {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .stat-text {
+    flex: 1;
   }
 
   /* Responsive Timeline */
