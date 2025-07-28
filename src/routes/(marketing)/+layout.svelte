@@ -9,6 +9,7 @@
 
   let { children }: Props = $props()
   let isScrolled = false
+  let showBetaPopup = false
 
   onMount(() => {
     const handleScroll = () => {
@@ -17,10 +18,24 @@
 
     window.addEventListener("scroll", handleScroll)
 
+    // Check if user has seen the popup before
+    const hasSeenPopup = localStorage.getItem("beta-popup-seen")
+    if (!hasSeenPopup) {
+      // Show popup after a short delay
+      setTimeout(() => {
+        showBetaPopup = true
+      }, 1000)
+    }
+
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
   })
+
+  function closeBetaPopup() {
+    showBetaPopup = false
+    localStorage.setItem("beta-popup-seen", "true")
+  }
 </script>
 
 <div
@@ -122,6 +137,137 @@
     </div>
   </div>
 </div>
+
+<!-- Beta Version Popup Modal -->
+{#if showBetaPopup}
+  <div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div
+      class="absolute inset-0 bg-black/20 backdrop-blur-sm"
+      on:click={closeBetaPopup}
+    ></div>
+
+    <!-- Modal -->
+    <div
+      class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all duration-300 scale-100"
+    >
+      <!-- Close button -->
+      <button
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        on:click={closeBetaPopup}
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div class="text-center">
+        <!-- Icon -->
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6"
+        >
+          <svg
+            class="w-8 h-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            ></path>
+          </svg>
+        </div>
+
+        <!-- Title -->
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+          Welcome to {WebsiteName}!
+        </h3>
+
+        <!-- Message -->
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          We're currently in <span class="font-semibold text-primary">BETA</span
+          >
+          and completely
+          <span class="font-semibold text-green-600">FREE</span> until September
+          30th, 2024.
+        </p>
+
+        <!-- Features -->
+        <div class="space-y-2 mb-6 text-sm text-gray-500">
+          <div class="flex items-center justify-center gap-2">
+            <svg
+              class="w-4 h-4 text-green-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span>Personalized workout & meal plans</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <svg
+              class="w-4 h-4 text-green-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span>Expert fitness content & recipes</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <svg
+              class="w-4 h-4 text-green-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span>No credit card required</span>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <button
+          class="btn btn-primary w-full font-semibold"
+          on:click={closeBetaPopup}
+        >
+          Start Exploring
+        </button>
+
+        <!-- Small text -->
+        <p class="text-xs text-gray-400 mt-4">
+          You can always access this info from our pricing page
+        </p>
+      </div>
+    </div>
+  </div>
+{/if}
 
 <!-- Add top padding to account for fixed navbar -->
 <div class="pt-20">
