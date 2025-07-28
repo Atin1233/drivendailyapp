@@ -336,7 +336,7 @@
 
 <style>
   .navbar-glass {
-    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -346,9 +346,9 @@
   }
 
   .navbar-glass.scrolled {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   /* Page-specific navbar colors */
