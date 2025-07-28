@@ -156,26 +156,6 @@
   </div>
 </div>
 
-<!-- News Ticker Banner -->
-<div
-  class="bg-gradient-to-r from-primary to-accent text-white py-2 overflow-hidden"
->
-  <div class="ticker-container">
-    <div class="ticker-content">
-      <span class="ticker-text">
-        🎉 BETA VERSION - ALL FEATURES FREE UNTIL SEPTEMBER 30TH, 2024! 🎉
-        Personalized workouts, meal plans, recipes, and expert content - No
-        credit card required!
-      </span>
-      <span class="ticker-text">
-        🎉 BETA VERSION - ALL FEATURES FREE UNTIL SEPTEMBER 30TH, 2024! 🎉
-        Personalized workouts, meal plans, recipes, and expert content - No
-        credit card required!
-      </span>
-    </div>
-  </div>
-</div>
-
 <!-- Debug button (temporary) -->
 <button
   onclick={() => (showBetaPopup = true)}
@@ -321,8 +301,8 @@
   </div>
 {/if}
 
-<!-- Add top padding to account for fixed navbar and news ticker -->
-<div class="pt-24">
+<!-- Add top padding to account for fixed navbar -->
+<div class="pt-20">
   {@render children?.()}
 </div>
 
@@ -400,59 +380,5 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  /* News Ticker Styles */
-  .ticker-container {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .ticker-content {
-    display: inline-block;
-    animation: ticker 30s linear infinite;
-    white-space: nowrap;
-  }
-
-  .ticker-text {
-    display: inline-block;
-    padding-right: 50px;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-  }
-
-  @keyframes ticker {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  /* Pause animation on hover */
-  .ticker-container:hover .ticker-content {
-    animation-play-state: paused;
-  }
-
-  /* Fallback for browsers that don't support animations */
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-content {
-      animation: none;
-      transform: translateX(0);
-    }
-  }
-
-  /* Ensure ticker is always visible */
-  .ticker-text {
-    display: inline-block;
-    padding-right: 50px;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    opacity: 1;
-    visibility: visible;
   }
 </style>
