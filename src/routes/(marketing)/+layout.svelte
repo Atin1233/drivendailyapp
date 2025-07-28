@@ -8,8 +8,8 @@
   }
 
   let { children }: Props = $props()
-  let isScrolled = false
-  let showBetaPopup = false
+  let isScrolled = $state(false)
+  let showBetaPopup = $state(false)
 
   onMount(() => {
     const handleScroll = () => {
@@ -24,6 +24,7 @@
       // Show popup after a short delay
       setTimeout(() => {
         showBetaPopup = true
+        console.log("Beta popup should be visible now")
       }, 1000)
     }
 
@@ -144,7 +145,11 @@
     <!-- Backdrop -->
     <div
       class="absolute inset-0 bg-black/20 backdrop-blur-sm"
-      on:click={closeBetaPopup}
+      role="button"
+      tabindex="0"
+      aria-label="Close popup"
+      onclick={closeBetaPopup}
+      onkeydown={(e) => e.key === "Escape" && closeBetaPopup()}
     ></div>
 
     <!-- Modal -->
@@ -154,7 +159,8 @@
       <!-- Close button -->
       <button
         class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-        on:click={closeBetaPopup}
+        aria-label="Close popup"
+        onclick={closeBetaPopup}
       >
         <svg
           class="w-6 h-6"
@@ -255,7 +261,7 @@
         <!-- CTA Button -->
         <button
           class="btn btn-primary w-full font-semibold"
-          on:click={closeBetaPopup}
+          onclick={closeBetaPopup}
         >
           Start Exploring
         </button>
