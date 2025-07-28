@@ -160,28 +160,29 @@
             /></svg
           >
         </label>
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <ul
-          tabindex="0"
-          class="menu menu-lg dropdown-content mt-3 z-[60] p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold {mobileMenuOpen
-            ? 'block'
-            : 'hidden'}"
-        >
-          <li><a href="/blog" onclick={closeMobileMenu}>Blog</a></li>
-          <li><a href="/recipes" onclick={closeMobileMenu}>Recipes</a></li>
-          <li><a href="/workouts" onclick={closeMobileMenu}>Workouts</a></li>
-          <li><a href="/recovery" onclick={closeMobileMenu}>Recovery</a></li>
-          <li>
-            <a href="/testimonials" onclick={closeMobileMenu}>Testimonials</a>
-          </li>
-          <li>
-            <a href="/bmi-calculator" onclick={closeMobileMenu}
-              >BMI Calculator</a
-            >
-          </li>
-          <li><a href="/pricing" onclick={closeMobileMenu}>Pricing</a></li>
-          <li><a href="/search" onclick={closeMobileMenu}>Search</a></li>
-        </ul>
+        <!-- Mobile dropdown menu -->
+        <div class="dropdown-menu-container relative">
+          <ul
+            class="menu menu-lg dropdown-content mt-3 z-[60] p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold absolute right-0 {mobileMenuOpen
+              ? 'block'
+              : 'hidden'}"
+          >
+            <li><a href="/blog" onclick={closeMobileMenu}>Blog</a></li>
+            <li><a href="/recipes" onclick={closeMobileMenu}>Recipes</a></li>
+            <li><a href="/workouts" onclick={closeMobileMenu}>Workouts</a></li>
+            <li><a href="/recovery" onclick={closeMobileMenu}>Recovery</a></li>
+            <li>
+              <a href="/testimonials" onclick={closeMobileMenu}>Testimonials</a>
+            </li>
+            <li>
+              <a href="/bmi-calculator" onclick={closeMobileMenu}
+                >BMI Calculator</a
+              >
+            </li>
+            <li><a href="/pricing" onclick={closeMobileMenu}>Pricing</a></li>
+            <li><a href="/search" onclick={closeMobileMenu}>Search</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -495,6 +496,10 @@
 
   /* Mobile menu improvements */
   @media (max-width: 1023px) {
+    .dropdown-menu-container {
+      position: relative;
+    }
+
     .dropdown-content {
       position: absolute;
       right: 0;
