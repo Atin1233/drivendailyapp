@@ -69,7 +69,7 @@
     : ''} {currentPage === '/recovery' ? 'page-recovery' : ''} {currentPage ===
   '/testimonials'
     ? 'page-testimonials'
-    : ''}"
+    : ''} {currentPage === '/pricing' ? 'page-pricing' : ''}"
 >
   <div class="container mx-auto flex justify-between items-center">
     <!-- Logo on the left -->
@@ -386,6 +386,10 @@
     background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
   }
 
+  .navbar-glass.page-pricing {
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+  }
+
   /* Page-specific scrolled backgrounds */
   .navbar-glass.page-home.scrolled {
     background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
@@ -409,6 +413,10 @@
 
   .navbar-glass.page-testimonials.scrolled {
     background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+  }
+
+  .navbar-glass.page-pricing.scrolled {
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
   }
 
   .nav-link {

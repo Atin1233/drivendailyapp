@@ -161,7 +161,7 @@
 
 <!-- Hero Section - Business/Financial Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-amber-600 via-orange-600 to-red-600 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-600 text-white relative overflow-hidden"
 >
   <!-- Business/Financial Background Elements -->
   <div class="absolute inset-0 overflow-hidden">
@@ -210,7 +210,7 @@
         <div
           class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium"
         >
-          <span class="w-3 h-3 bg-amber-400 rounded-full mr-3 animate-pulse"
+          <span class="w-3 h-3 bg-purple-400 rounded-full mr-3 animate-pulse"
           ></span>
           Limited Time: Save 15% on Annual Plans
         </div>
@@ -224,7 +224,7 @@
             <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Choose Your
               <span
-                class="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-purple-300 to-violet-300 bg-clip-text text-transparent"
                 >Investment</span
               >
             </h1>
@@ -275,7 +275,7 @@
               <div class="text-center mb-6">
                 <div class="text-4xl mb-4">💎</div>
                 <h3 class="text-2xl font-bold text-white mb-2">Most Popular</h3>
-                <div class="text-4xl font-bold text-amber-400 mb-2">$15</div>
+                <div class="text-4xl font-bold text-purple-400 mb-2">$15</div>
                 <div class="text-white/80">Pro Plan</div>
               </div>
 
@@ -294,7 +294,10 @@
                 </li>
               </ul>
 
-              <a href="/contact_us" class="btn btn-warning btn-lg w-full">
+              <a
+                href="/contact_us"
+                class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg w-full"
+              >
                 Contact Us →
               </a>
             </div>
@@ -302,10 +305,10 @@
 
           <!-- Floating Business Elements -->
           <div
-            class="absolute -top-6 -right-6 w-12 h-12 bg-amber-400 rounded-full float-animation"
+            class="absolute -top-6 -right-6 w-12 h-12 bg-purple-400 rounded-full float-animation"
           ></div>
           <div
-            class="absolute -bottom-6 -left-6 w-8 h-8 bg-orange-400 rounded-full float-animation"
+            class="absolute -bottom-6 -left-6 w-8 h-8 bg-violet-400 rounded-full float-animation"
             style="animation-delay: -2s;"
           ></div>
         </div>
