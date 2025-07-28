@@ -301,8 +301,8 @@
   </div>
 {/if}
 
-<!-- Add top padding to account for fixed navbar -->
-<div class="pt-20">
+<!-- Add minimal top padding to account for fixed navbar -->
+<div class="pt-4">
   {@render children?.()}
 </div>
 
