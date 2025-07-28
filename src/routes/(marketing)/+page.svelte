@@ -289,7 +289,7 @@
     <div
       class="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 text-white text-sm font-semibold shadow-lg"
     >
-      🚀 Currently in BETA - FREE until September 30th, 2024!
+      Currently in BETA - FREE until September 30th, 2024!
     </div>
   </div>
 
