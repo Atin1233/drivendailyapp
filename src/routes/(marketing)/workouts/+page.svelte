@@ -116,6 +116,9 @@
       workouts.reduce((sum, w) => sum + w.duration, 0) / workouts.length,
     )
 
+    // Check if mobile device
+    const isMobile = window.innerWidth <= 768
+
     // Intersection Observer for animations
     const observer = new IntersectionObserver(
       (entries) => {
@@ -134,6 +137,13 @@
     // Observe elements for animation
     document.querySelectorAll(".animate-on-scroll").forEach((el) => {
       observer.observe(el)
+
+      // Force visibility on mobile after a short delay
+      if (isMobile) {
+        setTimeout(() => {
+          el.classList.add("animate-in")
+        }, 100)
+      }
     })
 
     return () => {
@@ -354,7 +364,9 @@
       </div>
 
       <!-- Filter Buttons -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+      >
         <!-- Category Filter -->
         <div class="filter-group">
           <label class="filter-label">Category</label>
@@ -416,7 +428,7 @@
 
   <!-- Workouts Grid -->
   <div class="animate-on-scroll">
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {#each filteredWorkouts as workout}
         <a href={`/workouts/${workout.id}`} class="block group">
           <div class="workout-card">
@@ -661,6 +673,14 @@
     transform: translateY(0);
   }
 
+  /* Mobile fallback - ensure content is visible even if animations don't work */
+  @media (max-width: 768px) {
+    .animate-on-scroll {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .slide-in-left {
     animation: slideInFromLeft 0.8s ease-out;
   }
@@ -700,6 +720,15 @@
     border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
+  /* Mobile search card optimizations */
+  @media (max-width: 768px) {
+    .search-card {
+      padding: 1.5rem;
+      border-radius: 16px;
+      margin: 0 -0.5rem;
+    }
+  }
+
   .search-input {
     width: 100%;
     padding: 1rem 1rem 1rem 3rem;
@@ -708,6 +737,15 @@
     font-size: 1.1rem;
     transition: all 0.3s ease;
     background: #f9fafb;
+  }
+
+  /* Mobile input optimizations */
+  @media (max-width: 768px) {
+    .search-input {
+      padding: 0.875rem 0.875rem 0.875rem 2.5rem;
+      font-size: 1rem;
+      border-radius: 10px;
+    }
   }
 
   .search-input:focus {
@@ -738,6 +776,15 @@
     transition: all 0.3s ease;
   }
 
+  /* Mobile filter optimizations */
+  @media (max-width: 768px) {
+    .filter-select {
+      padding: 0.625rem 0.875rem;
+      font-size: 0.95rem;
+      border-radius: 8px;
+    }
+  }
+
   .filter-select:focus {
     outline: none;
     border-color: #4facfe;
@@ -754,6 +801,16 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 300px;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .workout-card {
+      padding: 1rem;
+      min-height: 280px;
+      border-radius: 16px;
+    }
   }
 
   .workout-card:hover {
@@ -807,11 +864,27 @@
     margin-bottom: 1.5rem;
   }
 
+  /* Mobile stats optimizations */
+  @media (max-width: 768px) {
+    .workout-stats {
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
   .stat-item {
     text-align: center;
     padding: 0.75rem;
     background: #f9fafb;
     border-radius: 10px;
+  }
+
+  /* Mobile stat item optimizations */
+  @media (max-width: 768px) {
+    .stat-item {
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
   }
 
   .stat-value {
