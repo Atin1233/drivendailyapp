@@ -1,6 +1,7 @@
-import { W as escape_html, T as store_get, V as unsubscribe_stores, S as pop, Q as push } from "../../chunks/index.js";
+import { T as store_get, V as unsubscribe_stores, S as pop, Q as push } from "../../chunks/index.js";
 /* empty css               */
 import { p as page } from "../../chunks/stores.js";
+import { e as escape_html } from "../../chunks/escaping.js";
 function _error($$payload, $$props) {
   push();
   var $$store_subs;

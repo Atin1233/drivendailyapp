@@ -1,5 +1,6 @@
-import { _ as head, S as pop, Q as push, W as escape_html } from "../../../../chunks/index.js";
+import { X as head, S as pop, Q as push } from "../../../../chunks/index.js";
 import { a as WebsiteName } from "../../../../chunks/config.js";
+import { e as escape_html } from "../../../../chunks/escaping.js";
 function _page($$payload, $$props) {
   push();
   head($$payload, ($$payload2) => {

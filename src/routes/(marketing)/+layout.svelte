@@ -67,9 +67,6 @@
         <li class="mx-3">
           <a href="/pricing" class="nav-link">Pricing</a>
         </li>
-        <li class="mx-3">
-          <a href="/login" class="nav-link">Account</a>
-        </li>
       </ul>
     </div>
 
@@ -119,7 +116,6 @@
           <li><a href="/testimonials">Testimonials</a></li>
           <li><a href="/bmi-calculator">BMI Calculator</a></li>
           <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/login">Account</a></li>
           <li><a href="/search">Search</a></li>
         </ul>
       </div>

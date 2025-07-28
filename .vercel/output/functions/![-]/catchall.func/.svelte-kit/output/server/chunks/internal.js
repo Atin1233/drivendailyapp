@@ -1,5 +1,4 @@
-import { a as active_reaction, i as is_runes, b as DERIVED, B as BLOCK_EFFECT, d as derived_sources, s as state_unsafe_mutation, c as increment_version, e as DIRTY, f as set_signal_status, C as CLEAN, U as UNOWNED, g as schedule_effect, h as active_effect, j as BRANCH_EFFECT, n as new_deps, u as untracked_writes, k as set_untracked_writes, M as MAYBE_DIRTY, H as HYDRATION_ERROR, l as get_next_sibling, m as define_property, o as set_active_reaction, p as set_active_effect, q as is_array, r as init_operations, t as get_first_child, v as HYDRATION_START, w as HYDRATION_END, x as hydration_failed, y as clear_text_content, z as array_from, A as component_root, E as is_passive_event, F as create_text, G as branch, I as push, J as component_context, K as pop, L as LEGACY_PROPS, N as get, O as flush_sync, P as render, Q as push$1, R as setContext, S as pop$1 } from "./index.js";
-import { s as safe_equals, e as equals } from "./equality.js";
+import { a as active_reaction, i as is_runes, b as DERIVED, B as BLOCK_EFFECT, d as derived_sources, s as state_unsafe_mutation, c as increment_version, e as DIRTY, f as set_signal_status, C as CLEAN, U as UNOWNED, g as schedule_effect, h as active_effect, j as BRANCH_EFFECT, k as new_deps, u as untracked_writes, l as set_untracked_writes, M as MAYBE_DIRTY, H as HYDRATION_ERROR, m as get_next_sibling, o as define_property, p as set_active_reaction, q as set_active_effect, r as is_array, t as init_operations, v as get_first_child, w as HYDRATION_START, x as HYDRATION_END, y as hydration_failed, z as clear_text_content, A as array_from, E as component_root, F as create_text, G as branch, I as push, J as component_context, K as pop, L as LEGACY_PROPS, N as get, O as flush_sync, P as render, Q as push$1, R as setContext, S as pop$1 } from "./index.js";
 import "./shared-server.js";
 let base = "";
 let assets = base;
@@ -15,6 +14,15 @@ function reset() {
 }
 function set_assets(path) {
   assets = initial.assets = path;
+}
+function equals(value) {
+  return value === this.v;
+}
+function safe_not_equal(a, b) {
+  return a != a ? b == b : a !== b || a !== null && typeof a === "object" || typeof a === "function";
+}
+function safe_equals(value) {
+  return !safe_not_equal(value, this.v);
 }
 function source(v, stack) {
   var signal = {
@@ -110,6 +118,10 @@ function hydrate_next() {
     /** @type {TemplateNode} */
     get_next_sibling(hydrate_node)
   );
+}
+const PASSIVE_EVENTS = ["touchstart", "touchmove"];
+function is_passive_event(name) {
+  return PASSIVE_EVENTS.includes(name);
 }
 const all_registered_events = /* @__PURE__ */ new Set();
 const root_event_handles = /* @__PURE__ */ new Set();
@@ -672,14 +684,13 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "19go00v"
+  version_hash: "c326cc"
 };
 async function get_hooks() {
   let handle;
   let handleFetch;
   let handleError;
   let init;
-  ({ handle, handleFetch, handleError, init } = await import("./hooks.server.js"));
   let reroute;
   let transport;
   return {
@@ -697,13 +708,14 @@ export {
   app_dir as c,
   read_implementation as d,
   options as e,
-  set_assets as f,
+  set_read_implementation as f,
   get_hooks as g,
-  set_building as h,
-  set_manifest as i,
-  set_prerendering as j,
+  set_assets as h,
+  set_building as i,
+  set_manifest as j,
+  set_prerendering as k,
   override as o,
   prerendering as p,
   reset as r,
-  set_read_implementation as s
+  safe_not_equal as s
 };

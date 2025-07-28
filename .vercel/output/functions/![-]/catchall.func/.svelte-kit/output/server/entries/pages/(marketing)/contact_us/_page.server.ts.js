@@ -1,5 +1,31 @@
 import { f as fail } from "../../../../chunks/index2.js";
-import { s as sendAdminEmail } from "../../../../chunks/mailer.js";
+import { Resend } from "resend";
+import { d as private_env } from "../../../../chunks/shared-server.js";
+import "handlebars";
+process.env.PUBLIC_SUPABASE_URL || "https://fake_test_url.supabase.co";
+process.env.PRIVATE_SUPABASE_SERVICE_ROLE || "fake_service_role";
+const sendAdminEmail = async ({
+  subject,
+  body
+}) => {
+  if (!private_env.PRIVATE_ADMIN_EMAIL) {
+    return;
+  }
+  try {
+    const resend = new Resend(private_env.PRIVATE_RESEND_API_KEY);
+    const resp = await resend.emails.send({
+      from: private_env.PRIVATE_FROM_ADMIN_EMAIL || private_env.PRIVATE_ADMIN_EMAIL,
+      to: [private_env.PRIVATE_ADMIN_EMAIL],
+      subject: "ADMIN_MAIL: " + subject,
+      text: body
+    });
+    if (resp.error) {
+      console.log("Failed to send admin email, error:", resp.error);
+    }
+  } catch (e) {
+    console.log("Failed to send admin email, error:", e);
+  }
+};
 const actions = {
   submitContactUs: async ({ request, locals: { supabaseServiceRole } }) => {
     const formData = await request.formData();

@@ -1,5 +1,7 @@
-import { a0 as ensure_array_like, _ as head, X as attr, W as escape_html, S as pop, Q as push, Y as stringify } from "../../../../../chunks/index.js";
+import { Y as ensure_array_like, X as head, S as pop, Q as push, W as stringify } from "../../../../../chunks/index.js";
 import { a as WebsiteName } from "../../../../../chunks/config.js";
+import { a as attr } from "../../../../../chunks/attributes.js";
+import { e as escape_html } from "../../../../../chunks/escaping.js";
 function _page($$payload, $$props) {
   push();
   let currentSection = 0;

@@ -285,11 +285,8 @@
                 </li>
               </ul>
 
-              <a
-                href="/account/subscribe/price_1NkdZCHMjzZ8mGZnRSjUm4yA"
-                class="btn btn-warning btn-lg w-full"
-              >
-                Get Started →
+              <a href="/contact_us" class="btn btn-warning btn-lg w-full">
+                Contact Us →
               </a>
             </div>
           </div>
@@ -387,10 +384,10 @@
           </ul>
 
           <a
-            href="/account/subscribe/free_plan"
+            href="/contact_us"
             class="btn btn-outline btn-primary btn-lg w-full"
           >
-            Get Started Free
+            Contact Us
           </a>
         </div>
       </div>
@@ -450,11 +447,8 @@
             </li>
           </ul>
 
-          <a
-            href="/account/subscribe/price_1Nkda2HMjzZ8mGZn4sKvbDAV"
-            class="btn btn-secondary btn-lg w-full"
-          >
-            Start Pro Plan
+          <a href="/contact_us" class="btn btn-secondary btn-lg w-full">
+            Contact Us
           </a>
         </div>
       </div>
@@ -514,10 +508,10 @@
           </ul>
 
           <a
-            href="/account/subscribe/price_1Nkda2HMjzZ8mGZn4sKvbDAV"
+            href="/contact_us"
             class="btn btn-outline btn-primary btn-lg w-full"
           >
-            Go Ultimate
+            Contact Us
           </a>
         </div>
       </div>
@@ -610,11 +604,11 @@
             🧠 Take Health Quiz
           </button>
         </a>
-        <a href="/login">
+        <a href="/contact_us">
           <button
             class="btn btn-outline btn-lg px-8 py-4 text-lg glass-effect text-white border-white/30 hover:bg-white/10"
           >
-            💎 Choose Your Plan
+            💎 Contact Us
           </button>
         </a>
       </div>
