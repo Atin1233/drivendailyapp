@@ -284,14 +284,7 @@
 <div
   class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-primary via-purple-900 to-accent"
 >
-  <!-- Beta Message -->
-  <div class="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
-    <div
-      class="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 text-white text-sm font-semibold shadow-lg"
-    >
-      Currently in BETA - FREE until September 30th, 2024!
-    </div>
-  </div>
+  <!-- Beta Message Removed -->
 
   <!-- Geometric Background Pattern -->
   <div class="absolute inset-0 overflow-hidden">
