@@ -11,7 +11,7 @@
   let { children }: Props = $props()
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
-  let mobileMenuOpen = $state(false)
+  let isMobileMenuOpen = $state(false)
   let currentPage = $derived($page.url.pathname)
 
   onMount(() => {
@@ -59,11 +59,21 @@
   }
 
   function toggleMobileMenu() {
-    mobileMenuOpen = !mobileMenuOpen
+    isMobileMenuOpen = !isMobileMenuOpen
+
+    // Prevent body scrolling when sidebar is open
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = isMobileMenuOpen ? "hidden" : ""
+    }
   }
 
   function closeMobileMenu() {
-    mobileMenuOpen = false
+    isMobileMenuOpen = false
+
+    // Re-enable body scrolling
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = ""
+    }
   }
 </script>
 
@@ -140,154 +150,164 @@
       <!-- Mobile menu button -->
       <button
         class="btn btn-ghost btn-circle lg:hidden"
+        aria-label="Toggle mobile menu"
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="mobile-sidebar"
         onclick={toggleMobileMenu}
-        aria-label="Open menu"
+        onkeydown={(e) => e.key === "Enter" && toggleMobileMenu()}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="h-5 w-5"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-        >
-          <path
+          ><path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
             d="M4 6h16M4 12h16M4 18h7"
-          />
-        </svg>
+          /></svg
+        >
       </button>
     </div>
   </div>
 </div>
 
-<!-- Mobile menu drawer -->
-{#if mobileMenuOpen}
-  <div class="fixed inset-0 z-[60] lg:hidden">
-    <!-- Backdrop overlay -->
-    <div
-      class="absolute inset-0 bg-black/50 backdrop-blur-sm"
-      onclick={closeMobileMenu}
-      role="button"
-      tabindex="0"
+<!-- Mobile Sidebar -->
+{#if isMobileMenuOpen}
+  <!-- Overlay -->
+  <div
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60]"
+    onclick={closeMobileMenu}
+    aria-hidden="true"
+  ></div>
+
+  <!-- Sidebar -->
+  <div
+    id="mobile-sidebar"
+    class="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[70] shadow-xl transform transition-transform duration-300 sidebar-animation"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+  >
+    <!-- Close button -->
+    <button
+      class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100"
       aria-label="Close menu"
-    ></div>
-
-    <!-- Side drawer -->
-    <div
-      class="absolute top-0 right-0 h-full w-[280px] bg-white shadow-xl transform transition-transform duration-300 ease-in-out"
+      onclick={closeMobileMenu}
     >
-      <!-- Close button -->
-      <button
-        class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700"
-        onclick={closeMobileMenu}
-        aria-label="Close menu"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-gray-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
-        </svg>
-      </button>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
 
-      <!-- Logo -->
-      <div class="p-6 border-b">
-        <a href="/" class="flex items-center gap-2" onclick={closeMobileMenu}>
-          <img
-            src="/images/driven-daily-logo.svg"
-            alt="{WebsiteName} Logo"
-            class="h-10 w-10"
-          />
-          <span class="font-bold text-xl text-gray-800">{WebsiteName}</span>
-        </a>
-      </div>
+    <!-- Logo -->
+    <div class="p-6 border-b border-gray-200">
+      <a href="/" class="flex items-center gap-3" onclick={closeMobileMenu}>
+        <img
+          src="/images/driven-daily-logo.svg"
+          alt="{WebsiteName} Logo"
+          class="h-10 w-10"
+        />
+        <span class="text-xl font-bold text-gray-800">{WebsiteName}</span>
+      </a>
+    </div>
 
-      <!-- Navigation links -->
-      <nav class="p-4">
-        <ul class="space-y-2">
-          <li>
-            <a
-              href="/blog"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Blog
-            </a>
-          </li>
-          <li>
-            <a
-              href="/recipes"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Recipes
-            </a>
-          </li>
-          <li>
-            <a
-              href="/workouts"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Workouts
-            </a>
-          </li>
-          <li>
-            <a
-              href="/recovery"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Recovery
-            </a>
-          </li>
-          <li>
-            <a
-              href="/testimonials"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Testimonials
-            </a>
-          </li>
-          <li>
-            <a
-              href="/bmi-calculator"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              BMI Calculator
-            </a>
-          </li>
-          <li>
-            <a
-              href="/pricing"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a
-              href="/search"
-              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
-              onclick={closeMobileMenu}
-            >
-              Search
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <!-- Navigation links -->
+    <nav class="p-6">
+      <ul class="space-y-4">
+        <li>
+          <a
+            href="/blog"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Blog
+          </a>
+        </li>
+        <li>
+          <a
+            href="/recipes"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Recipes
+          </a>
+        </li>
+        <li>
+          <a
+            href="/workouts"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Workouts
+          </a>
+        </li>
+        <li>
+          <a
+            href="/recovery"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Recovery
+          </a>
+        </li>
+        <li>
+          <a
+            href="/testimonials"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Testimonials
+          </a>
+        </li>
+        <li>
+          <a
+            href="/bmi-calculator"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            BMI Calculator
+          </a>
+        </li>
+        <li>
+          <a
+            href="/pricing"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a
+            href="/search"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Search
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Footer -->
+    <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200">
+      <p class="text-sm text-gray-500 text-center">
+        © 2024 {WebsiteName}
+      </p>
     </div>
   </div>
 {/if}
@@ -598,28 +618,17 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  /* Mobile menu improvements */
-  @media (max-width: 1023px) {
-    .dropdown-menu-container {
-      position: relative;
-    }
-
-    .dropdown-content {
-      position: absolute;
-      right: 0;
-      top: 100%;
-      z-index: 60;
-      width: 13rem;
-    }
+  /* Sidebar animation */
+  .sidebar-animation {
+    animation: slideIn 0.3s ease-out forwards;
   }
 
-  /* Fix for mobile dropdown menu */
-  .dropdown-menu-container {
-    position: relative;
-  }
-
-  .dropdown-menu-container ul {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 </style>

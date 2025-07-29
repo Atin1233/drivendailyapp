@@ -284,7 +284,7 @@
 <div
   class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-primary via-purple-900 to-accent"
 >
-  <!-- Beta Message Removed -->
+  <!-- Beta Message removed -->
 
   <!-- Geometric Background Pattern -->
   <div class="absolute inset-0 overflow-hidden">
@@ -306,17 +306,25 @@
     ></div>
   </div>
 
-  <div class="hero-content py-12 relative z-10">
-    <div class="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+  <div class="hero-content py-8 md:py-12 relative z-10 w-full">
+    <div
+      class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto px-4 sm:px-6"
+    >
       <!-- Left Content -->
-      <div class="text-left space-y-8">
+      <div class="text-left space-y-6 md:space-y-8">
         <div class="slide-in-left">
-          <!-- Message element removed -->
+          <div
+            class="inline-flex items-center px-3 md:px-4 py-1 md:py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-xs md:text-sm font-medium mb-4 md:mb-6"
+          >
+            <span class="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"
+            ></span>
+            Join 5,000+ members transforming their lives
+          </div>
         </div>
 
         <div class="fade-in-up">
           <h1
-            class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight"
           >
             Transform Your Life,
             <span class="gradient-text">One Day</span>
@@ -325,64 +333,72 @@
         </div>
 
         <div class="slide-in-right">
-          <p class="text-xl lg:text-2xl text-white/80 leading-relaxed mb-8">
+          <p
+            class="text-lg sm:text-xl lg:text-2xl text-white/80 leading-relaxed mb-6 md:mb-8"
+          >
             Join thousands of motivated individuals making daily progress in
             their wellness journey. Simple, effective, and sustainable.
           </p>
         </div>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-          <a href="/health-quiz">
+        <div class="flex flex-col sm:flex-row gap-4 mb-6 md:mb-8">
+          <a href="/health-quiz" class="w-full sm:w-auto">
             <button
-              class="btn btn-accent btn-lg px-8 py-4 text-lg pulse-glow transform hover:scale-105 transition-all duration-300"
+              class="btn btn-accent btn-lg px-6 md:px-8 py-3 md:py-4 text-base md:text-lg pulse-glow transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
             >
-              🧠 Get Your Personalized Plan
+              🧠 Get Your Plan
             </button>
           </a>
           <button
-            class="btn btn-outline btn-lg px-8 py-4 text-lg glass-effect text-white border-white/30 hover:bg-white/10"
+            class="btn btn-outline btn-lg px-6 md:px-8 py-3 md:py-4 text-base md:text-lg glass-effect text-white border-white/30 hover:bg-white/10 w-full sm:w-auto"
           >
-            🎯 Start Your Journey
+            🎯 Start Journey
           </button>
         </div>
 
         <!-- Trust Indicators -->
-        <div class="flex items-center space-x-6 text-white/70">
+        <div class="flex items-center space-x-4 md:space-x-6 text-white/70">
           <div class="flex items-center">
-            <span class="text-2xl mr-2">⭐</span>
-            <span class="text-sm">4.9/5 Rating</span>
+            <span class="text-xl md:text-2xl mr-2">⭐</span>
+            <span class="text-xs md:text-sm">4.9/5 Rating</span>
           </div>
           <div class="flex items-center">
-            <span class="text-2xl mr-2">🔒</span>
-            <span class="text-sm">30-Day Guarantee</span>
+            <span class="text-xl md:text-2xl mr-2">🔒</span>
+            <span class="text-xs md:text-sm">30-Day Guarantee</span>
           </div>
         </div>
       </div>
 
       <!-- Right Content - Interactive Preview -->
-      <div class="relative">
+      <div class="relative mt-8 lg:mt-0">
         <div
           class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl"
         >
-          <div class="card-body p-8">
-            <div class="text-center mb-6">
-              <div class="text-4xl mb-4">📊</div>
-              <h3 class="text-2xl font-bold text-white mb-2">
+          <div class="card-body p-6 md:p-8">
+            <div class="text-center mb-4 md:mb-6">
+              <div class="text-3xl md:text-4xl mb-3 md:mb-4">📊</div>
+              <h3 class="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">
                 Your Daily Progress
               </h3>
-              <p class="text-white/80">See what you'll track</p>
+              <p class="text-sm md:text-base text-white/80">
+                See what you'll track
+              </p>
             </div>
 
             <!-- Animated Stats -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="text-center p-4 bg-white/10 rounded-lg">
-                <div class="text-2xl font-bold text-white">150+</div>
-                <div class="text-sm text-white/70">Expert Articles</div>
+            <div class="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+              <div class="text-center p-3 md:p-4 bg-white/10 rounded-lg">
+                <div class="text-xl md:text-2xl font-bold text-white">150+</div>
+                <div class="text-xs md:text-sm text-white/70">
+                  Expert Articles
+                </div>
               </div>
-              <div class="text-center p-4 bg-white/10 rounded-lg">
-                <div class="text-2xl font-bold text-white">200+</div>
-                <div class="text-sm text-white/70">Workout Plans</div>
+              <div class="text-center p-3 md:p-4 bg-white/10 rounded-lg">
+                <div class="text-xl md:text-2xl font-bold text-white">200+</div>
+                <div class="text-xs md:text-sm text-white/70">
+                  Workout Plans
+                </div>
               </div>
             </div>
 
@@ -408,14 +424,21 @@
 </div>
 
 <!-- Features Section -->
-<div id="features" class="py-20 bg-gradient-to-b from-white to-gray-50">
-  <div class="container mx-auto px-6">
+<div
+  id="features"
+  class="py-12 md:py-20 bg-gradient-to-b from-white to-gray-50"
+>
+  <div class="container mx-auto px-4 sm:px-6">
     <!-- Section Header -->
-    <div class="text-center mb-20 animate-on-scroll">
-      <div class="text-4xl md:text-6xl font-bold gradient-text mb-6">
+    <div class="text-center mb-12 md:mb-20 animate-on-scroll">
+      <div
+        class="text-3xl sm:text-4xl md:text-6xl font-bold gradient-text mb-4 md:mb-6"
+      >
         Everything You Need
       </div>
-      <div class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+      <div
+        class="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto"
+      >
         Complete wellness resources designed for <span
           class="font-bold text-primary">real people</span
         >
@@ -424,27 +447,31 @@
     </div>
 
     <!-- Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto"
+    >
       {#each features as feature, index}
         <div
           class="feature-card animate-on-scroll"
           style="animation-delay: {index * 0.2}s;"
         >
           <div
-            class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 h-full"
+            class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-gray-100 h-full"
           >
             <!-- Icon -->
             <div
-              class="w-20 h-20 rounded-2xl bg-gradient-to-br {feature.gradient} flex items-center justify-center mb-6 text-4xl"
+              class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br {feature.gradient} flex items-center justify-center mb-4 md:mb-6 text-3xl md:text-4xl"
             >
               {feature.icon}
             </div>
 
             <!-- Content -->
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            <h3
+              class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-3 md:mb-4"
+            >
               {feature.name}
             </h3>
-            <p class="text-gray-600 leading-relaxed mb-6">
+            <p class="text-gray-600 leading-relaxed mb-4 md:mb-6">
               {feature.description}
             </p>
 
@@ -477,31 +504,33 @@
 </div>
 
 <!-- Counter Section -->
-<div class="py-20 bg-gradient-to-r from-primary to-accent text-white">
-  <div class="container mx-auto px-6">
+<div class="py-12 md:py-20 bg-gradient-to-r from-primary to-accent text-white">
+  <div class="container mx-auto px-4 sm:px-6">
     <div class="text-center counter-section animate-on-scroll">
-      <div class="text-3xl md:text-5xl font-bold mb-12">
+      <div class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 md:mb-12">
         Join Our Growing Community
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto"
+      >
         <div class="text-center">
-          <div class="text-5xl md:text-7xl font-bold mb-4">
+          <div class="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-4">
             {animatedCounters.users.toLocaleString()}+
           </div>
-          <div class="text-xl text-white/80">Active Members</div>
+          <div class="text-lg md:text-xl text-white/80">Active Members</div>
         </div>
         <div class="text-center">
-          <div class="text-5xl md:text-7xl font-bold mb-4">
+          <div class="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-4">
             {animatedCounters.articles}+
           </div>
-          <div class="text-xl text-white/80">Expert Articles</div>
+          <div class="text-lg md:text-xl text-white/80">Expert Articles</div>
         </div>
         <div class="text-center">
-          <div class="text-5xl md:text-7xl font-bold mb-4">
+          <div class="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-4">
             {animatedCounters.workouts}+
           </div>
-          <div class="text-xl text-white/80">Workout Plans</div>
+          <div class="text-lg md:text-xl text-white/80">Workout Plans</div>
         </div>
       </div>
     </div>
@@ -509,41 +538,47 @@
 </div>
 
 <!-- Testimonials Section -->
-<div id="testimonials" class="py-20 bg-white">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16 animate-on-scroll">
-      <div class="text-4xl md:text-6xl font-bold gradient-text mb-6">
+<div id="testimonials" class="py-12 md:py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10 md:mb-16 animate-on-scroll">
+      <div
+        class="text-3xl sm:text-4xl md:text-6xl font-bold gradient-text mb-4 md:mb-6"
+      >
         Real Results, Real Stories
       </div>
-      <div class="text-xl text-gray-600">
+      <div class="text-lg sm:text-xl text-gray-600">
         See how Driven Daily is transforming lives every day
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto"
+    >
       {#each testimonials as testimonial, index}
         <div
           class="testimonial-card animate-on-scroll"
           style="animation-delay: {index * 0.2}s;"
         >
           <div
-            class="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg border border-gray-100 h-full"
+            class="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-100 h-full"
           >
-            <div class="text-4xl mb-4">{testimonial.avatar}</div>
-            <p class="text-gray-700 leading-relaxed mb-6 italic">
+            <div class="text-3xl md:text-4xl mb-3 md:mb-4">
+              {testimonial.avatar}
+            </div>
+            <p class="text-gray-700 leading-relaxed mb-4 md:mb-6 italic">
               "{testimonial.content}"
             </p>
             <div class="flex items-center">
               <div
-                class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold"
+                class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold"
               >
                 {testimonial.name.charAt(0)}
               </div>
-              <div class="ml-4">
+              <div class="ml-3 md:ml-4">
                 <div class="font-semibold text-gray-800">
                   {testimonial.name}
                 </div>
-                <div class="text-gray-600">{testimonial.role}</div>
+                <div class="text-sm text-gray-600">{testimonial.role}</div>
               </div>
             </div>
           </div>
@@ -554,43 +589,47 @@
 </div>
 
 <!-- Personalized Quiz Section -->
-<div class="py-20 bg-gradient-to-br from-accent to-primary text-white">
-  <div class="container mx-auto px-6 text-center">
+<div class="py-12 md:py-20 bg-gradient-to-br from-accent to-primary text-white">
+  <div class="container mx-auto px-4 sm:px-6 text-center">
     <div class="max-w-4xl mx-auto animate-on-scroll">
-      <div class="text-6xl mb-6">🧠</div>
-      <div class="text-4xl md:text-6xl font-bold mb-6">
+      <div class="text-4xl md:text-6xl mb-4 md:mb-6">🧠</div>
+      <div class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
         Get Your Personalized Health Plan
       </div>
-      <div class="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
+      <div
+        class="text-lg sm:text-xl md:text-2xl text-white/80 mb-6 md:mb-8 leading-relaxed"
+      >
         Answer a few questions and get a customized diet, workout, and recovery
         plan designed specifically for your goals and lifestyle.
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12 max-w-3xl mx-auto"
+      >
         <div class="text-center">
-          <div class="text-3xl mb-2">💪</div>
+          <div class="text-2xl md:text-3xl mb-2">💪</div>
           <div class="font-semibold">Custom Workout Plan</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl mb-2">🥗</div>
+          <div class="text-2xl md:text-3xl mb-2">🥗</div>
           <div class="font-semibold">Personalized Nutrition</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl mb-2">🧘‍♀️</div>
+          <div class="text-2xl md:text-3xl mb-2">🧘‍♀️</div>
           <div class="font-semibold">Recovery Strategy</div>
         </div>
       </div>
 
-      <a href="/health-quiz">
+      <a href="/health-quiz" class="block w-full sm:inline-block sm:w-auto">
         <button
-          class="btn btn-secondary btn-lg px-12 py-6 text-xl font-bold pulse-glow transform hover:scale-105 transition-all duration-300"
+          class="btn btn-secondary btn-lg px-8 md:px-12 py-4 md:py-6 text-lg md:text-xl font-bold pulse-glow transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
         >
-          Start Your Personalized Quiz
+          Start Your Quiz
         </button>
       </a>
 
-      <div class="mt-8 text-white/60">
-        <p class="text-lg">
+      <div class="mt-6 md:mt-8 text-white/60">
+        <p class="text-base md:text-lg">
           ✨ Takes 5 minutes • 100% free • Get instant results
         </p>
       </div>
@@ -600,35 +639,41 @@
 
 <!-- Final CTA Section -->
 <div
-  class="py-20 bg-gradient-to-br from-gray-900 via-primary to-accent text-white"
+  class="py-12 md:py-20 bg-gradient-to-br from-gray-900 via-primary to-accent text-white"
 >
-  <div class="container mx-auto px-6 text-center">
+  <div class="container mx-auto px-4 sm:px-6 text-center">
     <div class="max-w-4xl mx-auto animate-on-scroll">
-      <div class="text-4xl md:text-6xl font-bold mb-6">
+      <div class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
         Ready to Transform Your Life?
       </div>
-      <div class="text-xl md:text-2xl text-white/80 mb-12 leading-relaxed">
+      <div
+        class="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 md:mb-12 leading-relaxed"
+      >
         Join thousands of motivated individuals who are already making daily
         progress. Start your wellness journey today.
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-        <a href="/blog">
-          <button class="btn btn-primary btn-lg px-8 py-4 text-lg pulse-glow">
+      <div
+        class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center"
+      >
+        <a href="/blog" class="w-full sm:w-auto">
+          <button
+            class="btn btn-primary btn-lg px-6 md:px-8 py-3 md:py-4 text-base md:text-lg pulse-glow w-full sm:w-auto"
+          >
             Start Reading Now
           </button>
         </a>
-        <a href="/pricing">
+        <a href="/pricing" class="w-full sm:w-auto">
           <button
-            class="btn btn-outline btn-lg px-8 py-4 text-lg glass-effect text-white border-white/30 hover:bg-white/10"
+            class="btn btn-outline btn-lg px-6 md:px-8 py-3 md:py-4 text-base md:text-lg glass-effect text-white border-white/30 hover:bg-white/10 w-full sm:w-auto"
           >
             💎 Choose Your Plan
           </button>
         </a>
       </div>
 
-      <div class="mt-12 text-white/60">
-        <p class="text-lg">
+      <div class="mt-8 md:mt-12 text-white/60">
+        <p class="text-base md:text-lg">
           ✨ Free to start • No commitment required • Cancel anytime
         </p>
       </div>
