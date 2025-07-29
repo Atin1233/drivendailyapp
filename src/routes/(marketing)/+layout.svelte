@@ -11,6 +11,7 @@
   let { children }: Props = $props()
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
+  let mobileMenuOpen = $state(false)
   let currentPage = $derived($page.url.pathname)
 
   onMount(() => {
@@ -55,6 +56,14 @@
     } catch (error) {
       console.log("Could not save to localStorage")
     }
+  }
+
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen
+  }
+
+  function closeMobileMenu() {
+    mobileMenuOpen = false
   }
 </script>
 
@@ -128,43 +137,160 @@
         >
       </a>
 
-      <!-- Mobile menu for smaller screens -->
-      <div class="dropdown dropdown-end lg:hidden">
-        <!-- svelte-ignore a11y_label_has_associated_control -->
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <label tabindex="0" class="btn btn-ghost btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h7"
-            /></svg
-          >
-        </label>
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <ul
-          tabindex="0"
-          class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
+      <!-- Mobile menu button -->
+      <button
+        class="btn btn-ghost btn-circle lg:hidden"
+        onclick={toggleMobileMenu}
+        aria-label="Open menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/recipes">Recipes</a></li>
-          <li><a href="/workouts">Workouts</a></li>
-          <li><a href="/recovery">Recovery</a></li>
-          <li><a href="/testimonials">Testimonials</a></li>
-          <li><a href="/bmi-calculator">BMI Calculator</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/search">Search</a></li>
-        </ul>
-      </div>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h7"
+          />
+        </svg>
+      </button>
     </div>
   </div>
 </div>
+
+<!-- Mobile menu drawer -->
+{#if mobileMenuOpen}
+  <div class="fixed inset-0 z-[60] lg:hidden">
+    <!-- Backdrop overlay -->
+    <div
+      class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+      onclick={closeMobileMenu}
+      role="button"
+      tabindex="0"
+      aria-label="Close menu"
+    ></div>
+
+    <!-- Side drawer -->
+    <div
+      class="absolute top-0 right-0 h-full w-[280px] bg-white shadow-xl transform transition-transform duration-300 ease-in-out"
+    >
+      <!-- Close button -->
+      <button
+        class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700"
+        onclick={closeMobileMenu}
+        aria-label="Close menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="p-6 border-b">
+        <a href="/" class="flex items-center gap-2" onclick={closeMobileMenu}>
+          <img
+            src="/images/driven-daily-logo.svg"
+            alt="{WebsiteName} Logo"
+            class="h-10 w-10"
+          />
+          <span class="font-bold text-xl text-gray-800">{WebsiteName}</span>
+        </a>
+      </div>
+
+      <!-- Navigation links -->
+      <nav class="p-4">
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="/blog"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="/recipes"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Recipes
+            </a>
+          </li>
+          <li>
+            <a
+              href="/workouts"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Workouts
+            </a>
+          </li>
+          <li>
+            <a
+              href="/recovery"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Recovery
+            </a>
+          </li>
+          <li>
+            <a
+              href="/testimonials"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Testimonials
+            </a>
+          </li>
+          <li>
+            <a
+              href="/bmi-calculator"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              BMI Calculator
+            </a>
+          </li>
+          <li>
+            <a
+              href="/pricing"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Pricing
+            </a>
+          </li>
+          <li>
+            <a
+              href="/search"
+              class="block py-3 px-4 text-lg font-medium text-gray-800 hover:bg-primary/10 rounded-lg transition-colors"
+              onclick={closeMobileMenu}
+            >
+              Search
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+{/if}
 
 <!-- Debug button (temporary) -->
 <button

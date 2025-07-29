@@ -7,6 +7,14 @@ declare global {
     website?: string
     email?: string
   }
+
+  namespace App {
+    interface Locals {
+      supabase: any
+      supabaseServiceRole: any
+      user: any | null
+    }
+  }
 }
 
 export {}
