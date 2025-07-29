@@ -284,8 +284,7 @@
 <div
   class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-primary via-purple-900 to-accent"
 >
-  <!-- Beta Message -->
-  <!-- Removing the beta message section -->
+  <!-- Beta Message Removed -->
 
   <!-- Geometric Background Pattern -->
   <div class="absolute inset-0 overflow-hidden">

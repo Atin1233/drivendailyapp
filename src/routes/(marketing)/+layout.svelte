@@ -597,4 +597,29 @@
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+
+  /* Mobile menu improvements */
+  @media (max-width: 1023px) {
+    .dropdown-menu-container {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      z-index: 60;
+      width: 13rem;
+    }
+  }
+
+  /* Fix for mobile dropdown menu */
+  .dropdown-menu-container {
+    position: relative;
+  }
+
+  .dropdown-menu-container ul {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
 </style>
