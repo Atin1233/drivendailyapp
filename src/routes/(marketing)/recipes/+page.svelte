@@ -164,7 +164,7 @@
 
 <!-- Hero Section - Culinary/Food Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-600 text-white relative overflow-hidden"
 >
   <!-- Culinary Background Elements -->
   <div class="absolute inset-0 overflow-hidden">

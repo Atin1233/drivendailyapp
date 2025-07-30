@@ -43,7 +43,7 @@
 <div class="hero-section text-white py-24 relative overflow-hidden">
   <!-- Background Pattern -->
   <div
-    class="absolute inset-0 bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500"
+    class="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-500 to-cyan-500"
   ></div>
   <div class="absolute inset-0 bg-black/20"></div>
 
@@ -114,7 +114,7 @@
       <div class="text-center mt-1 mb-8">
         <a
           href="/gallery"
-          class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          class="btn bg-blue-600 hover:bg-blue-700 text-white btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
         >
           📸 View Before & After Gallery
         </a>

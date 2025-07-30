@@ -282,7 +282,7 @@
 
 <!-- Hero Section - Split Layout with Video Background -->
 <div
-  class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-primary via-purple-900 to-accent"
+  class="hero min-h-screen relative overflow-hidden bg-gradient-to-br from-primary via-blue-900 to-accent"
 >
   <!-- Beta Message -->
   <div class="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">

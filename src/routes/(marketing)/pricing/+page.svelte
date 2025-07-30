@@ -161,7 +161,7 @@
 
 <!-- Hero Section - Business/Financial Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-600 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-600 text-white relative overflow-hidden"
 >
   <!-- Business/Financial Background Elements -->
   <div class="absolute inset-0 overflow-hidden">
@@ -296,7 +296,7 @@
 
               <a
                 href="/contact_us"
-                class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg w-full"
+                class="btn bg-blue-600 hover:bg-blue-700 text-white btn-lg w-full"
               >
                 Contact Us →
               </a>

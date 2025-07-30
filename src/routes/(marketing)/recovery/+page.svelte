@@ -359,7 +359,7 @@
 
 <!-- Hero Section -->
 <div
-  class="py-20 bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-500 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-blue-500 via-indigo-500 to-cyan-500 text-white relative overflow-hidden"
 >
   <!-- Animated Background Elements -->
   <div class="absolute inset-0 overflow-hidden">

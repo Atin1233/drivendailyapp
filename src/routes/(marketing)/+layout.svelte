@@ -346,7 +346,7 @@
 
 <style>
   .navbar-glass {
-    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -356,67 +356,67 @@
   }
 
   .navbar-glass.scrolled {
-    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
     backdrop-filter: blur(15px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   /* Page-specific navbar backgrounds */
   .navbar-glass.page-home {
-    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-blog {
-    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-recipes {
-    background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 50%, #5b21b6 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-workouts {
-    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-recovery {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-testimonials {
-    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-pricing {
-    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   /* Page-specific scrolled backgrounds */
   .navbar-glass.page-home.scrolled {
-    background: linear-gradient(135deg, #180042 0%, #581c87 50%, #db2777 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-blog.scrolled {
-    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-recipes.scrolled {
-    background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 50%, #5b21b6 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-workouts.scrolled {
-    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-recovery.scrolled {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-testimonials.scrolled {
-    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .navbar-glass.page-pricing.scrolled {
-    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #6b21a8 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
   }
 
   .nav-link {

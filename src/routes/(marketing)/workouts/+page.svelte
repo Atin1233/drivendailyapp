@@ -186,7 +186,7 @@
 
 <!-- Hero Section - Athletic/Energetic Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-purple-700 via-indigo-700 to-blue-700 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-800 text-white relative overflow-hidden"
 >
   <!-- Athletic Background Elements -->
   <div class="absolute inset-0 overflow-hidden">
@@ -292,7 +292,7 @@
 
             <a
               href="/workouts/hiit-cardio"
-              class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg w-full"
+              class="btn bg-blue-600 hover:bg-blue-700 text-white btn-lg w-full"
             >
               Start Workout →
             </a>

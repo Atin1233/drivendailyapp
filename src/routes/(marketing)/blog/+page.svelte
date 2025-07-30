@@ -29,7 +29,7 @@
 
 <!-- Hero Section - Blog Focused -->
 <div
-  class="py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 text-white relative overflow-hidden"
+  class="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white relative overflow-hidden"
 >
   <!-- Animated Book and Reading Icons -->
   <div class="absolute inset-0 overflow-hidden">
@@ -87,7 +87,7 @@
             <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Knowledge is
               <span
-                class="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent"
                 >Power</span
               >
             </h1>
@@ -171,7 +171,7 @@
 
                 <a
                   href={sortedBlogPosts[0].link}
-                  class="btn bg-purple-600 hover:bg-purple-700 text-white btn-lg w-full"
+                  class="btn bg-blue-600 hover:bg-blue-700 text-white btn-lg w-full"
                 >
                   Read Article →
                 </a>
@@ -212,8 +212,8 @@
     {#each categories as category}
       <button
         class="btn btn-sm {selectedCategory === category
-          ? 'bg-purple-600 hover:bg-purple-700 text-white'
-          : 'btn-outline border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white'}"
+          ? 'bg-blue-600 hover:bg-blue-700 text-white'
+          : 'btn-outline border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'}"
         on:click={() => (selectedCategory = category)}
       >
         {category}
@@ -264,14 +264,13 @@
         >
           <div class="card-body">
             <div class="flex items-center gap-2 mb-2">
-              <span
-                class="badge badge-outline border-purple-600 text-purple-600"
+              <span class="badge badge-outline border-blue-600 text-blue-600"
                 >{post.category}</span
               >
               <span class="text-sm text-slate-500">{post.readTime}</span>
             </div>
             <h3
-              class="text-xl font-bold text-slate-800 hover:text-purple-600 transition-colors"
+              class="text-xl font-bold text-slate-800 hover:text-blue-600 transition-colors"
             >
               {post.title}
             </h3>
@@ -296,7 +295,7 @@
 
   <!-- Newsletter Signup -->
   <div class="mt-16 text-center">
-    <div class="card bg-base-100 shadow-lg border border-purple-600/20">
+    <div class="card bg-base-100 shadow-lg border border-blue-600/20">
       <div class="card-body">
         <h3 class="text-2xl font-bold">Get Driven Daily</h3>
         <p class="text-slate-600 mb-4">
@@ -309,7 +308,7 @@
             placeholder="Enter your email"
             class="input input-bordered flex-1 max-w-xs"
           />
-          <button class="btn bg-purple-600 hover:bg-purple-700 text-white"
+          <button class="btn bg-blue-600 hover:bg-blue-700 text-white"
             >Subscribe</button
           >
         </div>
