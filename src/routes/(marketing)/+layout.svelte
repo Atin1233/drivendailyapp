@@ -11,6 +11,7 @@
   let { children }: Props = $props()
   let isScrolled = $state(false)
   let showBetaPopup = $state(false)
+  let isMobileMenuOpen = $state(false)
   let currentPage = $derived($page.url.pathname)
 
   onMount(() => {
@@ -54,6 +55,24 @@
       }
     } catch (error) {
       console.log("Could not save to localStorage")
+    }
+  }
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen
+
+    // Prevent body scrolling when sidebar is open
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = isMobileMenuOpen ? "hidden" : ""
+    }
+  }
+
+  function closeMobileMenu() {
+    isMobileMenuOpen = false
+
+    // Re-enable body scrolling
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = ""
     }
   }
 </script>
@@ -128,43 +147,170 @@
         >
       </a>
 
-      <!-- Mobile menu for smaller screens -->
-      <div class="dropdown dropdown-end lg:hidden">
-        <!-- svelte-ignore a11y_label_has_associated_control -->
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <label tabindex="0" class="btn btn-ghost btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h7"
-            /></svg
-          >
-        </label>
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <ul
-          tabindex="0"
-          class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
+      <!-- Mobile menu button -->
+      <button
+        class="btn btn-ghost btn-circle lg:hidden"
+        aria-label="Toggle mobile menu"
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="mobile-sidebar"
+        onclick={toggleMobileMenu}
+        onkeydown={(e) => e.key === "Enter" && toggleMobileMenu()}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h7"
+          /></svg
         >
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/recipes">Recipes</a></li>
-          <li><a href="/workouts">Workouts</a></li>
-          <li><a href="/recovery">Recovery</a></li>
-          <li><a href="/testimonials">Testimonials</a></li>
-          <li><a href="/bmi-calculator">BMI Calculator</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/search">Search</a></li>
-        </ul>
-      </div>
+      </button>
     </div>
   </div>
 </div>
+
+<!-- Mobile Sidebar -->
+{#if isMobileMenuOpen}
+  <!-- Overlay -->
+  <div
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60]"
+    onclick={closeMobileMenu}
+    aria-hidden="true"
+  ></div>
+
+  <!-- Sidebar -->
+  <div
+    id="mobile-sidebar"
+    class="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[70] shadow-xl transform transition-transform duration-300 sidebar-animation"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+  >
+    <!-- Close button -->
+    <button
+      class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100"
+      aria-label="Close menu"
+      onclick={closeMobileMenu}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-gray-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+
+    <!-- Logo -->
+    <div class="p-6 border-b border-gray-200">
+      <a href="/" class="flex items-center gap-3" onclick={closeMobileMenu}>
+        <img
+          src="/images/driven-daily-logo.svg"
+          alt="{WebsiteName} Logo"
+          class="h-10 w-10"
+        />
+        <span class="text-xl font-bold text-gray-800">{WebsiteName}</span>
+      </a>
+    </div>
+
+    <!-- Navigation links -->
+    <nav class="p-6">
+      <ul class="space-y-4">
+        <li>
+          <a
+            href="/blog"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Blog
+          </a>
+        </li>
+        <li>
+          <a
+            href="/recipes"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Recipes
+          </a>
+        </li>
+        <li>
+          <a
+            href="/workouts"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Workouts
+          </a>
+        </li>
+        <li>
+          <a
+            href="/recovery"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Recovery
+          </a>
+        </li>
+        <li>
+          <a
+            href="/testimonials"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Testimonials
+          </a>
+        </li>
+        <li>
+          <a
+            href="/bmi-calculator"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            BMI Calculator
+          </a>
+        </li>
+        <li>
+          <a
+            href="/pricing"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a
+            href="/search"
+            class="block py-2 px-4 text-gray-800 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors font-medium"
+            onclick={closeMobileMenu}
+          >
+            Search
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Footer -->
+    <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200">
+      <p class="text-sm text-gray-500 text-center">
+        © 2024 {WebsiteName}
+      </p>
+    </div>
+  </div>
+{/if}
 
 <!-- Debug button (temporary) -->
 <button
@@ -470,5 +616,19 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Sidebar animation */
+  .sidebar-animation {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 </style>
