@@ -48,6 +48,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@rollup/rollup-darwin-x64": "^4.46.2",
     "@supabase/supabase-js": "^2.39.7",
     "autoprefixer": "^10.4.21",
     "handlebars": "^4.7.8",
@@ -57,5 +58,8 @@
     "@sveltejs/kit": {
       "cookie": "^0.7.0"
     }
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
