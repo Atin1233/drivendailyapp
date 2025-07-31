@@ -284,7 +284,7 @@
                 year: "numeric",
               })}
             </div>
-            <div class="text-sm text-slate-600">
+            <div class="text-sm text-white">
               {post.readTime} min read
             </div>
           </div>

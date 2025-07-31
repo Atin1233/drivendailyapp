@@ -158,7 +158,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-800 text-sm font-medium">Workouts</p>
+            <p class="text-white text-sm font-medium">Workouts</p>
             <p class="text-3xl font-bold text-gray-800">
               {stats.workoutsCompleted}
             </p>
@@ -174,7 +174,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-800 text-sm font-medium">Streak</p>
+            <p class="text-white text-sm font-medium">Streak</p>
             <p class="text-3xl font-bold text-gray-800">
               {stats.streakDays} days
             </p>
@@ -190,7 +190,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-800 text-sm font-medium">Minutes</p>
+            <p class="text-white text-sm font-medium">Minutes</p>
             <p class="text-3xl font-bold text-gray-800">{stats.totalMinutes}</p>
           </div>
           <div
@@ -204,7 +204,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-800 text-sm font-medium">Calories</p>
+            <p class="text-white text-sm font-medium">Calories</p>
             <p class="text-3xl font-bold text-gray-800">
               {stats.caloriesBurned}
             </p>
@@ -271,7 +271,7 @@
                 <span class="text-2xl">🏋️</span>
                 <div>
                   <p class="font-semibold text-gray-800">Start Workout</p>
-                  <p class="text-sm text-gray-800">Choose from 100+ workouts</p>
+                  <p class="text-sm text-white">Choose from 100+ workouts</p>
                 </div>
               </div>
             </a>
@@ -284,7 +284,7 @@
                 <span class="text-2xl">🥗</span>
                 <div>
                   <p class="font-semibold text-gray-800">Meal Planning</p>
-                  <p class="text-sm text-gray-800">Plan your nutrition</p>
+                  <p class="text-sm text-white">Plan your nutrition</p>
                 </div>
               </div>
             </a>
@@ -297,7 +297,7 @@
                 <span class="text-2xl">📊</span>
                 <div>
                   <p class="font-semibold text-gray-800">Update Goals</p>
-                  <p class="text-sm text-gray-800">Adjust your targets</p>
+                  <p class="text-sm text-white">Adjust your targets</p>
                 </div>
               </div>
             </a>

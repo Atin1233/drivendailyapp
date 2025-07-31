@@ -585,7 +585,7 @@
               {faq.question}
             </div>
             <div class="collapse-content">
-              <p class="text-gray-800 leading-relaxed">{faq.answer}</p>
+              <p class="text-white leading-relaxed">{faq.answer}</p>
             </div>
           </div>
         {/each}

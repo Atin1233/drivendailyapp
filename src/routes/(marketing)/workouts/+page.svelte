@@ -453,12 +453,12 @@
             </div>
 
             <!-- Workout Title -->
-            <h3 class="workout-title">
+            <h3 class="workout-title text-gray-900">
               {workout.title}
             </h3>
 
             <!-- Workout Description -->
-            <p class="text-gray-800 text-lg">
+            <p class="workout-description text-gray-700">
               {workout.description}
             </p>
 
@@ -466,20 +466,20 @@
             <div class="workout-stats">
               <div class="stat-item">
                 <div class="stat-value">{workout.duration}</div>
-                <div class="stat-label">Minutes</div>
+                <div class="stat-label text-gray-500">Minutes</div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">{workout.exercises.length}</div>
-                <div class="stat-label">Exercises</div>
+                <div class="stat-label text-gray-500">Exercises</div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">{workout.difficulty}</div>
-                <div class="stat-label">Level</div>
+                <div class="stat-label text-gray-500">Level</div>
               </div>
             </div>
 
             <!-- Workout Meta -->
-            <div class="workout-meta">
+            <div class="workout-meta text-gray-500">
               <div class="meta-info">
                 <span class="meta-item">
                   <svg

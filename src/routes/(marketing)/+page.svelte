@@ -437,12 +437,12 @@
         Everything You Need
       </div>
       <div
-        class="text-lg sm:text-xl md:text-2xl text-gray-800 max-w-3xl mx-auto"
+        class="text-lg sm:text-xl md:text-2xl text-white max-w-3xl mx-auto"
       >
         Complete wellness resources designed for <span
-          class="font-bold text-primary">real people</span
+          class="font-bold text-white">real people</span
         >
-        with <span class="font-bold text-primary">real lives</span>
+        with <span class="font-bold text-white">real lives</span>
       </div>
     </div>
 
@@ -471,14 +471,14 @@
             >
               {feature.name}
             </h3>
-            <p class="text-gray-800 leading-relaxed mb-4 md:mb-6">
+            <p class="text-white leading-relaxed mb-4 md:mb-6">
               {feature.description}
             </p>
 
             {#if feature.link}
               <a
                 href={feature.link}
-                class="inline-flex items-center text-primary font-semibold hover:text-accent transition-colors"
+                class="inline-flex items-center text-white font-semibold hover:text-gray-200 transition-colors"
               >
                 {feature.linkText}
                 <svg
@@ -546,7 +546,7 @@
       >
         Real Results, Real Stories
       </div>
-      <div class="text-lg sm:text-xl text-gray-800">
+      <div class="text-lg sm:text-xl text-white">
         See how Driven Daily is transforming lives every day
       </div>
     </div>
@@ -565,7 +565,7 @@
             <div class="text-3xl md:text-4xl mb-3 md:mb-4">
               {testimonial.avatar}
             </div>
-            <p class="text-gray-800 leading-relaxed mb-4 md:mb-6 italic">
+            <p class="text-white leading-relaxed mb-4 md:mb-6 italic">
               "{testimonial.content}"
             </p>
             <div class="flex items-center">
@@ -578,7 +578,7 @@
                 <div class="font-semibold text-gray-800">
                   {testimonial.name}
                 </div>
-                <div class="text-sm text-gray-800">{testimonial.role}</div>
+                <div class="text-sm text-white">{testimonial.role}</div>
               </div>
             </div>
           </div>
