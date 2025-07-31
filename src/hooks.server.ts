@@ -1,8 +1,8 @@
 import type { Handle } from '@sveltejs/kit';
-import { supabase, supabaseAdmin } from '$lib/supabase';
+import { supabase, supabaseAdmin } from '$lib/supabase.server';
 
 export const handle: Handle = async ({ event, resolve }) => {
-  // Use the configured Supabase clients (real or mock)
+  // Use the server-side Supabase clients (real or mock)
   event.locals.supabase = supabase;
   event.locals.supabaseServiceRole = supabaseAdmin;
 

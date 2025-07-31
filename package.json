@@ -40,7 +40,7 @@
     "super-sitemap": "^0.15.1",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.5.0",
     "vercel": "^44.6.3",
     "vite": "^6.3.5",
@@ -49,6 +49,7 @@
   "type": "module",
   "dependencies": {
     "@supabase/supabase-js": "^2.39.7",
+    "autoprefixer": "^10.4.21",
     "handlebars": "^4.7.8",
     "resend": "^3.5.0"
   },
