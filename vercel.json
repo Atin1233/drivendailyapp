@@ -2,10 +2,5 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".svelte-kit/output",
   "framework": "sveltekit",
-  "installCommand": "npm install",
-  "functions": {
-    "app/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "installCommand": "npm install"
 }
