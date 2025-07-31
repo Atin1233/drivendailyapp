@@ -1,4 +1,11 @@
-// Mock Supabase client for development
+import { createClient } from '@supabase/supabase-js'
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
+import { PRIVATE_SUPABASE_SERVICE_ROLE } from '$env/static/private'
+
+// Check if we have the required environment variables
+const hasSupabaseConfig = PUBLIC_SUPABASE_URL && PUBLIC_SUPABASE_ANON_KEY && PRIVATE_SUPABASE_SERVICE_ROLE
+
+// Mock Supabase client for development when no config is available
 const mockSupabaseClient = {
   auth: {
     getSession: async () => ({ data: { session: null } }),
@@ -16,10 +23,22 @@ const mockSupabaseClient = {
     update: () => ({ eq: () => ({ data: {}, error: null }) }),
     delete: () => ({ eq: () => ({ data: {}, error: null }) })
   })
-};
+}
 
-console.log('⚠️ DEVELOPMENT MODE: Using mock Supabase client in supabase.ts');
+// Create real Supabase clients if environment variables are available
+let supabase: any
+let supabaseAdmin: any
 
-// Export mock clients
-export const supabase = mockSupabaseClient as any;
-export const supabaseAdmin = mockSupabaseClient as any; 
+if (hasSupabaseConfig) {
+  // Use real Supabase clients
+  supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY)
+  supabaseAdmin = createClient(PUBLIC_SUPABASE_URL, PRIVATE_SUPABASE_SERVICE_ROLE)
+  console.log('✅ Using real Supabase clients')
+} else {
+  // Use mock clients for development
+  supabase = mockSupabaseClient
+  supabaseAdmin = mockSupabaseClient
+  console.log('⚠️ DEVELOPMENT MODE: Using mock Supabase client')
+}
+
+export { supabase, supabaseAdmin } 
