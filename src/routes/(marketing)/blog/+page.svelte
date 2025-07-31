@@ -84,12 +84,10 @@
         <!-- Left Content -->
         <div class="text-left space-y-8">
           <div class="slide-in-left">
-            <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              Knowledge is
-              <span
-                class="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent"
-                >Power</span
-              >
+            <h1
+              class="text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent"
+            >
+              Health & Fitness Blog
             </h1>
           </div>
 
@@ -267,7 +265,9 @@
               <span class="badge badge-outline border-blue-600 text-blue-600"
                 >{post.category}</span
               >
-              <span class="text-sm text-slate-500">{post.readTime}</span>
+              <span class="text-sm text-slate-600 mt-2">
+                {post.readTime} min read
+              </span>
             </div>
             <h3
               class="text-xl font-bold text-slate-800 hover:text-blue-600 transition-colors"
@@ -284,8 +284,8 @@
                 year: "numeric",
               })}
             </div>
-            <div class="text-sm text-slate-400">
-              By {post.author}
+            <div class="text-sm text-slate-600">
+              {post.readTime} min read
             </div>
           </div>
         </div>

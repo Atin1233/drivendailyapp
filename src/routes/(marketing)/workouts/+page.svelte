@@ -239,12 +239,10 @@
       <div class="text-center max-w-4xl mx-auto">
         <!-- Main Heading -->
         <div class="slide-in-left mb-8">
-          <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-            Power Your
-            <span
-              class="bg-gradient-to-r from-purple-300 to-indigo-300 bg-clip-text text-transparent"
-              >Performance</span
-            >
+          <h1
+            class="text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+          >
+            Workout Plans
           </h1>
         </div>
 
@@ -348,7 +346,7 @@
             class="search-input"
           />
           <svg
-            class="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400"
+            class="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

@@ -175,7 +175,7 @@
             <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Calculate Your
               <span
-                class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                 >BMI</span
               >
             </h1>

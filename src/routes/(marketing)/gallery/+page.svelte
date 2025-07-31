@@ -204,12 +204,10 @@
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-4xl mx-auto text-center">
       <div class="slide-in-left mb-8">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-          Real
-          <span
-            class="bg-gradient-to-r from-purple-300 to-violet-300 bg-clip-text text-transparent"
-            >Transformations</span
-          >
+        <h1
+          class="text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent"
+        >
+          Transformation Gallery
         </h1>
       </div>
 

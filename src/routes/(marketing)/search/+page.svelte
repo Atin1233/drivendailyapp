@@ -248,7 +248,7 @@
             on:keydown={onKeyDown}
           />
           <svg
-            class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

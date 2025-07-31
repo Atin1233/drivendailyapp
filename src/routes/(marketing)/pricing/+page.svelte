@@ -221,12 +221,10 @@
         <!-- Left Content -->
         <div class="text-left space-y-8">
           <div class="slide-in-left">
-            <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              Choose Your
-              <span
-                class="bg-gradient-to-r from-purple-300 to-violet-300 bg-clip-text text-transparent"
-                >Investment</span
-              >
+            <h1
+              class="text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent"
+            >
+              Choose Your Plan
             </h1>
           </div>
 

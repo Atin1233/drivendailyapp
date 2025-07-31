@@ -528,12 +528,10 @@
         <!-- Left Content -->
         <div class="text-left space-y-8">
           <div class="slide-in-left">
-            <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              Your Personalized
-              <span
-                class="bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent"
-                >Health Plan</span
-              >
+            <h1
+              class="text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-cyan-600 to-pink-600 bg-clip-text text-transparent"
+            >
+              Health Assessment
             </h1>
           </div>
 
