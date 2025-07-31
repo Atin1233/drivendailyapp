@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "format": "prettier --write --plugin prettier-plugin-svelte ./",
     "format_check": "prettier --check --plugin prettier-plugin-svelte ./",
-    "postinstall": "node -e \"const os = require('os'); const platform = os.platform(); const arch = os.arch(); if (platform === 'darwin' && arch === 'x64') { console.log('Installing macOS x64 Rollup dependency...'); require('child_process').execSync('npm install @rollup/rollup-darwin-x64', {stdio: 'inherit'}); } else if (platform === 'linux' && arch === 'x64') { console.log('Installing Linux x64 Rollup dependency...'); require('child_process').execSync('npm install @rollup/rollup-linux-x64-gnu', {stdio: 'inherit'}); } else { console.log('Platform not supported for automatic Rollup dependency installation'); }\""
+    "postinstall": "node -e \"const os = require('os'); const platform = os.platform(); const arch = os.arch(); console.log('Platform:', platform, arch); if (platform === 'darwin' && arch === 'x64') { console.log('Installing macOS x64 Rollup dependency...'); require('child_process').execSync('npm install @rollup/rollup-darwin-x64 --no-save', {stdio: 'inherit'}); } else if (platform === 'linux' && arch === 'x64') { console.log('Installing Linux x64 Rollup dependency...'); require('child_process').execSync('npm install @rollup/rollup-linux-x64-gnu --no-save', {stdio: 'inherit'}); } else { console.log('Platform not supported for automatic Rollup dependency installation'); }\""
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.0.0",
@@ -49,7 +49,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@rollup/rollup-darwin-x64": "^4.46.2",
     "@supabase/supabase-js": "^2.39.7",
     "autoprefixer": "^10.4.21",
     "handlebars": "^4.7.8",
