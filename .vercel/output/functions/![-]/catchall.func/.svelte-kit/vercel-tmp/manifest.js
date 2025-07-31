@@ -7,10 +7,10 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","images/cm_logo.svg","images/driven-daily-logo.svg","images/example-home.png","images/rss.svg","robots.txt"]),
+	assets: new Set(["favicon.png","favicon.svg","images/cm_logo.svg","images/driven-daily-logo.svg","images/example-home.png","images/rss.svg","robots.txt"]),
 	mimeTypes: {".png":"image/png",".svg":"image/svg+xml",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.CMyHpK9e.js",app:"_app/immutable/entry/app.B9Gz_bCJ.js",imports:["_app/immutable/entry/start.CMyHpK9e.js","_app/immutable/chunks/ByK_e989.js","_app/immutable/chunks/CddOsZcZ.js","_app/immutable/chunks/h12K--vQ.js","_app/immutable/entry/app.B9Gz_bCJ.js","_app/immutable/chunks/CddOsZcZ.js","_app/immutable/chunks/D-vY586r.js","_app/immutable/chunks/B9QI8j-U.js","_app/immutable/chunks/BJmlBrM1.js","_app/immutable/chunks/CCXyYejH.js","_app/immutable/chunks/B0hXOaSJ.js","_app/immutable/chunks/CfsQceG7.js","_app/immutable/chunks/BEhHH_o6.js","_app/immutable/chunks/h12K--vQ.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.B7mfbXRb.js",app:"_app/immutable/entry/app.BTCTudTf.js",imports:["_app/immutable/entry/start.B7mfbXRb.js","_app/immutable/chunks/C1KtLt0P.js","_app/immutable/chunks/BV9qdzil.js","_app/immutable/chunks/BFqC5wTN.js","_app/immutable/chunks/YpQPQr3W.js","_app/immutable/entry/app.BTCTudTf.js","_app/immutable/chunks/BV9qdzil.js","_app/immutable/chunks/BFqC5wTN.js","_app/immutable/chunks/BFf8dqXx.js","_app/immutable/chunks/C7Reg7aU.js","_app/immutable/chunks/Del82Ylf.js","_app/immutable/chunks/Cnl_p21v.js","_app/immutable/chunks/hbSGsm1g.js","_app/immutable/chunks/nYe6a6qS.js","_app/immutable/chunks/D2AOx3bb.js","_app/immutable/chunks/CW8lhDXW.js","_app/immutable/chunks/YpQPQr3W.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('../output/server/nodes/0.js')),
 			__memo(() => import('../output/server/nodes/1.js')),
@@ -19,15 +19,25 @@ return {
 			__memo(() => import('../output/server/nodes/30.js')),
 			__memo(() => import('../output/server/nodes/31.js')),
 			__memo(() => import('../output/server/nodes/32.js')),
+			__memo(() => import('../output/server/nodes/33.js')),
 			__memo(() => import('../output/server/nodes/34.js')),
-			__memo(() => import('../output/server/nodes/35.js')),
 			__memo(() => import('../output/server/nodes/36.js')),
 			__memo(() => import('../output/server/nodes/37.js')),
+			__memo(() => import('../output/server/nodes/38.js')),
 			__memo(() => import('../output/server/nodes/39.js')),
-			__memo(() => import('../output/server/nodes/40.js')),
-			__memo(() => import('../output/server/nodes/41.js'))
+			__memo(() => import('../output/server/nodes/41.js')),
+			__memo(() => import('../output/server/nodes/42.js')),
+			__memo(() => import('../output/server/nodes/43.js')),
+			__memo(() => import('../output/server/nodes/44.js'))
 		],
 		routes: [
+			{
+				id: "/auth",
+				pattern: /^\/auth\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 16 },
+				endpoint: null
+			},
 			{
 				id: "/(marketing)/blog/rss.xml",
 				pattern: /^\/blog\/rss\.xml\/?$/,
@@ -50,45 +60,59 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/(marketing)/dashboard",
+				pattern: /^\/dashboard\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 5 },
+				endpoint: null
+			},
+			{
+				id: "/(marketing)/gallery",
+				pattern: /^\/gallery\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 6 },
+				endpoint: null
+			},
+			{
 				id: "/(marketing)/health-quiz",
 				pattern: /^\/health-quiz\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 5 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 7 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/health-quiz/results",
 				pattern: /^\/health-quiz\/results\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 6 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/recipes",
 				pattern: /^\/recipes\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 7 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 9 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/recipes/[id]",
 				pattern: /^\/recipes\/([^/]+?)\/?$/,
 				params: [{"name":"id","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 10 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/recovery",
 				pattern: /^\/recovery\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 9 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 11 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/recovery/[id]",
 				pattern: /^\/recovery\/([^/]+?)\/?$/,
 				params: [{"name":"id","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 10 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 12 },
 				endpoint: null
 			},
 			{
@@ -102,21 +126,21 @@ return {
 				id: "/(marketing)/testimonials",
 				pattern: /^\/testimonials\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 11 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 13 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/workouts",
 				pattern: /^\/workouts\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 12 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 14 },
 				endpoint: null
 			},
 			{
 				id: "/(marketing)/workouts/[id]",
 				pattern: /^\/workouts\/([^/]+?)\/?$/,
 				params: [{"name":"id","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 13 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 15 },
 				endpoint: null
 			}
 		],

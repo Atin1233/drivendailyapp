@@ -253,6 +253,10 @@
 			"handle": "filesystem"
 		},
 		{
+			"src": "^/auth/?(?:/__data.json)?$",
+			"dest": "/auth"
+		},
+		{
 			"src": "^/blog/rss\\.xml/?(?:/__data.json)?$",
 			"dest": "/(marketing)/blog/rss.xml"
 		},
@@ -263,6 +267,14 @@
 		{
 			"src": "^/contact_us/?(?:/__data.json)?$",
 			"dest": "/(marketing)/contact_us"
+		},
+		{
+			"src": "^/dashboard/?(?:/__data.json)?$",
+			"dest": "/(marketing)/dashboard"
+		},
+		{
+			"src": "^/gallery/?(?:/__data.json)?$",
+			"dest": "/(marketing)/gallery"
 		},
 		{
 			"src": "^/health-quiz/?(?:/__data.json)?$",

@@ -35,7 +35,19 @@ export async function buildSearchIndex() {
           { selector: "img", format: "skip" },
         ],
       })
-      const dom = new JSDOM.JSDOM(data)
+      
+      // Remove all style tags to prevent CSS parsing errors
+      const htmlWithoutStyles = data.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+      
+      // Create JSDOM with minimal settings to avoid CSS parsing
+      const dom = new JSDOM.JSDOM(htmlWithoutStyles, {
+        runScripts: "outside-only",
+        resources: "usable",
+        pretendToBeVisual: false,
+        includeNodeLocations: false,
+        storageQuota: 10000000
+      })
+      
       const title =
         dom.window.document.querySelector("title")?.textContent ||
         "Page " + webPath
@@ -51,6 +63,7 @@ export async function buildSearchIndex() {
       })
     } catch (e) {
       console.log("Blog search indexing error", file, e)
+      // Continue processing other files even if one fails
     }
   }
 
@@ -62,16 +75,22 @@ export async function buildSearchIndex() {
 
 // Build search index into the output directory, for use in the build process (see vite.config.js)
 export async function buildAndCacheSearchIndex() {
-  const data = await buildSearchIndex()
+  try {
+    const data = await buildSearchIndex()
 
-  const dir = path.resolve("./.svelte-kit/output/client/search")
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true })
+    const dir = path.resolve("./.svelte-kit/output/client/search")
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true })
+    }
+
+    fs.writeFileSync(
+      path.resolve("./.svelte-kit/output/client/search/api.json"),
+      JSON.stringify(data),
+    )
+    console.log("Search index built")
+  } catch (error) {
+    console.error("Failed to build search index:", error)
+    // Don't fail the build if search index fails
+    console.log("Continuing build without search index...")
   }
-
-  fs.writeFileSync(
-    path.resolve("./.svelte-kit/output/client/search/api.json"),
-    JSON.stringify(data),
-  )
-  console.log("Search index built")
 }

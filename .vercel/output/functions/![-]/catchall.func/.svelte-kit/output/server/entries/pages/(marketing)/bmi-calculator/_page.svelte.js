@@ -27,7 +27,7 @@ function _page($$payload, $$props) {
   $$payload.out += `<!--]--></select></div></div></div> <div class="space-y-4 svelte-1yo0m66"><label class="label svelte-1yo0m66"><span class="label-text font-bold text-lg svelte-1yo0m66">Weight (pounds)</span></label> <input type="number"${attr("value", weight)} min="50" max="500" class="input input-bordered input-lg w-full bg-gray-50 border-2 hover:border-primary transition-all duration-300 svelte-1yo0m66" placeholder="Enter your weight"></div> <button type="submit" class="btn btn-primary btn-lg w-full text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 svelte-1yo0m66"${attr("disabled", isCalculating, true)}>`;
   {
     $$payload.out += "<!--[!-->";
-    $$payload.out += `🚀 Calculate BMI`;
+    $$payload.out += `Calculate BMI`;
   }
   $$payload.out += `<!--]--></button></form> <button class="btn btn-outline btn-sm w-full mt-6 hover:btn-error transition-all duration-300 svelte-1yo0m66">🔄 Reset Calculator</button></div></div> <div class="space-y-6 svelte-1yo0m66">`;
   {
