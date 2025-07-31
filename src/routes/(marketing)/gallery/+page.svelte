@@ -294,7 +294,7 @@
           <div class="text-2xl font-bold text-purple-600 mb-2">
             {transformation.stats}
           </div>
-          <p class="text-gray-600 mb-4">{transformation.description}</p>
+          <p class="text-gray-800 mb-4">{transformation.description}</p>
           <div class="flex flex-wrap gap-2">
             {#each transformation.tags as tag}
               <span class="badge badge-outline text-sm">{tag}</span>
@@ -310,9 +310,8 @@
     <h2 class="text-3xl font-bold mb-6 text-gray-800">
       Ready to Start Your Transformation?
     </h2>
-    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-      Join thousands of others who have achieved incredible results with our
-      proven approach.
+    <p class="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
+      Real transformations from real people. Get inspired by their journeys.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a
@@ -371,17 +370,17 @@
             <div class="text-2xl font-bold text-purple-600">
               {selectedTransformation.stats}
             </div>
-            <div class="text-sm text-gray-600">Achievement</div>
+            <div class="text-sm text-gray-800">Achievement</div>
           </div>
           <div class="stat-item text-center p-4 bg-gray-50 rounded-lg">
             <div class="text-2xl font-bold text-purple-600">
               {selectedTransformation.timeFrame}
             </div>
-            <div class="text-sm text-gray-600">Time Frame</div>
+            <div class="text-sm text-gray-800">Time Frame</div>
           </div>
         </div>
 
-        <p class="text-gray-700 mb-4">{selectedTransformation.description}</p>
+        <p class="text-gray-800 mb-4">{selectedTransformation.description}</p>
 
         <div class="flex flex-wrap gap-2">
           {#each selectedTransformation.tags as tag}

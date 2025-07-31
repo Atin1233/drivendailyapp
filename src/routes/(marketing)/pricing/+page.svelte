@@ -353,7 +353,7 @@
           <div class="text-center mb-6">
             <div class="text-4xl mb-4">🚀</div>
             <h3 class="text-2xl font-bold mb-2">Starter</h3>
-            <p class="text-gray-600">
+            <p class="text-gray-800">
               Perfect for beginners starting their wellness journey
             </p>
           </div>
@@ -413,7 +413,7 @@
           <div class="text-center mb-6">
             <div class="text-4xl mb-4">💪</div>
             <h3 class="text-2xl font-bold mb-2">Pro</h3>
-            <p class="opacity-90">
+            <p class="text-gray-800">
               Take your progress to the next level with personalized tools
             </p>
           </div>
@@ -471,7 +471,7 @@
           <div class="text-center mb-6">
             <div class="text-4xl mb-4">👑</div>
             <h3 class="text-2xl font-bold mb-2">Ultimate</h3>
-            <p class="text-gray-600">
+            <p class="text-gray-800">
               Complete wellness transformation with exclusive resources
             </p>
           </div>
@@ -534,7 +534,7 @@
           <div class="card-body p-6">
             <div class="text-3xl mb-3">🔒</div>
             <h4 class="font-bold mb-2">Secure & Private</h4>
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-800">
               Your data is protected with bank-level security
             </p>
           </div>
@@ -543,7 +543,7 @@
           <div class="card-body p-6">
             <div class="text-3xl mb-3">💰</div>
             <h4 class="font-bold mb-2">30-Day Guarantee</h4>
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-800">
               Full refund if you're not satisfied
             </p>
           </div>
@@ -552,7 +552,7 @@
           <div class="card-body p-6">
             <div class="text-3xl mb-3">🚀</div>
             <h4 class="font-bold mb-2">Cancel Anytime</h4>
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-800">
               No long-term commitments required
             </p>
           </div>
@@ -571,8 +571,8 @@
       >
         Frequently Asked Questions
       </h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Everything you need to know about our plans and pricing
+      <p class="text-xl text-gray-800 max-w-2xl mx-auto">
+        Get answers to common questions about our pricing and services
       </p>
     </div>
 
@@ -585,7 +585,7 @@
               {faq.question}
             </div>
             <div class="collapse-content">
-              <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              <p class="text-gray-800 leading-relaxed">{faq.answer}</p>
             </div>
           </div>
         {/each}

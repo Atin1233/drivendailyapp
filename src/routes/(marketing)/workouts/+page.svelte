@@ -458,7 +458,7 @@
             </h3>
 
             <!-- Workout Description -->
-            <p class="workout-description">
+            <p class="text-gray-800 text-lg">
               {workout.description}
             </p>
 
@@ -531,7 +531,7 @@
       <h3 class="text-3xl font-bold text-gray-800 mb-4 font-poppins">
         No workouts found
       </h3>
-      <p class="text-gray-600 mb-8 text-lg max-w-md mx-auto">
+      <p class="text-gray-800 mb-8 text-lg max-w-md mx-auto">
         Try adjusting your search terms or filters to find what you're looking
         for.
       </p>

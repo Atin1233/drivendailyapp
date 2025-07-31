@@ -158,7 +158,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-600 text-sm font-medium">Workouts</p>
+            <p class="text-gray-800 text-sm font-medium">Workouts</p>
             <p class="text-3xl font-bold text-gray-800">
               {stats.workoutsCompleted}
             </p>
@@ -174,7 +174,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-600 text-sm font-medium">Streak</p>
+            <p class="text-gray-800 text-sm font-medium">Streak</p>
             <p class="text-3xl font-bold text-gray-800">
               {stats.streakDays} days
             </p>
@@ -190,7 +190,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-600 text-sm font-medium">Minutes</p>
+            <p class="text-gray-800 text-sm font-medium">Minutes</p>
             <p class="text-3xl font-bold text-gray-800">{stats.totalMinutes}</p>
           </div>
           <div
@@ -204,7 +204,7 @@
       <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-600 text-sm font-medium">Calories</p>
+            <p class="text-gray-800 text-sm font-medium">Calories</p>
             <p class="text-3xl font-bold text-gray-800">
               {stats.caloriesBurned}
             </p>
@@ -271,7 +271,7 @@
                 <span class="text-2xl">🏋️</span>
                 <div>
                   <p class="font-semibold text-gray-800">Start Workout</p>
-                  <p class="text-sm text-gray-600">Choose from 100+ workouts</p>
+                  <p class="text-sm text-gray-800">Choose from 100+ workouts</p>
                 </div>
               </div>
             </a>
@@ -284,7 +284,7 @@
                 <span class="text-2xl">🥗</span>
                 <div>
                   <p class="font-semibold text-gray-800">Meal Planning</p>
-                  <p class="text-sm text-gray-600">Plan your nutrition</p>
+                  <p class="text-sm text-gray-800">Plan your nutrition</p>
                 </div>
               </div>
             </a>
@@ -297,7 +297,7 @@
                 <span class="text-2xl">📊</span>
                 <div>
                   <p class="font-semibold text-gray-800">Update Goals</p>
-                  <p class="text-sm text-gray-600">Adjust your targets</p>
+                  <p class="text-sm text-gray-800">Adjust your targets</p>
                 </div>
               </div>
             </a>
@@ -309,19 +309,19 @@
           <h2 class="text-xl font-bold text-gray-800 mb-4">Progress Summary</h2>
           <div class="space-y-4">
             <div class="flex justify-between items-center">
-              <span class="text-gray-600">Current Weight</span>
+              <span class="text-gray-800">Current Weight</span>
               <span class="font-semibold">{progressData.weight} kg</span>
             </div>
             <div class="flex justify-between items-center">
-              <span class="text-gray-600">Body Fat %</span>
+              <span class="text-gray-800">Body Fat %</span>
               <span class="font-semibold">{progressData.bodyFat}%</span>
             </div>
             <div class="flex justify-between items-center">
-              <span class="text-gray-600">Muscle Mass</span>
+              <span class="text-gray-800">Muscle Mass</span>
               <span class="font-semibold">{progressData.muscleMass} kg</span>
             </div>
             <div class="flex justify-between items-center">
-              <span class="text-gray-600">Weekly Change</span>
+              <span class="text-gray-800">Weekly Change</span>
               <span class="font-semibold text-green-600"
                 >{progressData.weeklyChange} kg</span
               >
@@ -351,7 +351,7 @@
                 <span class="text-sm text-gray-500">{workout.duration} min</span
                 >
               </div>
-              <div class="flex items-center space-x-4 text-sm text-gray-600">
+              <div class="flex items-center space-x-4 text-sm text-gray-800">
                 <span>{workout.difficulty}</span>
                 <span>•</span>
                 <span>{workout.equipment}</span>

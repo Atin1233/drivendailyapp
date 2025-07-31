@@ -283,7 +283,7 @@
         </div>
 
         {#if searchQuery}
-          <div class="mt-4 text-sm text-gray-600">
+          <div class="mt-4 text-sm text-gray-800">
             Press <kbd class="kbd kbd-sm">Enter</kbd> to select,
             <kbd class="kbd kbd-sm">↑↓</kbd>
             to navigate, <kbd class="kbd kbd-sm">Esc</kbd> to clear
@@ -334,7 +334,7 @@
             💪
           </div>
           <h3 class="font-semibold mb-2 text-lg">Workouts</h3>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-800 mb-4">
             Find training plans and exercises
           </p>
           <a href="/workouts" class="btn btn-primary btn-sm">Browse Workouts</a>
@@ -346,7 +346,7 @@
             🍽️
           </div>
           <h3 class="font-semibold mb-2 text-lg">Recipes</h3>
-          <p class="text-sm text-gray-600 mb-4">Discover healthy meal ideas</p>
+          <p class="text-sm text-gray-800 mb-4">Discover healthy meal ideas</p>
           <a href="/recipes" class="btn btn-secondary btn-sm">Browse Recipes</a>
         </div>
         <div class="text-center group">
@@ -356,7 +356,7 @@
             🧘‍♀️
           </div>
           <h3 class="font-semibold mb-2 text-lg">Recovery</h3>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-800 mb-4">
             Recovery techniques and therapies
           </p>
           <a href="/recovery" class="btn btn-accent btn-sm">Browse Recovery</a>
@@ -368,7 +368,7 @@
             📝
           </div>
           <h3 class="font-semibold mb-2 text-lg">Blog</h3>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-800 mb-4">
             Read fitness and nutrition tips
           </p>
           <a href="/blog" class="btn btn-info btn-sm">Browse Blog</a>
@@ -441,7 +441,7 @@
                           {result.item.category}
                         </span>
                       </div>
-                      <p class="text-gray-600 text-sm leading-relaxed mb-2">
+                      <p class="text-gray-800 text-sm leading-relaxed mb-2">
                         {result.item.description}
                       </p>
                       <div class="text-xs text-gray-500">

@@ -703,38 +703,38 @@
       <div class="category-card">
         <div class="text-4xl mb-4">🛠️</div>
         <h3 class="text-xl font-bold mb-2">Physical Therapy</h3>
-        <p class="text-gray-600">
+        <p class="text-gray-800">
           Hands-on techniques for muscle recovery and injury prevention
         </p>
       </div>
       <div class="category-card">
         <div class="text-4xl mb-4">🤸‍♀️</div>
         <h3 class="text-xl font-bold mb-2">Mobility</h3>
-        <p class="text-gray-600">
+        <p class="text-gray-800">
           Stretching and flexibility exercises for better movement
         </p>
       </div>
       <div class="category-card">
         <div class="text-4xl mb-4">⚡</div>
         <h3 class="text-xl font-bold mb-2">Recovery Tools</h3>
-        <p class="text-gray-600">
+        <p class="text-gray-800">
           Equipment-based recovery methods and techniques
         </p>
       </div>
       <div class="category-card">
         <div class="text-4xl mb-4">🧘‍♀️</div>
         <h3 class="text-xl font-bold mb-2">Wellness</h3>
-        <p class="text-gray-600">Mind-body practices for holistic recovery</p>
+        <p class="text-gray-800">Mind-body practices for holistic recovery</p>
       </div>
       <div class="category-card">
         <div class="text-4xl mb-4">🥗</div>
         <h3 class="text-xl font-bold mb-2">Nutrition</h3>
-        <p class="text-gray-600">Nutritional strategies to support recovery</p>
+        <p class="text-gray-800">Nutritional strategies to support recovery</p>
       </div>
       <div class="category-card">
         <div class="text-4xl mb-4">😴</div>
         <h3 class="text-xl font-bold mb-2">Sleep</h3>
-        <p class="text-gray-600">Sleep optimization for maximum recovery</p>
+        <p class="text-gray-800">Sleep optimization for maximum recovery</p>
       </div>
     </div>
   </div>

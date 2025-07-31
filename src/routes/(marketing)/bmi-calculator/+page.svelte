@@ -553,12 +553,11 @@
         >
           <div class="card-body p-8 text-center">
             <div class="text-8xl mb-6">📊</div>
-            <h3 class="text-2xl font-bold mb-4 text-gray-700">
-              Ready to Calculate
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">
+              Your BMI Result
             </h3>
-            <p class="text-gray-600 text-lg leading-relaxed">
-              Enter your height and weight above to see your BMI results and
-              what they mean for your health journey.
+            <p class="text-gray-800 text-lg leading-relaxed">
+              {bmiDescription}
             </p>
             <div class="mt-6 text-4xl">🎯</div>
           </div>
