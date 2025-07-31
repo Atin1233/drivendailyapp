@@ -1,8 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
-
-// Check if we have the required public environment variables
-const hasSupabaseConfig = PUBLIC_SUPABASE_URL && PUBLIC_SUPABASE_ANON_KEY
 
 // Mock Supabase client for development when no config is available
 const mockSupabaseClient = {
@@ -27,14 +23,17 @@ const mockSupabaseClient = {
 // Create client-side Supabase client
 let supabase: any
 
-if (hasSupabaseConfig) {
+// Check if environment variables are available
+const hasPublicEnv = typeof process !== 'undefined' && process.env.PUBLIC_SUPABASE_URL && process.env.PUBLIC_SUPABASE_ANON_KEY
+
+if (hasPublicEnv) {
   // Use real Supabase client
-  supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY)
+  supabase = createClient(process.env.PUBLIC_SUPABASE_URL!, process.env.PUBLIC_SUPABASE_ANON_KEY!)
   console.log('✅ Using real Supabase client')
 } else {
   // Use mock client for development
   supabase = mockSupabaseClient
-  console.log('⚠️ DEVELOPMENT MODE: Using mock Supabase client')
+  console.log('⚠️ ENVIRONMENT VARIABLES NOT AVAILABLE: Using mock Supabase client')
 }
 
 export { supabase } 

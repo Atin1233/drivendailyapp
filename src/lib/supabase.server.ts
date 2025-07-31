@@ -1,9 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
-import { PRIVATE_SUPABASE_SERVICE_ROLE } from '$env/static/private'
-
-// Check if we have the required environment variables
-const hasSupabaseConfig = PUBLIC_SUPABASE_URL && PUBLIC_SUPABASE_ANON_KEY && PRIVATE_SUPABASE_SERVICE_ROLE
 
 // Mock Supabase client for development when no config is available
 const mockSupabaseClient = {
@@ -29,16 +24,20 @@ const mockSupabaseClient = {
 let supabase: any
 let supabaseAdmin: any
 
-if (hasSupabaseConfig) {
+// Check if environment variables are available
+const hasPublicEnv = typeof process !== 'undefined' && process.env.PUBLIC_SUPABASE_URL && process.env.PUBLIC_SUPABASE_ANON_KEY
+const hasPrivateEnv = typeof process !== 'undefined' && process.env.PRIVATE_SUPABASE_SERVICE_ROLE
+
+if (hasPublicEnv && hasPrivateEnv) {
   // Use real Supabase clients
-  supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY)
-  supabaseAdmin = createClient(PUBLIC_SUPABASE_URL, PRIVATE_SUPABASE_SERVICE_ROLE)
+  supabase = createClient(process.env.PUBLIC_SUPABASE_URL!, process.env.PUBLIC_SUPABASE_ANON_KEY!)
+  supabaseAdmin = createClient(process.env.PUBLIC_SUPABASE_URL!, process.env.PRIVATE_SUPABASE_SERVICE_ROLE!)
   console.log('✅ Using real Supabase clients (server)')
 } else {
   // Use mock clients for development
   supabase = mockSupabaseClient
   supabaseAdmin = mockSupabaseClient
-  console.log('⚠️ DEVELOPMENT MODE: Using mock Supabase clients (server)')
+  console.log('⚠️ ENVIRONMENT VARIABLES NOT AVAILABLE: Using mock Supabase clients (server)')
 }
 
 export { supabase, supabaseAdmin } 
