@@ -437,12 +437,17 @@
         Everything You Need
       </div>
       <div
-        class="text-lg sm:text-xl md:text-2xl text-white max-w-3xl mx-auto"
+        class="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto"
+        style="color: #374151 !important;"
       >
         Complete wellness resources designed for <span
-          class="font-bold text-white">real people</span
+          class="font-bold"
+          style="color: #374151 !important;">real people</span
         >
-        with <span class="font-bold text-white">real lives</span>
+        with
+        <span class="font-bold" style="color: #374151 !important;"
+          >real lives</span
+        >
       </div>
     </div>
 
@@ -471,14 +476,18 @@
             >
               {feature.name}
             </h3>
-            <p class="text-white leading-relaxed mb-4 md:mb-6">
+            <p
+              class="leading-relaxed mb-4 md:mb-6"
+              style="color: #6b7280 !important;"
+            >
               {feature.description}
             </p>
 
             {#if feature.link}
               <a
                 href={feature.link}
-                class="inline-flex items-center text-white font-semibold hover:text-gray-200 transition-colors"
+                class="inline-flex items-center font-semibold hover:text-gray-200 transition-colors"
+                style="color: #4facfe !important;"
               >
                 {feature.linkText}
                 <svg
@@ -546,7 +555,7 @@
       >
         Real Results, Real Stories
       </div>
-      <div class="text-lg sm:text-xl text-white">
+      <div class="text-lg sm:text-xl" style="color: white !important;">
         See how Driven Daily is transforming lives every day
       </div>
     </div>
@@ -565,7 +574,10 @@
             <div class="text-3xl md:text-4xl mb-3 md:mb-4">
               {testimonial.avatar}
             </div>
-            <p class="text-white leading-relaxed mb-4 md:mb-6 italic">
+            <p
+              class="leading-relaxed mb-4 md:mb-6 italic"
+              style="color: #6b7280 !important;"
+            >
               "{testimonial.content}"
             </p>
             <div class="flex items-center">
@@ -578,7 +590,9 @@
                 <div class="font-semibold text-gray-800">
                   {testimonial.name}
                 </div>
-                <div class="text-sm text-white">{testimonial.role}</div>
+                <div class="text-sm" style="color: #6b7280 !important;">
+                  {testimonial.role}
+                </div>
               </div>
             </div>
           </div>

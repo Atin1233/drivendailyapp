@@ -453,12 +453,12 @@
             </div>
 
             <!-- Workout Title -->
-            <h3 class="workout-title text-gray-900">
+            <h3 class="workout-title" style="color: #1f2937 !important;">
               {workout.title}
             </h3>
 
             <!-- Workout Description -->
-            <p class="workout-description text-gray-700">
+            <p class="workout-description" style="color: #6b7280 !important;">
               {workout.description}
             </p>
 
@@ -466,20 +466,26 @@
             <div class="workout-stats">
               <div class="stat-item">
                 <div class="stat-value">{workout.duration}</div>
-                <div class="stat-label text-gray-500">Minutes</div>
+                <div class="stat-label" style="color: #6b7280 !important;">
+                  Minutes
+                </div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">{workout.exercises.length}</div>
-                <div class="stat-label text-gray-500">Exercises</div>
+                <div class="stat-label" style="color: #6b7280 !important;">
+                  Exercises
+                </div>
               </div>
               <div class="stat-item">
                 <div class="stat-value">{workout.difficulty}</div>
-                <div class="stat-label text-gray-500">Level</div>
+                <div class="stat-label" style="color: #6b7280 !important;">
+                  Level
+                </div>
               </div>
             </div>
 
             <!-- Workout Meta -->
-            <div class="workout-meta text-gray-500">
+            <div class="workout-meta" style="color: #6b7280 !important;">
               <div class="meta-info">
                 <span class="meta-item">
                   <svg
@@ -837,18 +843,18 @@
   .workout-title {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #1f2937;
+    color: #1f2937 !important;
     margin-bottom: 0.75rem;
     line-height: 1.4;
     transition: color 0.3s ease;
   }
 
   .workout-card:hover .workout-title {
-    color: #4facfe;
+    color: #4facfe !important;
   }
 
   .workout-description {
-    color: #6b7280;
+    color: #6b7280 !important;
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;

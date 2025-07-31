@@ -49,6 +49,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@rollup/rollup-darwin-x64": "^4.46.2",
     "@supabase/supabase-js": "^2.39.7",
     "autoprefixer": "^10.4.21",
     "handlebars": "^4.7.8",

@@ -457,7 +457,7 @@
           <h1 class="text-3xl lg:text-4xl font-bold mb-4">
             {currentTechnique.title}
           </h1>
-          <p class="text-xl text-slate-600 mb-4">
+          <p class="text-xl text-slate-600 mb-4" style="color: #6b7280 !important;">
             {currentTechnique.description}
           </p>
         </div>
@@ -488,7 +488,7 @@
                   >
                     {i + 1}
                   </div>
-                  <p class="text-slate-700">{instruction}</p>
+                  <p class="text-slate-700" style="color: #374151 !important;">{instruction}</p>
                 </div>
               {/each}
             </div>
@@ -622,7 +622,7 @@
                 {#each currentTechnique.equipment as item}
                   <div class="flex items-center gap-2">
                     <span class="text-primary">✓</span>
-                    <span>{item}</span>
+                    <span style="color: #374151 !important;">{item}</span>
                   </div>
                 {/each}
               </div>
@@ -657,7 +657,7 @@
                   <div class="font-semibold text-primary">
                     {technique.title}
                   </div>
-                  <div class="text-sm text-slate-600">
+                  <div class="text-sm text-slate-600" style="color: #6b7280 !important;">
                     {technique.duration} min • {technique.difficulty}
                   </div>
                 </a>
@@ -701,7 +701,7 @@
   <div class="py-8 lg:py-12 px-6 max-w-4xl mx-auto text-center">
     <div class="text-6xl mb-4">🧘‍♀️</div>
     <h1 class="text-4xl font-bold mb-4">Recovery Technique Not Found</h1>
-    <p class="text-xl text-slate-600 mb-8">
+    <p class="text-xl text-slate-600 mb-8" style="color: #6b7280 !important;">
       Sorry, we couldn't find the recovery technique you're looking for.
     </p>
     <a href="/recovery" class="btn btn-primary btn-lg"

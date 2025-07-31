@@ -80,7 +80,7 @@
         >
           {currentWorkout.title}
         </h1>
-        <p class="text-xl text-slate-600 mb-6">
+        <p class="text-xl text-slate-600 mb-6" style="color: #6b7280 !important;">
           {currentWorkout.description}
         </p>
 
@@ -109,13 +109,13 @@
             <div class="text-2xl font-bold text-primary">
               {currentWorkout.duration}
             </div>
-            <div class="text-sm text-slate-600">Duration (min)</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Duration (min)</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
               {currentWorkout.exercises.length}
             </div>
-            <div class="text-sm text-slate-600">Exercises</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Exercises</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
@@ -124,19 +124,19 @@
                 0,
               )}
             </div>
-            <div class="text-sm text-slate-600">Total Sets</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Total Sets</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
               {currentWorkout.tags.length}
             </div>
-            <div class="text-sm text-slate-600">Tags</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Tags</div>
           </div>
         </div>
 
         <!-- Author -->
         <div class="text-center mb-8">
-          <p class="text-slate-600">
+          <p class="text-slate-600" style="color: #6b7280 !important;">
             Workout by <span class="font-semibold text-primary"
               >{currentWorkout.author}</span
             >
@@ -158,15 +158,15 @@
                 {index + 1}
               </div>
               <div class="flex-1">
-                <h3 class="font-semibold text-lg">{exercise.name}</h3>
+                <h3 class="font-semibold text-lg" style="color: #1f2937 !important;">{exercise.name}</h3>
                 {#if exercise.notes}
-                  <p class="text-sm text-slate-600 mt-1">{exercise.notes}</p>
+                  <p class="text-sm text-slate-600 mt-1" style="color: #6b7280 !important;">{exercise.notes}</p>
                 {/if}
               </div>
               <div class="text-right">
-                <div class="font-semibold">{exercise.sets} sets</div>
-                <div class="text-sm text-slate-600">{exercise.reps}</div>
-                <div class="text-xs text-slate-500">Rest: {exercise.rest}</div>
+                <div class="font-semibold" style="color: #1f2937 !important;">{exercise.sets} sets</div>
+                <div class="text-sm text-slate-600" style="color: #6b7280 !important;">{exercise.reps}</div>
+                <div class="text-xs text-slate-500" style="color: #9ca3af !important;">Rest: {exercise.rest}</div>
               </div>
             </div>
           {/each}
@@ -183,7 +183,7 @@
             <div
               class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
             ></div>
-            <div>
+            <div style="color: #374151 !important;">
               <strong>Warm Up:</strong> Always start with 5-10 minutes of light cardio
               and dynamic stretching
             </div>
@@ -192,7 +192,7 @@
             <div
               class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
             ></div>
-            <div>
+            <div style="color: #374151 !important;">
               <strong>Form First:</strong> Focus on proper form before increasing
               weight or intensity
             </div>
@@ -201,7 +201,7 @@
             <div
               class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
             ></div>
-            <div>
+            <div style="color: #374151 !important;">
               <strong>Progressive Overload:</strong> Gradually increase weight or
               reps over time
             </div>
@@ -210,7 +210,7 @@
             <div
               class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
             ></div>
-            <div>
+            <div style="color: #374151 !important;">
               <strong>Rest Periods:</strong> Follow the recommended rest times for
               optimal recovery
             </div>
@@ -219,7 +219,7 @@
             <div
               class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
             ></div>
-            <div>
+            <div style="color: #374151 !important;">
               <strong>Hydration:</strong> Stay hydrated throughout your workout
             </div>
           </div>
@@ -268,7 +268,7 @@
   <div class="py-8 lg:py-12 px-6 max-w-4xl mx-auto text-center">
     <div class="text-6xl mb-4">💪</div>
     <h1 class="text-4xl font-bold mb-4">Workout Not Found</h1>
-    <p class="text-xl text-slate-600 mb-8">
+    <p class="text-xl text-slate-600 mb-8" style="color: #6b7280 !important;">
       Sorry, we couldn't find the workout you're looking for.
     </p>
     <a href="/workouts" class="btn btn-primary btn-lg"> Browse All Workouts </a>

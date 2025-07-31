@@ -79,7 +79,7 @@
         >
           {currentRecipe.title}
         </h1>
-        <p class="text-xl text-slate-600 mb-6">
+        <p class="text-xl text-slate-600 mb-6" style="color: #6b7280 !important;">
           {currentRecipe.description}
         </p>
 
@@ -108,37 +108,37 @@
             <div class="text-2xl font-bold text-primary">
               {currentRecipe.prepTime}
             </div>
-            <div class="text-sm text-slate-600">Prep Time (min)</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Prep Time (min)</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
               {currentRecipe.cookTime}
             </div>
-            <div class="text-sm text-slate-600">Cook Time (min)</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Cook Time (min)</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
               {currentRecipe.servings}
             </div>
-            <div class="text-sm text-slate-600">Servings</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Servings</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
               {currentRecipe.calories}
             </div>
-            <div class="text-sm text-slate-600">Calories</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Calories</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-primary">
               {currentRecipe.protein}
             </div>
-            <div class="text-sm text-slate-600">Protein (g)</div>
+            <div class="text-sm text-slate-600" style="color: #6b7280 !important;">Protein (g)</div>
           </div>
         </div>
 
         <!-- Author -->
         <div class="text-center mb-8">
-          <p class="text-slate-600">
+          <p class="text-slate-600" style="color: #6b7280 !important;">
             Recipe by <span class="font-semibold text-primary"
               >{currentRecipe.author}</span
             >
@@ -158,7 +158,7 @@
                 <div
                   class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"
                 ></div>
-                <span>{ingredient}</span>
+                <span style="color: #374151 !important;">{ingredient}</span>
               </li>
             {/each}
           </ul>
@@ -177,7 +177,7 @@
                 >
                   {index + 1}
                 </div>
-                <span>{instruction}</span>
+                <span style="color: #374151 !important;">{instruction}</span>
               </li>
             {/each}
           </ol>
