@@ -184,44 +184,22 @@
   />
 </svelte:head>
 
-<!-- Hero Section - Athletic/Energetic Focused -->
-<div
-  class="py-20 bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-800 text-white relative overflow-hidden"
->
-  <!-- Athletic Background Elements -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute top-10 left-10 text-6xl transform rotate-12">💪</div>
-      <div class="absolute top-20 right-20 text-4xl transform -rotate-12">
-        🏃‍♂️
-      </div>
-      <div class="absolute bottom-20 left-1/4 text-5xl transform rotate-6">
-        ⚡
-      </div>
-      <div class="absolute bottom-10 right-1/3 text-3xl transform -rotate-6">
-        🏋️‍♂️
-      </div>
+<!-- Hero Section -->
+<div class="hero-section relative overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white py-20 lg:py-32">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-10 left-10 text-4xl transform rotate-12">
+      🏋️‍♂️
     </div>
-    <!-- Dynamic Movement Lines -->
-    <div class="absolute inset-0">
-      <div
-        class="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"
-      ></div>
-      <div
-        class="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"
-        style="animation-delay: -1s;"
-      ></div>
-      <div
-        class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent animate-pulse"
-        style="animation-delay: -0.5s;"
-      ></div>
-      <div
-        class="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent animate-pulse"
-        style="animation-delay: -1.5s;"
-      ></div>
+    <div class="absolute top-20 right-20 text-3xl transform -rotate-6">
+      💪
+    </div>
+    <div class="absolute bottom-10 right-1/3 text-3xl transform -rotate-6">
+      🏋️‍♂️
     </div>
   </div>
-
+  
+  <!-- Mobile-friendly hero content -->
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-6xl mx-auto">
       <!-- Top Badge -->
@@ -238,93 +216,41 @@
       <!-- Main Content - Centered Single Column -->
       <div class="text-center max-w-4xl mx-auto">
         <!-- Main Heading -->
-        <div class="slide-in-left mb-8">
+        <div class="mb-8">
           <h1
-            class="text-5xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+            class="text-4xl lg:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
           >
             Workout Plans
           </h1>
         </div>
 
         <!-- Subtitle -->
-        <div class="slide-in-right mb-12">
-          <p class="text-xl lg:text-2xl opacity-90 leading-relaxed">
+        <div class="mb-12">
+          <p class="text-lg lg:text-2xl opacity-90 leading-relaxed">
             Transform your body with science-backed workouts designed for real
             results. From strength to cardio, we've got you covered.
           </p>
         </div>
 
-        <!-- Large Workout Preview Card -->
-        <div class="relative mb-12">
-          <div
-            class="card bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl p-8 max-w-2xl mx-auto"
-          >
-            <div class="text-center mb-6">
-              <div class="text-6xl mb-4">⚡</div>
-              <h3 class="text-3xl font-bold text-white mb-2">
-                Featured Workout
-              </h3>
-              <div class="text-5xl font-bold text-purple-400 mb-2">
-                HIIT Cardio
-              </div>
-              <div class="text-white/80 text-lg">
-                High-intensity interval training for maximum calorie burn
-              </div>
-            </div>
-
-            <!-- Workout Stats Row -->
-            <div class="grid grid-cols-3 gap-4 mb-6">
-              <div class="text-center">
-                <div class="text-2xl font-bold text-purple-400">30</div>
-                <div class="text-sm text-white/80">Minutes</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-purple-400">6</div>
-                <div class="text-sm text-white/80">Exercises</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-purple-400">Advanced</div>
-                <div class="text-sm text-white/80">Difficulty</div>
-              </div>
-            </div>
-
-            <a
-              href="/workouts/hiit-cardio"
-              class="btn bg-blue-600 hover:bg-blue-700 text-white btn-lg w-full"
-            >
-              Start Workout →
-            </a>
-          </div>
-
-          <!-- Floating Athletic Elements -->
-          <div
-            class="absolute -top-6 -right-6 w-12 h-12 bg-emerald-400 rounded-full float-animation"
-          ></div>
-          <div
-            class="absolute -bottom-6 -left-6 w-8 h-8 bg-green-400 rounded-full float-animation"
-            style="animation-delay: -2s;"
-          ></div>
-        </div>
-
         <!-- Stats Section - Horizontal Layout -->
-        <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-          <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
-            <div class="text-4xl font-bold mb-2">
+        <div class="grid grid-cols-3 gap-4 lg:gap-8 max-w-3xl mx-auto">
+          <div class="text-center p-4 lg:p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+            <div class="text-2xl lg:text-4xl font-bold mb-2">
               {animatedStats.workouts}+
             </div>
-            <div class="text-lg opacity-80">Workouts</div>
+            <div class="text-sm lg:text-lg opacity-80">Workouts</div>
           </div>
-          <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
-            <div class="text-4xl font-bold mb-2">
+          <div class="text-center p-4 lg:p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+            <div class="text-2xl lg:text-4xl font-bold mb-2">
               {animatedStats.categories}
             </div>
-            <div class="text-lg opacity-80">Categories</div>
+            <div class="text-sm lg:text-lg opacity-80">Categories</div>
           </div>
-          <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
-            <div class="text-4xl font-bold mb-2">
+          <div class="text-center p-4 lg:p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+            <div class="text-2xl lg:text-4xl font-bold mb-2">
               {animatedStats.avgDuration}min
             </div>
-            <div class="text-lg opacity-80">Avg Duration</div>
+            <div class="text-sm lg:text-lg opacity-80">Avg Duration</div>
           </div>
         </div>
       </div>
@@ -429,7 +355,7 @@
     <div class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {#each filteredWorkouts as workout}
         <a href={`/workouts/${workout.id}`} class="block group">
-          <div class="workout-card">
+          <div class="workout-card" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
             <!-- Workout Header -->
             <div class="workout-header">
               <div class="flex flex-wrap gap-2">
@@ -682,6 +608,28 @@
     .animate-on-scroll {
       opacity: 1;
       transform: translateY(0);
+    }
+    
+    /* Ensure workout cards are always visible on mobile */
+    .workout-card {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      z-index: 10 !important;
+    }
+    
+    /* Ensure the workouts grid is visible */
+    .grid {
+      display: grid !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Force mobile-friendly layout */
+    .container {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
     }
   }
 
